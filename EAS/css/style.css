@@ -1393,7 +1393,7 @@ ul.tag li a {
 }
 
 .social-link-footer li a {
-    color: #fff;
+    color: rgb(0, 0, 0);
     background:#505b71;
     padding: 10px;
     width: 50px;
@@ -1415,6 +1415,12 @@ ul.tag li a {
     -ms-transition: all .3s ease;
     -o-transition: all .3s ease;
     transition: all .3s ease;
+}
+
+.privacy a {
+    color:#726f73;
+    font-size:12px; text-align:center;
+    padding:20px;
 }
 
 
