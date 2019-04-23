@@ -1377,7 +1377,7 @@ ul.tag li a {
 }
 
 .tweet-box  a:hover{
-    color: #F77B6F ;
+    color: rgb(156, 166, 224) ;
 }
 
 .tweet-box i {
@@ -1409,7 +1409,7 @@ ul.tag li a {
 }
 
 .social-link-footer li a:hover {
-    background: #F77B6F;
+    background: rgb(156, 166, 224);
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
     -ms-transition: all .3s ease;
