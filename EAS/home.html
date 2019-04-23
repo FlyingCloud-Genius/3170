@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="generator" content="vscode">
+        <meta name="viewport"  content="width=device-width, initial-scale=1">
+        <meta name="author"    content="HSY, MZH">
+        <meta name="keywords"  content="EAS, GRE, Application">
+        
+        <title>Welcome to EAS | Home</title>
+        <link rel="icon" href="./images/png/logo.png">
+        <!--css-->
+        <link href="./css/bootstrap.min.css" rel="stylesheet">
+        <link href="./css/theme.css" rel="stylesheet">
+        <link href="./css/bootstrap-reset.css" rel="stylesheet">
+        <link href="./css/style.css" rel="stylesheet">
+        <link href="./css/style-responsive.css" rel="stylesheet">
+        <link href="./css/flexslider.css"      rel="stylesheet">
+        <link href="./css/jquery.bxslider.css" rel="stylesheet">
+        <link href="./css/jquery.fancybox.css" rel="stylesheet">
+        <link rel="stylesheet" href="./css/rs-style.css" media="screen">
+        <link rel="stylesheet" href="./css/settings.css" media="screen">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+        <style type="text/css">.dropdown-submenu:hover>.dropdown-menu{display:none}</style>
+
+    </head>
+    <body style="">
+            <!--footer start-->
+            <footer class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-sm-3">
+                            <h1>contact info</h1>
+                            <address>
+                                <p>Address: 2001 Longxiang Road,</p>
+                                <p>Longgang District, Shenzhen</p>
+                                <p>Phone : (86 755) 8427 3626</p>
+                                <p>Fax : (86 755) 8427 3691</p>
+                                <p>Email : <a href="mailto:eassupport@gmail.com">eassupport@gmail.com</a></p>
+                            </address>
+                        </div>
+                        <div class="col-lg-6 col-sm-6">
+
+                        </div>
+                        <div class="col-lg-3 col-sm-3">
+                            <h1>stay connected</h1>
+                            <ul class="social-link-footer list-unstyled pull-right">
+                                <li><a href="https://space.bilibili.com/18005273"><img src="./images/icon/Bilibili.ico" height="30" width="30"></a></li>
+                                <li><a href="https://github.com/TPIOS"><img src="./images/icon/GitHub.ico" height="30" width="30"></a></li>
+                                <li><a href="https://www.zhihu.com/people/ziheng-mo/activities"><img src="./images/icon/ZhiHu.ico" height="30" width="30"></a></li>
+                                <li><a href="https://user.qzone.qq.com/133228573/"><img src="./images/icon/Tencent.ico" height="30" width="30"></a></li>
+                                <li><a href="http://tieba.baidu.com/f?kw=%CF%E3%B8%DB%D6%D0%CE%C4%B4%F3%D1%A7%C9%EE%DB%DA"><img src="./images/icon/TieBa.ico" height="30" width="30"></a></li>
+                                <li><a href="supportus.html"><img src="./images/icon/Alipay.ico" height="30" width="30"></a></li>
+                                <li><a href="supportus.html"><img src="./images/icon/Wechat.ico" height="30" width="30"></a></li>
+                                <li><a href="http://www.cuhk.edu.cn/academics/caiwei/"><img src="./images/icon/WeiBo.ico" height="30" width="30"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        <!-- js placed at the end of the document so the pages load faster -->
+        <script src="./js/jquery.js"></script>
+        <script src="./js/jquery-1.8.3.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="./js/hover-dropdown.js"></script>
+        <script defer="" src="./js/jquery.flexslider.js"></script>
+        <script type="text/javascript" src="./js/jquery.bxslider.js"></script>
+        <script type="text/javascript" src="./js/jquery.parallax-1.1.3.js"></script>
+        <script src="./js/jquery.easing.min.js"></script>
+        <script src="./js/link-hover.js"></script>
+        <script src="./js/jquery.fancybox.pack.js"></script>
+        <script type="text/javascript" src="./js/jquery.themepunch.plugins.min.js"></script>
+        <script type="text/javascript" src="./js/jquery.themepunch.revolution.min.jsd"></script>
+        <script src="./js/common-scripts.js"></script>
+        <script src="./js/revulation-slide.js"></script>
+        
+        <script>
+            RevSlide.initRevolutionSlider();
+
+            $(window).load(function() {
+                $('[data-zlname = reverse-effect]').mateHover({
+                    position: 'y-reverse',
+                    overlayStyle: 'rolling',
+                    overlayBg: '#fff',
+                    overlayOpacity: 0.7,
+                    overlayEasing: 'easeOutCirc',
+                    rollingPosition: 'top',
+                    popupEasing: 'easeOutBack',
+                    popup2Easing: 'easeOutBack'
+                });
+            });
+
+            $(window).load(function() {
+                $('.flexslider').flexslider({
+                    animation: "slide",
+                    start: function(slider) {
+                        $('body').removeClass('loading');
+                    }
+                });
+            });
+
+            jQuery(".fancybox").fancybox();
+        </script>
+    </body>
+</html>
