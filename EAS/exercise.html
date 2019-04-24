@@ -7,7 +7,7 @@
         <meta name="author"    content="HSY, MZH">
         <meta name="keywords"  content="EAS, GRE, Application">
         
-        <title>Welcome to EAS | Home</title>
+        <title>EAS | Exercises</title>
         <link rel="icon" href="./images/png/logo.png">
         <!--css-->
         <link rel="stylesheet" href="./css/vendor/bootstrap/css/bootstrap.min.css">
@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
         <link href="./css/theme.css" rel="stylesheet">
         <link href="./css/bootstrap-reset.css" rel="stylesheet">
+        <link rel="stylesheet" href="./css/style.default.css" id="theme-stylesheet">
         <link href="./css/style.css" rel="stylesheet">
         <link href="./css/style-responsive.css" rel="stylesheet">
         <link href="./css/flexslider.css"      rel="stylesheet">
@@ -22,6 +23,8 @@
         <link href="./css/jquery.fancybox.css" rel="stylesheet">
         <link rel="stylesheet" href="./css/rs-style.css" media="screen">
         <link rel="stylesheet" href="./css/settings.css" media="screen">
+        <link rel="stylesheet" href="./css/orionicons.css">
+        <link rel="stylesheet" href="./css/custom.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <style type="text/css">.dropdown-submenu:hover>.dropdown-menu{display:none}</style>
 
@@ -47,7 +50,7 @@
                                     </ul>
                             </li>
                             <li class="dropdown">
-                                    <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Application</a>
+                                    <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Application</b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="">USA</a></li>
                                         <li><a href="">Europe</a></li>
@@ -65,98 +68,116 @@
             </div>
         </header>
         <!--header end-->
-
-        <!-- revolution slider start -->
-        <div id="myCarousel" class="carousel slide">
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>   
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <img src="./images/jpg/broad1.jpg" alt="First slide" style="height:300px">
-                    </div>
-                    <div class="item" style="height:300px">
-                        <img src="./images/jpg/broad2.jpg" alt="Second slide" style="height:300px">
-                    </div>
-                    <div class="item" style="height:300px">
-                        <img src="./images/jpg/broad3.jpg" alt="Third slide" style="height:300px">
-                    </div>
-                </div>
-        </div>
-        <!-- revolution slider end -->
-
-        <!-- welcome container start -->
-        <div class="container">
-            <div class="text-center feature-head">
-                <h1>Welcome to EAS - Exam and Application System</h1>
-                <p>Take an Exam, Check the Score and Apply for your dream school</p>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-sm-3">
-                    <section>
-                        <div class="f-box">
-                            <i class="icon-desktop"></i>
-                            <h2>Register Exam</h2>
-                            </br>
-                            <p class="f-text">Check next available exam, take a survey and register one.</p>
-                        </div>
-                    </section>
-                </div>
-                <div class="col-lg-3 col-sm-3">
-                    <section>
-                        <div class="f-box">
-                            <i class="icon-code"></i>
-                            <h2>Historical Exam and Exercise</h2>
-                            </br>
-                            <p class="f-text">Check past score. Start an diagnostic. Do some Exercise.</p>
-                        </div>
-                    </section>
-                </div>
-                <div class="col-lg-3 col-sm-3">
-                    <section>
-                        <div class="f-box">
-                            <i class="icon-gears"></i>
-                            <h2>Famous School</h2>
-                            </br>
-                            <p class="f-text">Find your dream school and details about specific programs.</p>
-                        </div>
-                    </section>
-                </div>
-                <div class="col-lg-3 col-sm-3">
-                    <section>
-                        <div class="f-box">
-                            <i class="icon-gears"></i>
-                            <h2>Apply Application</h2>
-                            </br>
-                            <p class="f-text">Start a application, edit application and check application process.</p>
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </div>
-        <!-- welcome container end -->
-
-        <!-- support client start -->
-        <div class="container">
-            <div class="clients">
-                <div class="container">
+        <div class="d-flex align-items-stretch">
+            <div id="sidebar" class="sidebar py-3" style="width: 300px">
+                <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family text-center">CONTENT</div>
+                <ul class="sidebar-menu list-unstyled">
+                    <li class="sidebar-list-item"><a href="#verbal" class="sidebar-link text-muted"><i class="o-sales-up-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 3px">Verbal Reasoning</span></a></li>
+                    <li class="sidebar-list-item"><a href="#quantitative" class="sidebar-link text-muted"><i class="o-table-content-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 3px">Quantitative Reasoning</span></a></li>
+                    <li class="sidebar-list-item"><a href="#writing" class="sidebar-link text-muted"><i class="o-survey-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 5px">Analytical Writing</span></a></li>
+                    <li class="sidebar-list-item"><a href="home.html" class="sidebar-link text-muted"><i class="o-exit-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 2px">Log Out</span></a></li>
+            </div> 
+            <!-- main page-->
+            <div class="container-fluid px-xl-5">
+                <section class="py-5">
                     <div class="row">
-                        <div class="col-lg-12 text-center">
-                            <ul class="list-unstyled">
-                                <li><a href=""><img src="./images/png/logo3.png" alt=""></a></li>
-                                <li><a href=""><img src="./images/png/logo4.png" alt=""></a></li>
-                                <li><a href=""><img src="./images/png/logo5.png" alt=""></a></li>
-                                <li><a href=""><img src="./images/png/logo1.png" alt=""></a></li>
-                                <li><a href=""><img src="./images/png/logo6.png" alt=""></a></li>
-                            </ul>
+                        <!-- Verbal -->
+                        <a name="verbal"></a>
+                        <div class="col-lg-6 mb-5">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="h6 text-uppercase mb-0">Examination Schedules</h3>
+                                </div>
+                                <div class="card-body">
+
+                                    <table class="table card-text">
+                                        <thead>
+                                        <tr>                                            
+                                            <th>Exam ID</th>                                            
+                                            <th>Exam Time</th>
+                                            <th>City</th>
+                                            <th>Availability</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                    <div class="form-group">       
+                                        <button type="submit" class="btn btn-primary fa-pull-right" onclick="javascript:window.location.href='tables-exams.html';">Go to apply -></button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div class="row">
+                        <!-- quantitative -->
+                        <a name="quantitative"></a>
+                        <div class="col-lg-6 mb-5">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="h6 text-uppercase mb-0 text-center" style="font:20px">Historical Grades</h3>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table card-text">
+                                        <thead>
+                                        <tr>                                            
+                                            <th>Exam ID</th>
+                                            <th>Exam Time</th>
+                                            <th>City</th>
+                                            <th>Grades </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>2011-11-04</td>
+                                            <td>Shenzhen</td>
+                                            <td>320</td>
+                                        </tr>
+                                    </table>
+                                    <div class="form-group">       
+                                        <button type="submit" class="btn btn-primary fa-pull-right" onclick="javascript:window.location.href='tables-grades.html';">Show more -></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Your Application-->
+                        <a name="writing"></a>
+                        <div class="col-lg-6 mb-5">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="h6 text-uppercase mb-0">Your Applications</h3>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table card-text">
+                                        <thead>
+                                        <tr>                                            
+                                            <th>Application ID</th>
+                                            <th>University</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+
+                                </div>
+                                <div class="card-body">
+                                    <table class="table card-text ">
+                                        <thead>
+                                        <tr>                                            
+                                            <th>Exam ID</th>
+                                            <th>Exam Time</th>
+                                            <th>City</th>                                           
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
-        <!-- support client end -->
 
         <!--footer start-->
         <footer class="footer">
@@ -212,7 +233,15 @@
         <script src="./js/common-scripts.js"></script>
         <script src="./js/revulation-slide.js"></script>
         <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-	    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="./js/jquery/jquery.min.js"></script>
+        <script src="./js/popper.js/umd/popper.min.js"> </script>
+        <script src="./js/bootstrap.js/js/bootstrap.min.js"></script>
+        <script src="./js/jquery.cookie/jquery.cookie.js"> </script>
+        <script src="./js/chart.js/Chart.min.js"></script>
+        <script src="./js/js.cookie.min.js"></script>
+        <script src="./js/charts-home.js"></script>
+        <script src="./js/front.js"></script>
         
         <script>
             RevSlide.initRevolutionSlider();
@@ -250,3 +279,4 @@
         </script>
     </body>
 </html>
+    
