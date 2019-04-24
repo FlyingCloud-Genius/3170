@@ -1215,6 +1215,7 @@ button {
 * =====================
 *
 */
+/*
 .navbar .dropdown-toggle::after {
   display: none;
 }
@@ -1250,7 +1251,7 @@ button {
   position: absolute;
   top: 0.4rem;
   right: 0;
-}
+} */
 
 /*
 *
@@ -1381,22 +1382,23 @@ button {
   display: inline-block;
 }
 
-.overflow-hidden {
+/* .overflow-hidden {
   overflow: hidden !important;
 }
 
 .form-control-label {
   font-size: .9rem;
   color: #6c757d;
-}
+} */
 
-/*
+/* /*
 
 =====================
 STYLE SWITCHER FOR DEMO
 =====================
 
 */
+/*
 #style-switch-button {
   position: fixed;
   top: 150px;
@@ -1442,6 +1444,7 @@ STYLE SWITCHER FOR DEMO
 /*
  * 1. NAVBAR
  */
+ /*
 .navbar {
   padding: 0.5rem 1rem;
 }
@@ -1545,6 +1548,7 @@ STYLE SWITCHER FOR DEMO
 /*
  * 2. BUTTONS
  */
+ /*
 .btn {
   font-weight: 400;
   border: 1px solid transparent;
@@ -2976,6 +2980,7 @@ a.text-primary:hover, a.text-primary:focus {
 /*
  * 4. PAGINATION
  */
+ /*
 .page-item:first-child .page-link {
   border-top-left-radius: 2rem;
   border-bottom-left-radius: 2rem;
@@ -3612,6 +3617,7 @@ a.text-dark:hover, a.text-dark:focus {
 /*
   * 6. FORMS
   */
+  /*
 .form-control {
   padding: 0.4rem 0.8rem;
   font-size: 0.9rem;
@@ -3987,6 +3993,7 @@ select.form-control-lg:not([size]):not([multiple]) {
 /*
 * 7.CODE
 */
+/*
 code {
   font-size: 87.5%;
   color: #e83e8c;
@@ -3995,6 +4002,7 @@ code {
 /*
 * 8. NAV
 */
+/*
 .nav-link {
   padding: 0.5rem 1rem;
 }
@@ -4044,6 +4052,7 @@ code {
 /*
 * 9. CARD
 */
+/*
 .card {
   background-color: #fff;
   border: none;
@@ -4157,6 +4166,7 @@ code {
 /*
 * 10. DROPDOWNS
 */
+/*
 .dropdown-menu {
   min-width: 10rem;
   padding: 0.5rem 0;
@@ -4188,4 +4198,4 @@ code {
 
 .dropdown-item.disabled, .dropdown-item:disabled {
   color: #6c757d;
-}
+} */
