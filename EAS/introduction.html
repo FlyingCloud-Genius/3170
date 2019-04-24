@@ -7,7 +7,7 @@
         <meta name="author"    content="HSY, MZH">
         <meta name="keywords"  content="EAS, GRE, Application">
         
-        <title>Welcome to EAS | Home</title>
+        <title>Welcome to EAS | Introduction</title>
         <link rel="icon" href="./images/png/logo.png">
         <!--css-->
         <link rel="stylesheet" href="./css/vendor/bootstrap/css/bootstrap.min.css">
@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
         <link href="./css/theme.css" rel="stylesheet">
         <link href="./css/bootstrap-reset.css" rel="stylesheet">
+        <link rel="stylesheet" href="./css/style.default.css" id="theme-stylesheet">
         <link href="./css/style.css" rel="stylesheet">
         <link href="./css/style-responsive.css" rel="stylesheet">
         <link href="./css/flexslider.css"      rel="stylesheet">
@@ -22,6 +23,8 @@
         <link href="./css/jquery.fancybox.css" rel="stylesheet">
         <link rel="stylesheet" href="./css/rs-style.css" media="screen">
         <link rel="stylesheet" href="./css/settings.css" media="screen">
+        <link rel="stylesheet" href="./css/orionicons.css">
+        <link rel="stylesheet" href="./css/custom.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <style type="text/css">.dropdown-submenu:hover>.dropdown-menu{display:none}</style>
 
@@ -39,7 +42,7 @@
                             <li><a href="introduction.html">About</a></li>
                             <li><a href="home.html">Enrollment</a></li>
                             <li class="dropdown">
-                                    <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Historical Exams</a>
+                                    <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Historical Exams</b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="">Verbal Reasoning</a></li>
                                         <li><a href="">Quantitative Reasoning</a></li>
@@ -47,7 +50,7 @@
                                     </ul>
                             </li>
                             <li class="dropdown">
-                                    <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Application</a>
+                                    <a href="" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Application</b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="">USA</a></li>
                                         <li><a href="">Europe</a></li>
@@ -65,98 +68,28 @@
             </div>
         </header>
         <!--header end-->
-
-        <!-- revolution slider start -->
-        <div id="myCarousel" class="carousel slide">
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                </ol>   
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <img src="./images/jpg/broad1.jpg" alt="First slide" style="height:300px">
+        <div class="d-flex align-items-stretch">
+            <div id="sidebar" class="sidebar py-3">
+                <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family">MAIN</div>
+                <ul class="sidebar-menu list-unstyled">
+                    <li class="sidebar-list-item"><a href="" class="sidebar-link text-muted active"><i class="o-home-1 mr-3 text-gray"></i><span>Home</span></a></li>
+                    <li class="sidebar-list-item"><a href="" class="sidebar-link text-muted"><i class="o-sales-up-1 mr-3 text-gray"></i><span>Charts</span></a></li>
+                    <li class="sidebar-list-item"><a href="" class="sidebar-link text-muted"><i class="o-table-content-1 mr-3 text-gray"></i><span>Tables</span></a></li>
+                    <li class="sidebar-list-item"><a href="" class="sidebar-link text-muted"><i class="o-survey-1 mr-3 text-gray"></i><span>Forms</span></a></li>
+                <li class="sidebar-list-item"><a href="#" data-toggle="collapse" data-target="#pages" aria-expanded="false" aria-controls="pages" class="sidebar-link text-muted"><i class="o-wireframe-1 mr-3 text-gray"></i><span>Pages</span></a>
+                    <div id="pages" class="collapse">
+                    <ul class="sidebar-menu list-unstyled border-left border-primary border-thick">
+                        <li class="sidebar-list-item"><a href="#" class="sidebar-link text-muted pl-lg-5">Page one</a></li>
+                        <li class="sidebar-list-item"><a href="#" class="sidebar-link text-muted pl-lg-5">Page two</a></li>
+                        <li class="sidebar-list-item"><a href="#" class="sidebar-link text-muted pl-lg-5">Page three</a></li>
+                        <li class="sidebar-list-item"><a href="#" class="sidebar-link text-muted pl-lg-5">Page four</a></li>
+                    </ul>
                     </div>
-                    <div class="item" style="height:300px">
-                        <img src="./images/jpg/broad2.jpg" alt="Second slide" style="height:300px">
-                    </div>
-                    <div class="item" style="height:300px">
-                        <img src="./images/jpg/broad3.jpg" alt="Third slide" style="height:300px">
-                    </div>
-                </div>
+                </li>
+                    <li class="sidebar-list-item"><a href="login.html" class="sidebar-link text-muted"><i class="o-exit-1 mr-3 text-gray"></i><span>Login</span></a></li>
+            </div> 
         </div>
-        <!-- revolution slider end -->
 
-        <!-- welcome container start -->
-        <div class="container">
-            <div class="text-center feature-head">
-                <h1>Welcome to EAS - Exam and Application System</h1>
-                <p>Take an Exam, Check the Score and Apply for your dream school</p>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-sm-3">
-                    <section>
-                        <div class="f-box">
-                            <i class="icon-desktop"></i>
-                            <h2>Register Exam</h2>
-                            </br>
-                            <p class="f-text">Check next available exam, take a survey and register one.</p>
-                        </div>
-                    </section>
-                </div>
-                <div class="col-lg-3 col-sm-3">
-                    <section>
-                        <div class="f-box">
-                            <i class="icon-code"></i>
-                            <h2>Historical Exam and Exercise</h2>
-                            </br>
-                            <p class="f-text">Check past score. Start an diagnostic. Do some Exercise.</p>
-                        </div>
-                    </section>
-                </div>
-                <div class="col-lg-3 col-sm-3">
-                    <section>
-                        <div class="f-box">
-                            <i class="icon-gears"></i>
-                            <h2>Famous School</h2>
-                            </br>
-                            <p class="f-text">Find your dream school and details about specific programs.</p>
-                        </div>
-                    </section>
-                </div>
-                <div class="col-lg-3 col-sm-3">
-                    <section>
-                        <div class="f-box">
-                            <i class="icon-gears"></i>
-                            <h2>Apply Application</h2>
-                            </br>
-                            <p class="f-text">Start a application, edit application and check application process.</p>
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </div>
-        <!-- welcome container end -->
-
-        <!-- support client start -->
-        <div class="container">
-            <div class="clients">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 text-center">
-                            <ul class="list-unstyled">
-                                <li><a href=""><img src="./images/png/logo3.png" alt=""></a></li>
-                                <li><a href=""><img src="./images/png/logo4.png" alt=""></a></li>
-                                <li><a href=""><img src="./images/png/logo5.png" alt=""></a></li>
-                                <li><a href=""><img src="./images/png/logo1.png" alt=""></a></li>
-                                <li><a href=""><img src="./images/png/logo6.png" alt=""></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- support client end -->
 
         <!--footer start-->
         <footer class="footer">
@@ -196,6 +129,7 @@
         </footer>
         <!-- footer end -->
 
+
         <!-- js placed at the end of the document so the pages load faster -->
         <script src="./js/jquery.js"></script>
         <script src="./js/jquery-1.8.3.min.js"></script>
@@ -212,7 +146,9 @@
         <script src="./js/common-scripts.js"></script>
         <script src="./js/revulation-slide.js"></script>
         <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-	    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+        
         
         <script>
             RevSlide.initRevolutionSlider();
@@ -250,3 +186,4 @@
         </script>
     </body>
 </html>
+    
