@@ -4,7 +4,6 @@ use AES;
 create table reg_info
 (   reg_id char(10) not null,
     reg_password varchar(16) not null,
-    reg_name varchar(30) not null,
     primary key (reg_id)
 );
 

@@ -57,7 +57,7 @@ def data_generator():
         effect_row = cursor.execute('insert into question_base values("{}", "{}", {}, "{}", "{}", "{}");'.format(str(current_id), analysis[i], random_diff, question[i], answers[i], question_type[i]))
         current_id += 1
         
-
+    conn.commit()
     cursor.close()
     conn.close()
 

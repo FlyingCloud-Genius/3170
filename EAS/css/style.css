@@ -79,6 +79,7 @@ p {line-height: 22px}
     background: none;
 }
 .copyrights{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
+
 .header-frontend .nav li a:hover,
 .header-frontend .nav li a:focus,
 .header-frontend .nav li.active a,
@@ -1791,4 +1792,18 @@ ul#filters > .active > span {
 
 .mbot50 {
     margin-bottom: 50px;
+}
+
+.header-frontend .nav .mylogin a:hover{
+    color: #fff ;
+    background-color: #af6de6;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+.header-frontend .nav .inactive a{
+    pointer-events: none;
 }
