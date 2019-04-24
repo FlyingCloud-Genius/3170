@@ -79,7 +79,6 @@ p {line-height: 22px}
     background: none;
 }
 .copyrights{text-indent:-9999px;height:0;line-height:0;font-size:0;overflow:hidden;}
-
 .header-frontend .nav li a:hover,
 .header-frontend .nav li a:focus,
 .header-frontend .nav li.active a,
@@ -503,7 +502,7 @@ ul.about-flex-slides {
     -moz-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
     width: 15px;
-	display:none\0;
+	display:none\0/;
 	_display:none;
 }
 
@@ -1378,7 +1377,7 @@ ul.tag li a {
 }
 
 .tweet-box  a:hover{
-    color: rgb(156, 166, 224) ;
+    color: #F77B6F ;
 }
 
 .tweet-box i {
@@ -1394,7 +1393,7 @@ ul.tag li a {
 }
 
 .social-link-footer li a {
-    color: rgb(0, 0, 0);
+    color: #fff;
     background:#505b71;
     padding: 10px;
     width: 50px;
@@ -1410,18 +1409,12 @@ ul.tag li a {
 }
 
 .social-link-footer li a:hover {
-    background: rgb(156, 166, 224);
+    background: #F77B6F;
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
     -ms-transition: all .3s ease;
     -o-transition: all .3s ease;
     transition: all .3s ease;
-}
-
-.privacy a {
-    color:#726f73;
-    font-size:12px; text-align:center;
-    padding:20px;
 }
 
 
@@ -1792,18 +1785,4 @@ ul#filters > .active > span {
 
 .mbot50 {
     margin-bottom: 50px;
-}
-
-.header-frontend .nav .mylogin a:hover{
-    color: #fff ;
-    background-color: #af6de6;
-    -webkit-transition: all .3s ease;
-    -moz-transition: all .3s ease;
-    -ms-transition: all .3s ease;
-    -o-transition: all .3s ease;
-    transition: all .3s ease;
-}
-
-.header-frontend .nav .inactive a{
-    pointer-events: none;
 }
