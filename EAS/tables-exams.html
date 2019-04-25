@@ -255,25 +255,49 @@
             var cityIndex = selectCity.selectedIndex;
             var city = selectCity.options[cityIndex].value;
             var tbody = ""
+            var showAvailable = document.getElementById("availablity").checked;
 
-            for (i in exams){
-                console.log(exams[i]);
-                if (exams[i].City == city){
-                    tbody += "<tr class='align-items-center'>" +
-                                "<th>" +
-                                    "<div class='custom-control custom-checkbox align-items-center '>" +
-                                        "<input id='customCheck1.1' type='checkbox' class='custom-control-input' />" +
-                                        "<label for='customCheck1.1' class='custom-control-label'>|</label>" +
-                                    "</div>" +
-                                "</th>" +
-                                "<th>" + exams[i].City + "</th>" +
-                                "<th scope='row'>" + exams[i].ExamID + "</th>" +
-                                "<td>" + exams[i].ExamTime + "</td>" +
-                                "<td>{" + exams[i].ExamLocation + "</td>" +
-                                "<td>" + exams[i].Availability+ "</td>" +
-                            "</tr>";
+            if (showAvailable == true){
+                for (i in exams){
+                    if (exams[i].City == city && exams[i].Availability == "Yes"){
+                        tbody += "<tr class='align-items-center'>" +
+                                    "<th>" +
+                                        "<div class='custom-control custom-checkbox align-items-center '>" +
+                                            "<input id='customCheck1.1' type='checkbox' class='custom-control-input' />" +
+                                            "<label for='customCheck1.1' class='custom-control-label'>|</label>" +
+                                        "</div>" +
+                                    "</th>" +
+                                    "<th>" + exams[i].City + "</th>" +
+                                    "<th scope='row'>" + exams[i].ExamID + "</th>" +
+                                    "<td>" + exams[i].ExamTime + "</td>" +
+                                    "<td>" + exams[i].ExamLocation + "</td>" +
+                                    "<td>" + exams[i].Availability+ "</td>" +
+                                "</tr>";
+                    }
                 }
             }
+            else
+            {
+                for (i in exams){
+                    if (exams[i].City == city){
+                        tbody += "<tr class='align-items-center'>" +
+                                    "<th>" +
+                                        "<div class='custom-control custom-checkbox align-items-center '>" +
+                                            "<input id='customCheck1.1' type='checkbox' class='custom-control-input' />" +
+                                            "<label for='customCheck1.1' class='custom-control-label'>|</label>" +
+                                        "</div>" +
+                                    "</th>" +
+                                    "<th>" + exams[i].City + "</th>" +
+                                    "<th scope='row'>" + exams[i].ExamID + "</th>" +
+                                    "<td>" + exams[i].ExamTime + "</td>" +
+                                    "<td>" + exams[i].ExamLocation + "</td>" +
+                                    "<td>" + exams[i].Availability+ "</td>" +
+                                "</tr>";
+                    }
+                }
+            }
+            
+
 
             document.getElementById("searchResult").innerHTML = tbody;
         }
