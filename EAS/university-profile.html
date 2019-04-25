@@ -101,6 +101,36 @@
                                                 <th>Pass or Not</th>
                                             </tr>
                                         </thead>
+                                        <tbody id="applicants">
+                                            <script>
+                                                var applicants = new Array();
+                                                applicants[0] = {ID:"00001", Name:"hahaha", highestGrades:"A", resume:"/resume/a.doc"};
+                                                applicants[1] = {ID:"00002", Name:"lalala", highestGrades:"A-", resume:"/resume/b.doc"};
+                                                applicants[2] = {ID:"00003", Name:"hehehe", highestGrades:"A", resume:"/resume/c.doc"};
+                                                applicants[3] = {ID:"00004", Name:"brabra", highestGrades:"B+", resume:"/resume/d.doc"};
+                                                applicants[4] = {ID:"00005", Name:"kikiki", highestGrades:"A-", resume:"/resume/e.doc"};
+                                                applicants[5] = {ID:"00006", Name:"wawawa", highestGrades:"B", resume:"/resume/f.doc"};
+                                                applicants[6] = {ID:"00007", Name:"wuwuwu", highestGrades:"B+", resume:"/resume/g.doc"};
+                                    
+                                                for (i in applicants){
+                                                    document.write("<tr class='align-items-center'>" +
+                                                                        "<th>" + applicants[i].ID + "</th>" +
+                                                                        "<th scope='row'>" + applicants[i].Name + "</th>" +
+                                                                        "<th align='center'>" + applicants[i].highestGrades + "</th>" +
+                                                                        "<th>" + applicants[i].resume + "</th>" +
+                                                                        "<th>" +
+                                                                            "<div id='Location' class='select ml-2'>" + 
+                                                                                "<select id='selectCity' name='account' class='form-control'>" +
+                                                                                    "<option>Choose</option>" +
+                                                                                    "<option>Pass</option>" +
+                                                                                    "<option>Reject</option>" +
+                                                                                    "<option>TBD</option>" +
+                                                                                "</select>" +
+                                                                            "</div>" +
+                                                                   "</tr>");
+                                                }  
+                                            </script>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
