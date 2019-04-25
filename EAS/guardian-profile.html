@@ -7,7 +7,7 @@
         <meta name="author"    content="HSY, MZH">
         <meta name="keywords"  content="EAS, GRE, Application">
         
-        <title>EAS | Personal Profile</title>
+        <title>EAS | Guardian Profile</title>
         <link rel="icon" href="./images/png/logo.png">
         <!--css-->
         <link rel="stylesheet" href="./css/vendor/bootstrap/css/bootstrap.min.css">
@@ -124,6 +124,35 @@
                                                 <th>Pass</th>
                                             </tr>
                                         </thead>
+                                        <tbody>
+                                            <script>
+                                                var applicants = new Array();
+                                                applicants[0] = {ID:"00001", Name:"hahaha", score:"326"};
+                                                applicants[1] = {ID:"00002", Name:"wawawa", score:"317"};
+                                                applicants[2] = {ID:"00003", Name:"hehehe", score:"330"};
+                                                applicants[3] = {ID:"00004", Name:"kikiki", score:"324"};
+                                                applicants[4] = {ID:"00005", Name:"brabrabra", score:"318"};
+                                                applicants[5] = {ID:"00006", Name:"wuwuwu", score:"320"};
+                                    
+                                                for (i in applicants){
+                                                    document.write("<tr class='align-items-center'>" +
+                                                                        "<th>" + applicants[i].ID + "</th>" +
+                                                                        "<th scope='row'>" + applicants[i].Name + "</th>" +
+                                                                        "<th align='center'>" + applicants[i].score + "</th>" +
+                                                                        "<th>" +
+                                                                            "<div>" +                                                                         "<div id='Location' class='select ml-2'>" + 
+                                                                                "<select>" +
+                                                                                    "<option>Choose</option>" +
+                                                                                    "<option>Pass</option>" +
+                                                                                    "<option>Reject</option>" +
+                                                                                    "<option>TBD</option>" +
+                                                                                "</select>" +
+                                                                            "</div>" +
+                                                                        "</th>" +
+                                                                   "</tr>");
+                                                }  
+                                            </script>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
