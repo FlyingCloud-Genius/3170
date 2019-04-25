@@ -2,3 +2,7 @@
 .mysupport a:hover{
     text-decoration: none;
 }
+
+.mytr tr th{
+    text-align: center
+}
