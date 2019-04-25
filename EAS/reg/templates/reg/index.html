@@ -1,3 +1,6 @@
+{#reg/templates/reg/index.html#}
+
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,27 +10,29 @@
         <meta name="author"    content="HSY, MZH">
         <meta name="keywords"  content="EAS, GRE, Application">
         
-        <title>EAS | Exercises</title>
-        <link rel="icon" href="./images/png/logo.png">
+        <title>EAS | Personal Profile</title>
+        <link rel="icon" href="{% static 'images/png/logo.png'%}">
         <!--css-->
-        <link rel="stylesheet" href="./css/vendor/bootstrap/css/bootstrap.min.css">
-        <link href="./css/bootstrap.min.css" rel="stylesheet">
+        {% block css %}
+        <link href="{% static 'css/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet" >
+        <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
         <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-        <link href="./css/theme.css" rel="stylesheet">
-        <link href="./css/bootstrap-reset.css" rel="stylesheet">
-        <link rel="stylesheet" href="./css/style.default.css" id="theme-stylesheet">
-        <link href="./css/style.css" rel="stylesheet">
-        <link href="./css/style-responsive.css" rel="stylesheet">
-        <link href="./css/flexslider.css"      rel="stylesheet">
-        <link href="./css/jquery.bxslider.css" rel="stylesheet">
-        <link href="./css/jquery.fancybox.css" rel="stylesheet">
-        <link rel="stylesheet" href="./css/rs-style.css" media="screen">
-        <link rel="stylesheet" href="./css/settings.css" media="screen">
-        <link rel="stylesheet" href="./css/orionicons.css">
-        <link rel="stylesheet" href="./css/custom.css">
+        <link href="{% static 'css/theme.css'%}" rel="stylesheet">
+        <link href="{% static 'css/bootstrap-reset.css'%}" rel="stylesheet">
+        <link href="{% static 'css/style.default.css'%}" rel="stylesheet"  id="theme-stylesheet">
+        <link href="{% static 'css/style.css'%}" rel="stylesheet">
+        <link href="{% static 'css/style-responsive.css'%}" rel="stylesheet">
+        <link href="{% static 'css/flexslider.css'%}"      rel="stylesheet">
+        <link href="{% static 'css/jquery.bxslider.css'%}" rel="stylesheet">
+        <link href="{% static 'css/jquery.fancybox.css'%}" rel="stylesheet">
+        <link href="{% static 'css/rs-style.css'%}" rel="stylesheet"  media="screen">
+        <link href="{% static 'css/settings.css'%}" rel="stylesheet" media="screen">
+        <link href="{% static 'css/orionicons.css'%}" rel="stylesheet" >
+        <link href="{% static 'css/custom.css'%}" rel="stylesheet" >
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link href="{% static 'css/style.profile.css'%}" rel="stylesheet" >
         <style type="text/css">.dropdown-submenu:hover>.dropdown-menu{display:none}</style>
-
+        {% endblock %}
     </head>
     <body>
         <!--header start-->
@@ -72,21 +77,22 @@
             <div id="sidebar" class="sidebar py-3" style="width: 300px">
                 <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family text-center">CONTENT</div>
                 <ul class="sidebar-menu list-unstyled">
-                    <li class="sidebar-list-item"><a href="#verbal" class="sidebar-link text-muted"><i class="o-sales-up-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 3px">Verbal Reasoning</span></a></li>
-                    <li class="sidebar-list-item"><a href="#quantitative" class="sidebar-link text-muted"><i class="o-table-content-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 3px">Quantitative Reasoning</span></a></li>
-                    <li class="sidebar-list-item"><a href="#writing" class="sidebar-link text-muted"><i class="o-survey-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 5px">Analytical Writing</span></a></li>
+                    <li class="sidebar-list-item"><a href="#schedule" class="sidebar-link text-muted"><i class="o-sales-up-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 3px">Exam Schedule</span></a></li>
+                    <li class="sidebar-list-item"><a href="#grades" class="sidebar-link text-muted"><i class="o-table-content-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 3px">Historical Score</span></a></li>
+                    <li class="sidebar-list-item"><a href="#application" class="sidebar-link text-muted"><i class="o-survey-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 7px">My Application</span></a></li>
+                    <li class="sidebar-list-item"><a href="#information" class="sidebar-link text-muted"><i class="o-id-card-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 2px">Personal Information</span></a></li>
                     <li class="sidebar-list-item"><a href="home.html" class="sidebar-link text-muted"><i class="o-exit-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 2px">Log Out</span></a></li>
             </div> 
             <!-- main page-->
             <div class="container-fluid px-xl-5">
                 <section class="py-5">
                     <div class="row">
-                        <!-- Verbal -->
-                        <a name="verbal"></a>
-                        <div class="col-lg-6 mb-5">
+                        <!-- Examination Schedule-->
+                        <a name="schedule"></a>
+                        <div class="col-lg-8 mb-5">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="h6 text-uppercase text-center" style="font-size:20px">Verbal Reasoning</h3>
+                                    <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Examination Schedules</h3>
                                 </div>
                                 <div class="card-body">
                                     <table class="table card-text">
@@ -99,17 +105,20 @@
                                         </tr>
                                         </thead>
                                     </table>
+                                    <div class="form-group">       
+                                        <button type="submit" class="btn btn-primary fa-pull-right" onclick="javascript:window.location.href='tables-exams.html';">Goto apply -></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <!-- quantitative -->
-                        <a name="quantitative"></a>
-                        <div class="col-lg-6 mb-5">
+                        <!-- Historical Grades-->
+                        <a name="grades"></a>
+                        <div class="col-lg-8 mb-5">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Quantitative Reasoning</h3>
+                                    <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Historical Grades</h3>
                                 </div>
                                 <div class="card-body">
                                     <table class="table card-text">
@@ -129,17 +138,20 @@
                                             <td>320</td>
                                         </tr>
                                     </table>
+                                    <div class="form-group">       
+                                        <button type="submit" class="btn btn-primary fa-pull-right" onclick="javascript:window.location.href='tables-grades.html';">Show more -></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <!-- Your Application-->
-                        <a name="writing"></a>
-                        <div class="col-lg-6 mb-5">
+                        <a name="application"></a>
+                        <div class="col-lg-8 mb-5">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Analytical Writing</h3>
+                                    <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Your School Applications</h3>
                                 </div>
                                 <div class="card-body">
                                     <table class="table card-text">
@@ -151,6 +163,57 @@
                                         </tr>
                                         </thead>
                                     </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Your Application-->
+                        <div class="col-lg-8 mb-5">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Your Exam Applications</h3>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table card-text ">
+                                        <thead>
+                                        <tr>                                            
+                                            <th>Exam ID</th>
+                                            <th>Exam Time</th>
+                                            <th>City</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <!-- Your Information -->
+                        <a name="information"></a>
+                        <div class="col-lg-6 mb-5" style="margin-left:105px">
+                            <div class="profile-main">
+                                <div class="profile-pic wthree">
+                                    <img src="./images/jpg/p1.jpeg" alt="" >
+                                    <h3>Laila</h3>
+                                    <div class="">     
+                                        <ul class="profile-address">
+                                            </br>
+                                            <li><b>Sex : </b><span class="w3">Female</span></li>
+                                            </br>
+                                            <li><b>Phone : </b><span class="w3">+8612345678901</span></li>
+                                            </br>
+                                            <li><b>Email Address: </b><span class="w3">laila@gmail.com</span></li>
+                                            </br>
+                                            <li><b>Undergraduate University : </b><span class="w3">CUHK</span></li>
+                                            </br>
+                                            <li><b>Major : </b><span class="w3">Computer Science</span></li>
+                                            </br>
+                                        </ul>
+                                    </div>
+                                    <div class="clear"></div>
                                 </div>
                             </div>
                         </div>
@@ -158,6 +221,8 @@
                 </section>
             </div>
         </div>
+
+
 
         <!--footer start-->
         <footer class="footer">
@@ -198,30 +263,30 @@
         <!-- footer end -->
 
         <!-- js placed at the end of the document so the pages load faster -->
-        <script src="./js/jquery.js"></script>
-        <script src="./js/jquery-1.8.3.min.js"></script>
-        <script src="./js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="./js/hover-dropdown.js"></script>
-        <script defer="" src="./js/jquery.flexslider.js"></script>
-        <script type="text/javascript" src="./js/jquery.bxslider.js"></script>
-        <script type="text/javascript" src="./js/jquery.parallax-1.1.3.js"></script>
-        <script src="./js/jquery.easing.min.js"></script>
-        <script src="./js/link-hover.js"></script>
-        <script src="./js/jquery.fancybox.pack.js"></script>
-        <script type="text/javascript" src="./js/jquery.themepunch.plugins.min.js"></script>
-        <script type="text/javascript" src="./js/jquery.themepunch.revolution.min.jsd"></script>
-        <script src="./js/common-scripts.js"></script>
-        <script src="./js/revulation-slide.js"></script>
+        <script src="{% static 'js/jquery.js'%}"></script>
+        <script src="{% static 'js/jquery-1.8.3.min.js'%}"></script>
+        <script src="{% static 'js/bootstrap.min.js'%}"></script>
+        <script src="{% static 'js/hover-dropdown.js'%}" type="text/javascript" ></script>
+        <script src="{% static 'js/jquery.flexslider.js'%}" defer="" ></script>
+        <script src="{% static 'js/jquery.bxslider.js'%}" type="text/javascript" ></script>
+        <script src="{% static 'js/jquery.parallax-1.1.3.js'%}" type="text/javascript" ></script>
+        <script src="{% static 'js/jquery.easing.min.js'%}"></script>
+        <script src="{% static 'js/link-hover.js'%}"></script>
+        <script src="{% static '/js/jquery.fancybox.pack.js'%}"></script>
+        <script src="{% static 'js/jquery.themepunch.plugins.min.js'%}" type="text/javascript" ></script>
+        <script src="{% static 'js/jquery.themepunch.revolution.min.jsd'%}" type="text/javascript" ></script>
+        <script src="{% static 'js/common-scripts.js'%}"></script>
+        <script src="{% static 'js/revulation-slide.js'%}"></script>
         <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
         <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="./js/jquery/jquery.min.js"></script>
-        <script src="./js/popper.js/umd/popper.min.js"> </script>
-        <script src="./js/bootstrap.js/js/bootstrap.min.js"></script>
-        <script src="./js/jquery.cookie/jquery.cookie.js"> </script>
-        <script src="./js/chart.js/Chart.min.js"></script>
-        <script src="./js/js.cookie.min.js"></script>
-        <script src="./js/charts-home.js"></script>
-        <script src="./js/front.js"></script>
+        <script src="{% static 'js/jquery/jquery.min.js'%}"></script>
+        <script src="{% static 'js/popper.js/umd/popper.min.js'%}"> </script>
+        <script src="{% static 'js/bootstrap.js/js/bootstrap.min.js'%}"></script>
+        <script src="{% static 'js/jquery.cookie/jquery.cookie.js'%}"> </script>
+        <script src="{% static 'js/chart.js/Chart.min.js'%}"></script>
+        <script src="{% static 'js/js.cookie.min.js'%}"></script>
+        <script src="{% static 'js/charts-home.js'%}"></script>
+        <script src="{% static 'js/front.js'%}"></script>
         
         <script>
             RevSlide.initRevolutionSlider();
@@ -256,7 +321,7 @@
                 $('#myCarousel').carousel({interval:2500});
                 $("#myCarousel").carousel('cycle');
             });
-        </script>
+        </script>	
     </body>
 </html>
     
