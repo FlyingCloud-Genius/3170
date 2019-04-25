@@ -25,7 +25,7 @@ def login(request):
             try:
                 user = Info.objects.get(reg_id = userEmail)
                 if user.reg_password == password:
-                    return render(request, 'reg/index.html')
+                    return redirect('index') #render(request, 'reg/index.html')
                 else:
                     message = "Incorrect password!"
             except:
@@ -49,12 +49,18 @@ def register(request):
         phone = request.POST.get('phoneNum')
         message = "Please complete the forms of Email and password!"
 
-        if userEmail != "" and password != "" and repPassword != "":        #check if user doesn't complete his/her form 
-            if password == repPassword:                                     #check if the two passwords are differents 
-                #Info.objects.create(reg_id=userEmail, reg_password=password)
-                print(userEmail + " " + password)
-                return render(request, 'reg/login.html')
+        if userEmail != "" and password != "" and repPassword != "":        #check if user doesn't complete his/her form
+            if "@" in userEmail:                                            #check if this is a formal E-mail formate
+                if Info.objects.filter(reg_id=userEmail).exists() == False: #check if the account had existed
+                    if password == repPassword:                             #check if the two passwords are differents 
+                        Info.objects.create(reg_id=userEmail, reg_password=password)
+                        print(userEmail + " " + password)
+                        return redirect('login')
+                    else:
+                        message = "Your second password is not match, please try again."
+                else:
+                    message = "The account is already exist!"
             else:
-                message = "Your second password is not match, please try again."
+                message = "Please enter correct E-mail format."
         return render(request, 'reg/register.html', {"message": message})
     return render(request, 'reg/register.html')
