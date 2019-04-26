@@ -124,7 +124,7 @@
                         <div class="col-lg-12 mb-4">
                             <div class="card">
                                 <div class="card-header">                                   
-                                    <h6 class="text-uppercase mb-0 ">Exams</h6>
+                                    <h6 class="text-uppercase mb-0 ">Answer Sheets</h6>
                                 </div>
                                 <div class="card-body">
                                     <table class="table card-text">
@@ -134,6 +134,7 @@
                                             <th>Paper sheet ID</th>
                                             <th>Answer sheet ID</th>
                                             <th>Grade</th>
+                                            <th>Commit</th>
                                         </tr>
                                         </thead>
                                         <tbody id = "searchResult">
@@ -242,40 +243,66 @@
 
     <script>
         function onClickSearch() {
-            var exams = new Array();
-            exams[0] = {City:"Beijing", ExamID:"1", ExamTime:"2011-11-04", ExamLocation:"Tian'an Gate", Availability:"Yes"};
-            exams[1] = {City:"Beijing", ExamID:"2", ExamTime:"2011-12-04", ExamLocation:"Huang Fu Jing", Availability:"No"};
-            exams[2] = {City:"Beijing", ExamID:"3", ExamTime:"2011-10-04", ExamLocation:"Zhong Nan Hai", Availability:"No"};
-            exams[3] = {City:"Shanghai", ExamID:"4", ExamTime:"2011-01-04", ExamLocation:"Wai Tan", Availability:"Yes"};
-            exams[4] = {City:"Shanghai", ExamID:"5", ExamTime:"2011-06-04", ExamLocation:"Dong Fang Ming Zhu", Availability:"Yes"};
-            exams[5] = {City:"Shanghai", ExamID:"6", ExamTime:"2011--04-04", ExamLocation:"Pu Dong Xing Cheng", Availability:"No"};
-            exams[6] = {City:"Guangzhou", ExamID:"7", ExamTime:"2011-02-04", ExamLocation:"Bai Yun Park", Availability:"Yes"};
+            var answers = new Array();
+            answers[0] = {City:"Beijing", ExamID:"000001", PaperSheetID:"000001", AnswerSheetID:"000001", checked:"false"};
+            answers[1] = {City:"Beijing", ExamID:"000002", PaperSheetID:"000002", AnswerSheetID:"000002", checked:"false"};
+            answers[2] = {City:"Beijing", ExamID:"000003", PaperSheetID:"000003", AnswerSheetID:"000003", checked:"true"};
+            answers[3] = {City:"Shanghai", ExamID:"000004", PaperSheetID:"000004", AnswerSheetID:"000004", checked:"false"};
+            answers[4] = {City:"Shanghai", ExamID:"000005", PaperSheetID:"000005", AnswerSheetID:"000005", checked:"false"};
+            answers[5] = {City:"Shanghai", ExamID:"000006", PaperSheetID:"000006", AnswerSheetID:"000006", checked:"true"};
+            answers[6] = {City:"Guangzhou", ExamID:"000007", PaperSheetID:"000007", AnswerSheetID:"000007", checked:"false"};
             
             var selectCity = document.getElementById("selectCity");
             var cityIndex = selectCity.selectedIndex;
             var city = selectCity.options[cityIndex].value;
             var tbody = ""
+            console.log(document.getElementById("availablity").checked)
 
-            for (i in exams){
-                console.log(exams[i]);
-                if (exams[i].City == city){
-                    tbody += "<tr class='align-items-center'>" +
-                                "<th>" +
-                                    "<div class='custom-control custom-checkbox align-items-center '>" +
-                                        "<input id='customCheck1.1' type='checkbox' class='custom-control-input' />" +
-                                        "<label for='customCheck1.1' class='custom-control-label'>|</label>" +
-                                    "</div>" +
-                                "</th>" +
-                                "<th>" + exams[i].City + "</th>" +
-                                "<th scope='row'>" + exams[i].ExamID + "</th>" +
-                                "<td>" + exams[i].ExamTime + "</td>" +
-                                "<td>" + exams[i].ExamLocation + "</td>" +
-                                "<td>" + exams[i].Availability+ "</td>" +
-                            "</tr>";
+
+            if (document.getElementById("availablity").checked == true){
+                for (i in answers){
+                    if (answers[i].City == city && answers[i].checked == "false"){
+                        console.log(answers[i].checked)
+                        tbody += "<tr class='align-items-center'>" +
+                                    "<th>" + answers[i].ExamID + "</th>" +
+                                    "<th scope='row'>" + answers[i].PaperSheetID + "</th>" +
+                                    "<th>" + answers[i].AnswerSheetID + "</th>" +
+                                    "<th>" + 
+                                        "<input id='grade"+String(i)+"' type='text'>" +
+                                    "</th>" +
+                                    "<th>" +
+                                        "<button type='button' onclick='onClickCommit("+String(i)+", "+answers[i].AnswerSheetID+")'>Commit</button>" +
+                                    "</th>" +
+                                "</tr>";
+                    }
                 }
             }
-
+            else
+            {
+                for (i in answers){
+                    if (answers[i].City == city){
+                        tbody += "<tr class='align-items-center'>" +
+                                    "<th>" + answers[i].ExamID + "</th>" +
+                                    "<th scope='row'>" + answers[i].PaperSheetID + "</th>" +
+                                    "<th>" + answers[i].AnswerSheetID + "</th>" +
+                                    "<th>" + 
+                                        "<input id='grade"+String(i)+"' type='text'>" +
+                                    "</th>" +
+                                    "<th>" +
+                                        "<button type='button' onclick='onClickCommit("+String(i)+")'>Commit</button>" +
+                                    "</th>" +
+                                "</tr>";
+                    }
+                }
+            }
             document.getElementById("searchResult").innerHTML = tbody;
+        }
+    </script>
+
+    <script>
+        function onClickCommit(i, answerID){
+            grade = document.getElementById("grade"+String(i)).value;
+            console.log(grade);
         }
     </script>
 
