@@ -87,7 +87,7 @@
                     <div class="row">
                         <!-- Next Exam -->
                         <a name="nextexam"></a>
-                        <div class="col-lg-8 mb-5">
+                        <div class="col-lg-9 mb-5">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Examination Schedules</h3>
@@ -109,7 +109,7 @@
                     <div class="row">
                         <!-- Historical Grades-->
                         <a name="checkgrades"></a>
-                        <div class="col-lg-8 mb-5">
+                        <div class="col-lg-9 mb-5">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Score Needed Re-Check</h3>
@@ -140,13 +140,14 @@
                                                                         "<th scope='row'>" + applicants[i].Name + "</th>" +
                                                                         "<th align='center'>" + applicants[i].score + "</th>" +
                                                                         "<th>" +
-                                                                            "<div>" +                                                                         "<div id='Location' class='select ml-2'>" + 
-                                                                                "<select class='form-control'>" +
+                                                                            "<div class='select ml-2 d-flex align-items-center justify-content-center'>" + 
+                                                                                "<select class='form-control' style='width:100px'>" +
                                                                                     "<option>Choose</option>" +
                                                                                     "<option>Pass</option>" +
                                                                                     "<option>Reject</option>" +
                                                                                     "<option>TBD</option>" +
                                                                                 "</select>" +
+                                                                                '<button type="submit" class="btn btn-primary" onclick="" style="margin-left: 20px">Submit</button>' +
                                                                             "</div>" +
                                                                         "</th>" +
                                                                    "</tr>");

@@ -85,7 +85,7 @@
                     <div class="row">
                         <!-- Received Application -->
                         <a name="received"></a>
-                        <div class="col-lg-8 mb-5">
+                        <div class="col-lg-12 mb-5">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Received Application</h3>
@@ -119,13 +119,14 @@
                                                                         "<th align='center'>" + applicants[i].highestGrades + "</th>" +
                                                                         "<th>" + applicants[i].resume + "</th>" +
                                                                         "<th>" +
-                                                                            "<div id='Location' class='select ml-2'>" + 
-                                                                                "<select id='selectCity' name='account' class='form-control'>" +
+                                                                            "<div id='Location' class='select ml-2 d-flex align-items-center justify-content-center'>" + 
+                                                                                "<select id='selectCity' name='account' class='form-control' style='width:100px'>" +
                                                                                     "<option>Choose</option>" +
                                                                                     "<option>Pass</option>" +
                                                                                     "<option>Reject</option>" +
                                                                                     "<option>TBD</option>" +
                                                                                 "</select>" +
+                                                                                '<button type="submit" class="btn btn-primary" onclick="" style="margin-left: 20px">Submit</button>' +
                                                                             "</div>" +
                                                                         "</th>" +
                                                                    "</tr>");
@@ -141,9 +142,9 @@
                     <div class="row">
                         <!-- Your Information -->
                         <a name="information"></a>
-                        <div class="col-lg-6 mb-5" style="margin-left:105px">
+                        <div class="col-lg-12 mb-5">
                             <div class="profile-main">
-                                <div class="profile-pic wthree">
+                                <div class="profile-pic">
                                     <img src="./images/jpg/ucla.jpg" alt="">
                                     <h3>University of California, Los Angeles</h3>
                                     <div class="">     
