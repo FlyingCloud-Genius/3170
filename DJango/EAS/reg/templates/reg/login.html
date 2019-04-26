@@ -44,16 +44,13 @@
 
                         {% csrf_token %}
                         <!--dropdown menu of what kinds of person you are-->
-                        <div class="dropdown mb-4">                            
-                            <button type="button" class="btn btn-primary dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown"> I am...
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li class="sidebar-list-item"><a href="#" class="sidebar-link text-muted"><i class="fas fa-user-graduate text-gray" style="margin-right: 20px"></i>Student</a></li>
-                                <li class="sidebar-list-item"><a href="#" class="sidebar-link text-muted"><i class="fas fa-university text-gray" style="margin-right: 17px"></i>University</a></li>
-                                <li class="sidebar-list-item"><a href="#" class="sidebar-link text-muted"><i class="fas fa-id-card text-gray" style="margin-right: 14px"></i>Guardian</a></li>
-                                <li class="sidebar-list-item"><a href="#" class="sidebar-link text-muted"><i class="fas fa-gavel text-gray" style="margin-right: 18px"></i>Adjudicator</a></li>
-                            </ul>
+                        <div class="form-group mb-4">
+                            <select id="selectAccount" name="accountType" class="form-control shadow" style="width: 130px">
+                                    <option>I am</option>
+                                    <option>Student</option>
+                                    <option>University</option>
+                                    <option>Guardian</option>
+                            </select>
                         </div>
 
                         <div class="form-group mb-4">
@@ -71,7 +68,7 @@
                                     <input id="customCheck1" type="checkbox" checked class="custom-control-input">
                                     <label for="customCheck1" class="custom-control-label">Remember Me</label>
                                 </div>
-                                <button type="submit" class="btn btn-inverse btn-sm shadow ml-5 ">Forgot Password?</button>
+                                <button class="btn btn-inverse btn-sm shadow ml-5 mysupport"><a href='../support-us' class="text-gray">Forgot Password</a></button>
                             </div>
 
                         </div>

@@ -85,13 +85,13 @@
                     <div class="row">
                         <!-- Received Application -->
                         <a name="received"></a>
-                        <div class="col-lg-8 mb-5">
+                        <div class="col-lg-12 mb-5">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Received Application</h3>
                                 </div>
                                 <div class="card-body">
-                                    <table class="table card-text">
+                                    <table class="table card-text mytr">
                                         <thead>
                                             <tr>                                            
                                                 <th>Application ID</th>                                            
@@ -101,6 +101,38 @@
                                                 <th>Pass or Not</th>
                                             </tr>
                                         </thead>
+                                        <tbody id="applicants">
+                                            <script>
+                                                var applicants = new Array();
+                                                applicants[0] = {ID:"00001", Name:"hahaha", highestGrades:"A", resume:"/resume/a.doc"};
+                                                applicants[1] = {ID:"00002", Name:"lalala", highestGrades:"A-", resume:"/resume/b.doc"};
+                                                applicants[2] = {ID:"00003", Name:"hehehe", highestGrades:"A", resume:"/resume/c.doc"};
+                                                applicants[3] = {ID:"00004", Name:"brabra", highestGrades:"B+", resume:"/resume/d.doc"};
+                                                applicants[4] = {ID:"00005", Name:"kikiki", highestGrades:"A-", resume:"/resume/e.doc"};
+                                                applicants[5] = {ID:"00006", Name:"wawawa", highestGrades:"B", resume:"/resume/f.doc"};
+                                                applicants[6] = {ID:"00007", Name:"wuwuwu", highestGrades:"B+", resume:"/resume/g.doc"};
+                                    
+                                                for (i in applicants){
+                                                    document.write("<tr class='align-items-center'>" +
+                                                                        "<th>" + applicants[i].ID + "</th>" +
+                                                                        "<th scope='row'>" + applicants[i].Name + "</th>" +
+                                                                        "<th align='center'>" + applicants[i].highestGrades + "</th>" +
+                                                                        "<th>" + applicants[i].resume + "</th>" +
+                                                                        "<th>" +
+                                                                            "<div id='Location' class='select ml-2 d-flex align-items-center justify-content-center'>" + 
+                                                                                "<select id='selectCity' name='account' class='form-control' style='width:100px'>" +
+                                                                                    "<option>Choose</option>" +
+                                                                                    "<option>Pass</option>" +
+                                                                                    "<option>Reject</option>" +
+                                                                                    "<option>TBD</option>" +
+                                                                                "</select>" +
+                                                                                '<button type="submit" class="btn btn-primary" onclick="" style="margin-left: 20px">Submit</button>' +
+                                                                            "</div>" +
+                                                                        "</th>" +
+                                                                   "</tr>");
+                                                }  
+                                            </script>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -110,9 +142,9 @@
                     <div class="row">
                         <!-- Your Information -->
                         <a name="information"></a>
-                        <div class="col-lg-6 mb-5" style="margin-left:105px">
+                        <div class="col-lg-12 mb-5">
                             <div class="profile-main">
-                                <div class="profile-pic wthree">
+                                <div class="profile-pic">
                                     <img src="./images/jpg/ucla.jpg" alt="">
                                     <h3>University of California, Los Angeles</h3>
                                     <div class="">     

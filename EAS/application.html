@@ -7,7 +7,7 @@
         <meta name="author"    content="HSY, MZH">
         <meta name="keywords"  content="EAS, GRE, Application">
         
-        <title>EAS | Exercises</title>
+        <title>EAS | Dream Schools</title>
         <link rel="icon" href="./images/png/logo.png">
         <!--css-->
         <link rel="stylesheet" href="./css/vendor/bootstrap/css/bootstrap.min.css">
@@ -39,7 +39,7 @@
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
-                            <li><a href="introduction.html">About</a></li>
+                            <!-- <li><a href="introduction.html">About</a></li> -->
                             <li><a href="tables-exams.html">Enrollment</a></li>
                             <li class="dropdown">
                                     <a href="exercise.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Exercises</a>
@@ -50,7 +50,7 @@
                                     </ul>
                             </li>
                             <li class="dropdown">
-                                    <a href="application.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Application</a>
+                                    <a href="application.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Dream Schools</a>
                                     <ul class="dropdown-menu">
                                         <li><a href="application.html#usa">USA</a></li>
                                         <li><a href="application.html#europe">Europe</a></li>
@@ -60,8 +60,10 @@
                             </li>
                             <li><a href="supportus.html">Support Us</a></li>
                             <li class="inactive"><a></a></li>
-                            <li class="mylogin"><a href="login.html">Log In</a></li>
-                            <li class="mylogin"><a href="register.html">Sign Up</a></li>
+                            <li class="myprofile">
+                                <a href="personal-profile.html"><img src="./images/jpg/p1.jpeg" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
+                            </li>
+                            <li class="mylogin"><a href="home.html">Log Out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -72,11 +74,10 @@
             <div id="sidebar" class="sidebar py-3" style="width: 300px">
                 <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family text-center">CONTENT</div>
                 <ul class="sidebar-menu list-unstyled">
-                    <li class="sidebar-list-item"><a href="#usa" class="sidebar-link text-muted"><i class="fas fa-globe-americas mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 3px">USA</span></a></li>
-                    <li class="sidebar-list-item"><a href="#europe" class="sidebar-link text-muted"><i class="fas fa-globe-europe mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 3px">Europe</span></a></li>
-                    <li class="sidebar-list-item"><a href="#asia" class="sidebar-link text-muted"><i class="fas fa-globe-asia mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 3px">Asia</span></a></li>
-                    <li class="sidebar-list-item"><a href="#others" class="sidebar-link text-muted"><i class="fas fa-globe-africa mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 2px">Others</span></a></li>
-                    <li class="sidebar-list-item"><a href="home.html" class="sidebar-link text-muted"><i class="fas fa-sign-out-alt mr-3 text-gray" style="margin-left:1px; font-size:25px"></i><span style="margin-left: 2px">Log Out</span></a></li>
+                    <li class="sidebar-list-item" style="height: 40px"><a href="#usa" class="sidebar-link text-muted"><i class="fas fa-globe-americas mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 3px">USA</span></a></li>
+                    <li class="sidebar-list-item" style="height: 40px"><a href="#europe" class="sidebar-link text-muted"><i class="fas fa-globe-europe mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 3px">Europe</span></a></li>
+                    <li class="sidebar-list-item" style="height: 40px"><a href="#asia" class="sidebar-link text-muted"><i class="fas fa-globe-asia mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 3px">Asia</span></a></li>
+                    <li class="sidebar-list-item" style="height: 40px"><a href="#others" class="sidebar-link text-muted"><i class="fas fa-globe-africa mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 2px">Others</span></a></li>
             </div> 
             <!-- main page-->
             <div class="container-fluid px-xl-5">
@@ -84,20 +85,20 @@
                     <div class="row">
                         <!-- usa -->
                         <a name="usa"></a>
-                        <div class="col-lg-6 mb-5">
+                        <div class="col-lg-8 mb-5">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">USA Famous Schools</h3>
                                 </div>
                                 <div class="card-body">
-                                    <table class="table card-text">
+                                    <table class="table card-text mytr">
                                         <thead>
-                                        <tr>                                            
-                                            <th>Exam ID</th>                                            
-                                            <th>Exam Time</th>
-                                            <th>City</th>
-                                            <th>Availability</th>
-                                        </tr>
+                                            <tr>                                            
+                                                <th>School Name</th>                                            
+                                                <th>School Requirements</th>
+                                                <th>School Official Website</th>
+                                                <th>School Contact Tel.</th>
+                                            </tr>
                                         </thead>
                                     </table>
                                 </div>
@@ -107,20 +108,20 @@
                     <div class="row">
                         <!-- europe -->
                         <a name="europe"></a>
-                        <div class="col-lg-6 mb-5">
+                        <div class="col-lg-8 mb-5">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">European Famous Schools</h3>
                                 </div>
                                 <div class="card-body">
-                                    <table class="table card-text">
+                                    <table class="table card-text mytr">
                                         <thead>
-                                        <tr>                                            
-                                            <th>Exam ID</th>
-                                            <th>Exam Time</th>
-                                            <th>City</th>
-                                            <th>Grades </th>
-                                        </tr>
+                                            <tr>                                            
+                                                <th>School Name</th>                                            
+                                                <th>School Requirements</th>
+                                                <th>School Official Website</th>
+                                                <th>School Contact Tel.</th>
+                                            </tr>
                                         </thead>
                                     </table>
                                 </div>
@@ -130,19 +131,20 @@
                     <div class="row">
                         <!-- asia -->
                         <a name="asia"></a>
-                        <div class="col-lg-6 mb-5">
+                        <div class="col-lg-8 mb-5">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Asian Famous Schools</h3>
                                 </div>
                                 <div class="card-body">
-                                    <table class="table card-text">
+                                    <table class="table card-text mytr">
                                         <thead>
-                                        <tr>                                            
-                                            <th>Application ID</th>
-                                            <th>University</th>
-                                            <th>Status</th>
-                                        </tr>
+                                            <tr>                                            
+                                                <th>School Name</th>                                            
+                                                <th>School Requirements</th>
+                                                <th>School Official Website</th>
+                                                <th>School Contact Tel.</th>
+                                            </tr>
                                         </thead>
                                     </table>
                                 </div>
@@ -152,19 +154,20 @@
                     <div class="row">
                         <!-- others -->
                         <a name="others"></a>
-                        <div class="col-lg-6 mb-5">
+                        <div class="col-lg-8 mb-5">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Other Famous Schools</h3>
                                 </div>
                                 <div class="card-body">
-                                    <table class="table card-text">
+                                    <table class="table card-text mytr">
                                         <thead>
-                                        <tr>                                            
-                                            <th>Application ID</th>
-                                            <th>University</th>
-                                            <th>Status</th>
-                                        </tr>
+                                            <tr>                                            
+                                                <th>School Name</th>                                            
+                                                <th>School Requirements</th>
+                                                <th>School Official Website</th>
+                                                <th>School Contact Tel.</th>
+                                            </tr>
                                         </thead>
                                     </table>
                                 </div>
@@ -186,7 +189,7 @@
                             <p>Longgang District, Shenzhen</p>
                             <p>Phone : (86 755) 8427 3626</p>
                             <p>Fax : (86 755) 8427 3691</p>
-                            <p>Email : <a href="mailto:eassupport@gmail.com">eassupport@gmail.com</a></p>
+                            <p>Email : <a href="mailto:eashelp@foxmail.com">eashelp@foxmail.com</a></p>
                         </address>
                     </div>
                     <div class="col-lg-6 col-sm-6">

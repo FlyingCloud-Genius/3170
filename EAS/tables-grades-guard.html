@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>EAS | Manage Grades</title>
+    <link rel="icon" href="./images/png/logo.png">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" href="./css/vendor/bootstrap/css/bootstrap.min.css">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="./css/theme.css" rel="stylesheet">
+    <link href="./css/bootstrap-reset.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.default.css" id="theme-stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/style-responsive.css" rel="stylesheet">
+    <link href="./css/flexslider.css"      rel="stylesheet">
+    <link href="./css/jquery.bxslider.css" rel="stylesheet">
+    <link href="./css/jquery.fancybox.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/rs-style.css" media="screen">
+    <link rel="stylesheet" href="./css/settings.css" media="screen">
+    <link rel="stylesheet" href="./css/orionicons.css">
+    <link rel="stylesheet" href="./css/custom.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <style type="text/css">.dropdown-submenu:hover>.dropdown-menu{display:none}</style>
+    <!-- Extra Files-->  
+    <link href="dateDropper/datedropper.css" rel="stylesheet" type="text/css" >
+    <link href="dateDropper/timedropper.min.css" rel="stylesheet" type="text/css" >
+    <style type="text/css">
+        .demo{margin:80px auto 40px auto;width:320px}
+        .input{width:100px; padding:6px;border:1px solid #d3d3d3}
+        .select{width:110px;}
+    </style>
+  </head>
+
+  <body>
+    <!--header start-->
+    <header class="header-frontend">
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="home.html" style="font-size: 50px">EA<span>S</span></a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <!-- <li><a href="introduction.html">About</a></li> -->
+                        <li><a href="tables-exercises-guard.html">Manage Exercises</a></li>
+                        <li><a href="tables-grades-guard.html">Manage Grades</a></li>
+                        <li><a href="tables-exams-guard.html">Manage Exams</a></li>
+                        <!-- <li class="dropdown">
+                                <a href="exercise.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Exercises</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="exercise.html#verbal">Verbal Reasoning</a></li>
+                                    <li><a href="exercise.html#quantitative">Quantitative Reasoning</a></li>
+                                    <li><a href="exercise.html#writing">Analytical Writing</a></li>
+                                </ul>
+                        </li> -->
+                        <!-- <li class="dropdown">
+                                <a href="application.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Application</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="application.html#usa">USA</a></li>
+                                    <li><a href="application.html#europe">Europe</a></li>
+                                    <li><a href="application.html#asia">Asia</a></li>
+                                    <li><a href="application.html#others">Others</a></li>
+                                </ul>
+                        </li> -->
+                        <li><a href="supportus.html">Support Us</a></li>
+                        <li class="inactive"><a></a></li>
+                        <li class="myprofile">
+                            <a href="guardian-profile.html"><img src="./images/jpg/logo2.jpg" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
+                        </li>
+                        <li class="mylogin"><a href="home.html">Log Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--header end-->
+
+    <div class="d-flex align-items-stretch">
+        <!-- main container of the page except sidebar-->
+        <div class="page-holder w-100 d-flex flex-wrap">
+            <!-- main container of the tables-->
+            <div class="container-fluid px-xl-5">
+                <section class="py-5">
+                    <h4 class="text-uppercase mb-5 text-center">Check and Give Grades</h4>
+                    <ul class="d-flex border border-primary shadow pl-0">
+                        <li class="d-flex align-items-center my-4 col-lg-3">
+                            <label for="Location" class="mt-1">Cities: </label>
+                            <div id="Location" class="select ml-2">
+                                <select id="selectCity" name="account" class="form-control" style="width:200px">
+                                    <option>Beijing</option>
+                                    <option>Shanghai</option>
+                                    <option>Guangzhou</option>
+                                    <option>Shenzhen</option>
+                                    <option>Hong Kong</option>
+                                    <option>Changsha</option>
+                                </select>
+                            </div>
+                        </li>
+
+                        <li class="d-flex align-items-center justify-content-center my-4 col-lg-4">
+                        </li>
+
+                        <li class="d-flex align-items-center my-4 col-lg-3">
+                            <div class="custom-control custom-checkbox  my-4 ">
+                                <input id="availablity" type="checkbox" class="custom-control-input" />
+                                <label for="availablity" class="custom-control-label">Only consider unchecked paper sheet</label>
+                            </div>
+                        </li>
+
+                        <li class="d-flex align-items-center justify-content-center my-4 col-lg-3">
+                            <button type="submit" class="btn btn-primary " onclick="onClickSearch()">Search</button>
+                        </li>
+                    </ul>
+
+                </section>
+                <!-- a small sapce that between upper header and footer-->
+                <section class="pb-5">
+                    <!--another samll space inside the section space-->
+                    <div class="row">
+                        <!-- the first table col-lg-6 means that can should 2 tables on one row in large screen-->
+                        <div class="col-lg-12 mb-4">
+                            <div class="card">
+                                <div class="card-header">                                   
+                                    <h6 class="text-uppercase mb-0 ">Exams</h6>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table card-text">
+                                        <thead>
+                                        <tr>
+                                            <th>Exam ID</th>
+                                            <th>Paper sheet ID</th>
+                                            <th>Answer sheet ID</th>
+                                            <th>Grade</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id = "searchResult">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!--footer start-->
+    <footer class="footer">
+            <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-sm-3">
+                    <h1>contact info</h1>
+                    <address>
+                        <p>Address: 2001 Longxiang Road,</p>
+                        <p>Longgang District, Shenzhen</p>
+                        <p>Phone : (86 755) 8427 3626</p>
+                        <p>Fax : (86 755) 8427 3691</p>
+                        <p>Email : <a href="mailto:eashelp@foxmail.com">eashelp@foxmail.com</a></p>
+                    </address>
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                    <div class="privacy" style="margin-top:200px">
+                        <a href="http://www.cuhk.edu.cn/">Copyright © 2019 All Rights Reserved. CUHK(SZ) Students</a>
+                        <a href="http://www.miitbeian.gov.cn/">粤ICP备14099122-1号</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-3">
+                    <h1>stay connected</h1>
+                    <ul class="social-link-footer list-unstyled pull-right">
+                        <li><a href="https://space.bilibili.com/18005273"><img src="./images/icon/Bilibili.ico" height="30" width="30"></a></li>
+                        <li><a href="https://github.com/FlyingCloud-Genius/3170/issues"><img src="./images/icon/GitHub.ico" height="30" width="30"></a></li>
+                        <li><a href="https://www.zhihu.com/people/ziheng-mo/activities"><img src="./images/icon/ZhiHu.ico" height="30" width="30"></a></li>
+                        <li><a href="https://user.qzone.qq.com/133228573/"><img src="./images/icon/Tencent.ico" height="30" width="30"></a></li>
+                        <li><a href="http://tieba.baidu.com/f?kw=%CF%E3%B8%DB%D6%D0%CE%C4%B4%F3%D1%A7%C9%EE%DB%DA"><img src="./images/icon/TieBa.ico" height="30" width="30"></a></li>
+                        <li><a href="https://www.facebook.com/Welcome-2267653903313743/"><i class="fab fa-facebook-square" style="font-size:30px"></i></a></li>
+                        <li><a href="supportus.html"><i class="fab fa-weixin" style="font-size:30px"></i></a></li>
+                        <li><a href="http://www.cuhk.edu.cn/academics/caiwei/"><img src="./images/icon/WeiBo.ico" height="30" width="30"></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+
+    <!-- js placed at the end of the document so the pages load faster -->
+    <script src="./js/jquery.js"></script>
+    <script src="./js/jquery-1.8.3.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/hover-dropdown.js"></script>
+    <script defer="" src="./js/jquery.flexslider.js"></script>
+    <script type="text/javascript" src="./js/jquery.bxslider.js"></script>
+    <script type="text/javascript" src="./js/jquery.parallax-1.1.3.js"></script>
+    <script src="./js/jquery.easing.min.js"></script>
+    <script src="./js/link-hover.js"></script>
+    <script src="./js/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript" src="./js/jquery.themepunch.plugins.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.themepunch.revolution.min.jsd"></script>
+    <script src="./js/common-scripts.js"></script>
+    <script src="./js/revulation-slide.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="./js/jquery/jquery.min.js"></script>
+    <script src="./js/popper.js/umd/popper.min.js"> </script>
+    <script src="./js/bootstrap.js/js/bootstrap.min.js"></script>
+    <script src="./js/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="./js/chart.js/Chart.min.js"></script>
+    <script src="./js/js.cookie.min.js"></script>
+    <script src="./js/charts-home.js"></script>
+    <script src="./js/front.js"></script>
+    
+    <script>
+        RevSlide.initRevolutionSlider();
+
+        $(window).load(function() {
+            $('[data-zlname = reverse-effect]').mateHover({
+                position: 'y-reverse',
+                overlayStyle: 'rolling',
+                overlayBg: '#fff',
+                overlayOpacity: 0.7,
+                overlayEasing: 'easeOutCirc',
+                rollingPosition: 'top',
+                popupEasing: 'easeOutBack',
+                popup2Easing: 'easeOutBack'
+            });
+        });
+
+        $(window).load(function() {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                start: function(slider) {
+                    $('body').removeClass('loading');
+                }
+            });
+        });
+
+        jQuery(".fancybox").fancybox();
+    </script>
+
+    <script>
+        function onClickSearch() {
+            var exams = new Array();
+            exams[0] = {City:"Beijing", ExamID:"1", ExamTime:"2011-11-04", ExamLocation:"Tian'an Gate", Availability:"Yes"};
+            exams[1] = {City:"Beijing", ExamID:"2", ExamTime:"2011-12-04", ExamLocation:"Huang Fu Jing", Availability:"No"};
+            exams[2] = {City:"Beijing", ExamID:"3", ExamTime:"2011-10-04", ExamLocation:"Zhong Nan Hai", Availability:"No"};
+            exams[3] = {City:"Shanghai", ExamID:"4", ExamTime:"2011-01-04", ExamLocation:"Wai Tan", Availability:"Yes"};
+            exams[4] = {City:"Shanghai", ExamID:"5", ExamTime:"2011-06-04", ExamLocation:"Dong Fang Ming Zhu", Availability:"Yes"};
+            exams[5] = {City:"Shanghai", ExamID:"6", ExamTime:"2011--04-04", ExamLocation:"Pu Dong Xing Cheng", Availability:"No"};
+            exams[6] = {City:"Guangzhou", ExamID:"7", ExamTime:"2011-02-04", ExamLocation:"Bai Yun Park", Availability:"Yes"};
+            
+            var selectCity = document.getElementById("selectCity");
+            var cityIndex = selectCity.selectedIndex;
+            var city = selectCity.options[cityIndex].value;
+            var tbody = ""
+
+            for (i in exams){
+                console.log(exams[i]);
+                if (exams[i].City == city){
+                    tbody += "<tr class='align-items-center'>" +
+                                "<th>" +
+                                    "<div class='custom-control custom-checkbox align-items-center '>" +
+                                        "<input id='customCheck1.1' type='checkbox' class='custom-control-input' />" +
+                                        "<label for='customCheck1.1' class='custom-control-label'>|</label>" +
+                                    "</div>" +
+                                "</th>" +
+                                "<th>" + exams[i].City + "</th>" +
+                                "<th scope='row'>" + exams[i].ExamID + "</th>" +
+                                "<td>" + exams[i].ExamTime + "</td>" +
+                                "<td>{" + exams[i].ExamLocation + "</td>" +
+                                "<td>" + exams[i].Availability+ "</td>" +
+                            "</tr>";
+                }
+            }
+
+            document.getElementById("searchResult").innerHTML = tbody;
+        }
+    </script>
+
+  </body>
+</html>

@@ -45,28 +45,30 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <!-- <li><a href="introduction.html">About</a></li> -->
-                        <li><a href="tables-exams.html">Enrollment</a></li>
-                        <li class="dropdown">
+                        <li><a href="tables-exercises-guard.html">Manage Exercises</a></li>
+                        <li><a href="tables-grades-guard.html">Manage Grades</a></li>
+                        <li><a href="tables-exams-guard.html">Manage Exams</a></li>
+                        <!-- <li class="dropdown">
                                 <a href="exercise.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Exercises</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="exercise.html#verbal">Verbal Reasoning</a></li>
                                     <li><a href="exercise.html#quantitative">Quantitative Reasoning</a></li>
                                     <li><a href="exercise.html#writing">Analytical Writing</a></li>
                                 </ul>
-                        </li>
-                        <li class="dropdown">
-                                <a href="application.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Dream Schools</a>
+                        </li> -->
+                        <!-- <li class="dropdown">
+                                <a href="application.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Application</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="application.html#usa">USA</a></li>
                                     <li><a href="application.html#europe">Europe</a></li>
                                     <li><a href="application.html#asia">Asia</a></li>
                                     <li><a href="application.html#others">Others</a></li>
                                 </ul>
-                        </li>
+                        </li> -->
                         <li><a href="supportus.html">Support Us</a></li>
                         <li class="inactive"><a></a></li>
                         <li class="myprofile">
-                            <a href="personal-profile.html"><img src="./images/jpg/p1.jpeg" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
+                            <a href="guardian-profile.html"><img src="./images/jpg/logo2.jpg" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
                         </li>
                         <li class="mylogin"><a href="home.html">Log Out</a></li>
                     </ul>
@@ -82,12 +84,12 @@
             <!-- main container of the tables-->
             <div class="container-fluid px-xl-5">
                 <section class="py-5">
-                    <h4 class="text-uppercase mb-5 text-center">Applying for New Exam</h4>
+                    <h4 class="text-uppercase mb-5 text-center">Applying for Monitoring Next Exam</h4>
                     <ul class="d-flex border border-primary shadow pl-0">
-                        <li class="d-flex align-items-center justify-content-center my-4 col-lg-3">
+                        <li class="d-flex align-items-center my-4 col-lg-3">
                             <label for="Location" class="mt-1">Cities: </label>
                             <div id="Location" class="select ml-2">
-                                <select id="selectCity" name="acount" class="form-control">
+                                <select id="selectCity" name="account" class="form-control" style="width:200px">
                                     <option>Beijing</option>
                                     <option>Shanghai</option>
                                     <option>Guangzhou</option>
@@ -103,8 +105,8 @@
 
                         <li class="d-flex align-items-center my-4 col-lg-3">
                             <div class="custom-control custom-checkbox  my-4 ">
-                                <input id="availablity" type="checkbox" class="custom-control-input" />
-                                <label for="availablity" class="custom-control-label">Only consider available exams</label>
+                                <input id="availability" type="checkbox" class="custom-control-input" />
+                                <label for="availability" class="custom-control-label">Only consider available exams</label>
                             </div>
                         </li>
 
@@ -128,12 +130,11 @@
                                     <table class="table card-text">
                                         <thead>
                                         <tr>
-                                            <th>Check Box</th>
                                             <th>City</th>
                                             <th>Exam ID</th>
                                             <th>Exam Time</th>
                                             <th>Exam Location</th>
-                                            <th>Availablity</th>
+                                            <th>Availability</th>
                                         </tr>
                                         </thead>
                                         <tbody id = "searchResult">

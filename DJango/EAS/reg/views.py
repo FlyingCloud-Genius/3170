@@ -1,35 +1,46 @@
 #-*- conding:utf-8 -*-
+import time
 from django.contrib import auth
 from django.contrib.auth.hashers import make_password,check_password
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
-
 from django.contrib import messages
 
 # Create your views here.
-from .models import Info
-from .forms import InfoForm
+from .models import RegInfo
+from stu.models import Student, StuPhones
+# from .forms import InfoForm
 
 
 def login(request):
     if request.method == "POST":
+        accountType = request.POST.get('accountType')
         userEmail = request.POST.get('userEmail')
         password = request.POST.get('password')
-        message = "All forms should be filled!"
+        message = "Please select your account type!"
+        print(accountType)
         # print(type(userEmail))
         # print(type(password))
-        if userEmail != "" and password != "":
-            # print(userEmail + " " + password)
-            # print(type(userEmail))
-            try:
-                user = Info.objects.get(reg_id = userEmail)
-                if user.reg_password == password:
-                    return redirect('index') #render(request, 'reg/index.html')
-                else:
-                    message = "Incorrect password!"
-            except:
-                message = "Account doesn't exist!"
+        if accountType != "I am" and accountType != None: 
+            if userEmail != "" and password != "":
+                try:
+                    user = RegInfo.objects.get(reg_id = userEmail)
+                    if user.reg_password == password:
+
+
+                        if accountType == "Student":
+                            return redirect('/stu/profile') #render(request, 'reg/index.html')
+
+
+
+                            
+                    else:
+                        message = "Incorrect password!"
+                except:
+                    message = "Account doesn't exist!"
+            else:
+                message = "All forms should be filled!"
         return render(request, 'reg/login.html', {"message": message})
     return render(request, 'reg/login.html')
 
@@ -42,25 +53,56 @@ def index(request):
 
 def register(request):
     if request.method == "POST":
+        accountType = request.POST.get('accountType')
         userEmail = request.POST.get('userEmail')
-        password = request.POST.get('password')
-        repPassword = request.POST.get('reppassword')
+        password = str(request.POST.get('password'))
+        repPassword = str(request.POST.get('reppassword'))
         userName = request.POST.get('userName')
-        phone = request.POST.get('phoneNum')
-        message = "Please complete the forms of Email and password!"
+        phone = str(request.POST.get('phoneNum'))
+        message = "Please select your account type!"
+        print("accounttype:")
+        print(accountType)
+        if accountType != "I am" and accountType != None:           
+            if userEmail != "" and password != "" and repPassword != "" and userName != "" and phone != None:        #check if user doesn't complete his/her form
+                if "@" in userEmail:                                            #check if this is a formal E-mail formate
+                    if RegInfo.objects.filter(reg_id=userEmail).exists() == False: #check if the account had existed
+                        if password == repPassword:                             #check if the two passwords are differents 
+                            print(userEmail + " " + password)
+                            if accountType == "Student":
+                                sid = "0" + time.strftime("%Y%m%d%H%M%S", time.localtime()) 
+                                print(sid)
+                                # try:                              
+                                #     Student.objects.create(stu_id=sid, stu_email=userEmail, stu_name=userName)
+                                #     StuPhones.objects.create(stu=sid, stu_phone=str(phone))
+                                #     RegInfo.objects.create(reg_id=userEmail, reg_password=password)
+                                #     return redirect('login')
+                                # except:
+                                #     message = "Register fail, please try again."
 
-        if userEmail != "" and password != "" and repPassword != "":        #check if user doesn't complete his/her form
-            if "@" in userEmail:                                            #check if this is a formal E-mail formate
-                if Info.objects.filter(reg_id=userEmail).exists() == False: #check if the account had existed
-                    if password == repPassword:                             #check if the two passwords are differents 
-                        Info.objects.create(reg_id=userEmail, reg_password=password)
-                        print(userEmail + " " + password)
-                        return redirect('login')
+                                Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
+                                Stu = Student.objects.create(stu_id=sid, stu_email=userEmail, stu_name=userName, reg=Reg)
+                                StuPhones.objects.create(stu=Stu, stu_phone=phone)
+                                
+
+                                return redirect('login')
+                               
+                            elif accountType == "University":
+                                uid = "1" + time.strftime("%Y%m%d%H%M%S", time.localtime()) 
+                                print(sid)
+                                #RegInfo.objects.create(reg_id=userEmail, reg_password=password)
+                                #Student.objects.create(stu_id=sid, stu_email=userEmail, stu_name=userName)
+                                #StuPhones.objects.create(stu_id=sid, stu_phone=str(phone))
+                                return redirect('login')                                
+
+
+                            #RegInfo.objects.create(reg_id=userEmail, reg_password=password)                                                       
+                        else:
+                            message = "Your second password is not match, please try again."
                     else:
-                        message = "Your second password is not match, please try again."
+                        message = "The account is already exist!"
                 else:
-                    message = "The account is already exist!"
+                    message = "Please enter correct E-mail format."
             else:
-                message = "Please enter correct E-mail format."
+                message = "Please complete the forms of Email and password!"
         return render(request, 'reg/register.html', {"message": message})
     return render(request, 'reg/register.html')

@@ -7,7 +7,7 @@
         <meta name="author"    content="HSY, MZH">
         <meta name="keywords"  content="EAS, GRE, Application">
         
-        <title>EAS | Personal Profile</title>
+        <title>EAS | Guardian Profile</title>
         <link rel="icon" href="./images/png/logo.png">
         <!--css-->
         <link rel="stylesheet" href="./css/vendor/bootstrap/css/bootstrap.min.css">
@@ -41,8 +41,8 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <!-- <li><a href="introduction.html">About</a></li> -->
-                            <li><a href="tables-exercises.html">Manage Exercises</a></li>
-                            <li><a href="tables-grades.html">Manage Grades</a></li>
+                            <li><a href="tables-exercises-guard.html">Manage Exercises</a></li>
+                            <li><a href="tables-grades-guard.html">Manage Grades</a></li>
                             <li><a href="tables-exams-guard.html">Manage Exams</a></li>
                             <!-- <li class="dropdown">
                                     <a href="exercise.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Exercises</a>
@@ -64,7 +64,7 @@
                             <li><a href="supportus.html">Support Us</a></li>
                             <li class="inactive"><a></a></li>
                             <li class="myprofile">
-                                <a href="university-profile.html"><img src="./images/jpg/logo2.jpg" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
+                                <a href="guardian-profile.html"><img src="./images/jpg/logo2.jpg" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
                             </li>
                             <li class="mylogin"><a href="home.html">Log Out</a></li>
                         </ul>
@@ -87,13 +87,13 @@
                     <div class="row">
                         <!-- Next Exam -->
                         <a name="nextexam"></a>
-                        <div class="col-lg-8 mb-5">
+                        <div class="col-lg-9 mb-5">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Examination Schedules</h3>
                                 </div>
                                 <div class="card-body">
-                                    <table class="table card-text">
+                                    <table class="table card-text mytr">
                                         <thead>
                                         <tr>                                            
                                             <th>Exam ID</th>                                            
@@ -109,13 +109,13 @@
                     <div class="row">
                         <!-- Historical Grades-->
                         <a name="checkgrades"></a>
-                        <div class="col-lg-8 mb-5">
+                        <div class="col-lg-9 mb-5">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Score Needed Re-Check</h3>
                                 </div>
                                 <div class="card-body">
-                                    <table class="table card-text">
+                                    <table class="table card-text mytr">
                                         <thead>
                                             <tr>                                            
                                                 <th>Exam ID</th>
@@ -124,6 +124,36 @@
                                                 <th>Pass</th>
                                             </tr>
                                         </thead>
+                                        <tbody>
+                                            <script>
+                                                var applicants = new Array();
+                                                applicants[0] = {ID:"00001", Name:"hahaha", score:"326"};
+                                                applicants[1] = {ID:"00002", Name:"wawawa", score:"317"};
+                                                applicants[2] = {ID:"00003", Name:"hehehe", score:"330"};
+                                                applicants[3] = {ID:"00004", Name:"kikiki", score:"324"};
+                                                applicants[4] = {ID:"00005", Name:"brabrabra", score:"318"};
+                                                applicants[5] = {ID:"00006", Name:"wuwuwu", score:"320"};
+                                    
+                                                for (i in applicants){
+                                                    document.write("<tr class='align-items-center'>" +
+                                                                        "<th>" + applicants[i].ID + "</th>" +
+                                                                        "<th scope='row'>" + applicants[i].Name + "</th>" +
+                                                                        "<th align='center'>" + applicants[i].score + "</th>" +
+                                                                        "<th>" +
+                                                                            "<div class='select ml-2 d-flex align-items-center justify-content-center'>" + 
+                                                                                "<select class='form-control' style='width:100px'>" +
+                                                                                    "<option>Choose</option>" +
+                                                                                    "<option>Pass</option>" +
+                                                                                    "<option>Reject</option>" +
+                                                                                    "<option>TBD</option>" +
+                                                                                "</select>" +
+                                                                                '<button type="submit" class="btn btn-primary" onclick="" style="margin-left: 20px">Submit</button>' +
+                                                                            "</div>" +
+                                                                        "</th>" +
+                                                                   "</tr>");
+                                                }  
+                                            </script>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>

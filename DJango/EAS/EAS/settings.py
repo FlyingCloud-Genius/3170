@@ -32,6 +32,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'reg.apps.RegConfig',
+    'stu.apps.StuConfig',
+    'home.apps.HomeConfig',
+    'support.apps.SupportConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -77,7 +80,7 @@ WSGI_APPLICATION = 'EAS.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'project',
+        'NAME': 'EAS_test',
         'USER': 'root',
         'PASSWORD': 'cuhksz',
         'HOST': '120.78.82.130',

@@ -2,3 +2,15 @@
 .mysupport a:hover{
     text-decoration: none;
 }
+
+.mytr tr th{
+    text-align: center;
+}
+
+.mytr thead tr th {
+    vertical-align: middle;
+}
+
+.mytr tbody tr th {
+    vertical-align: middle;
+}
