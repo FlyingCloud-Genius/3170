@@ -289,7 +289,7 @@
                                         "<input id='grade"+String(i)+"' type='text'>" +
                                     "</th>" +
                                     "<th>" +
-                                        "<button type='button' onclick='onClickCommit("+String(i)+")'>Commit</button>" +
+                                        "<button type='button' onclick='onClickCommit("+String(i)+", "+answers[i].AnswerSheetID+")'>Commit</button>" +
                                     "</th>" +
                                 "</tr>";
                     }
@@ -301,8 +301,9 @@
 
     <script>
         function onClickCommit(i, answerID){
+            console.log(answerID)
             grade = document.getElementById("grade"+String(i)).value;
-            console.log(grade);
+            console.log("answerID: " + answerID + "  Grade: " + grade);
         }
     </script>
 
