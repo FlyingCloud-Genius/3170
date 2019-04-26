@@ -89,7 +89,7 @@
                     <div class="row">
                         <!-- Examination Schedule-->
                         <a name="schedule"></a>
-                        <div class="col-lg-8 mb-5">
+                        <div class="col-lg-12 mb-5">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Examination Schedules</h3>
@@ -115,7 +115,7 @@
                     <div class="row">
                         <!-- Historical Grades-->
                         <a name="grades"></a>
-                        <div class="col-lg-8 mb-5">
+                        <div class="col-lg-12 mb-5">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Historical Grades</h3>
@@ -148,7 +148,7 @@
                     <div class="row">
                         <!-- Your Application-->
                         <a name="application"></a>
-                        <div class="col-lg-8 mb-5">
+                        <div class="col-lg-12 mb-5">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Your School Applications</h3>
@@ -170,7 +170,7 @@
                     </div>
                     <div class="row">
                         <!-- Your Application-->
-                        <div class="col-lg-8 mb-5">
+                        <div class="col-lg-12 mb-5">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Your Exam Applications</h3>
@@ -193,7 +193,7 @@
                     <div class="row">
                         <!-- Your Information -->
                         <a name="information"></a>
-                        <div class="col-lg-8 mb-5">
+                        <div class="col-lg-12 mb-5">
                             <div class="profile-main">
                                 <div class="profile-pic wthree">
                                     <img src="./images/jpg/p1.jpeg" alt="" >
@@ -217,6 +217,73 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class='raw'>
+                        <!-- <upload resume> -->
+                        <div class="col-lg-12 mb-5">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Upload Files</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <table class="table card-text mytr">
+                                            <thead>
+                                            <tr>                                            
+                                                <th>FileName</th>
+                                                <th>File</th>
+                                                <th>Submit</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <th>Resume</th>
+                                                <th>
+                                                    <div class="select d-flex align-items-center justify-content-center">
+                                                        <input type=file id=resumefile style="visibility:hidden" onchange=resumefilepath.value=this.value>
+                                                        <input type=textfield id=resumefilepath>
+                                                        <input type=button id=resumefilebutton value=browser onclick=resumefile.click()>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div>
+                                                        <input type="submit" value="Upload" onclick="uploadResume()">
+                                                    </div>
+                                                </th>
+                                            </tbody>
+                                            <tbody>
+                                                <th>Transcript</th>
+                                                <th>
+                                                    <div class="select d-flex align-items-center justify-content-center">
+                                                        <input type=file id=transcriptbrowsefile style="visibility:hidden" onchange=transcriptfilepath.value=this.value>
+                                                        <input type=textfield id=transcriptfilepath>
+                                                        <input type=button id=transcriptfilebutton value=browser onclick=transcriptfile.click()>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div>
+                                                        <input type="submit" value="Upload" onclick="uploadResume()">
+                                                    </div>
+                                                </th>
+                                            </tbody>
+                                            <tbody>
+                                                <th>Recommendation</th>
+                                                <th>
+                                                    <div class="select d-flex align-items-center justify-content-center">
+                                                        <input type=file id=recommendationbrowsefile style="visibility:hidden" onchange=recommendationfilepath.value=this.value>
+                                                        <input type=textfield id=recommendationfilepath>
+                                                        <input type=button id=recommendationfilebutton value=browser onclick=recommendationfile.click()>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div>
+                                                        <input type="submit" value="Upload" onclick="uploadResume()">
+                                                    </div>
+                                                </th>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </section>
             </div>
@@ -320,7 +387,111 @@
                 $("#myCarousel").carousel('cycle');
             });
         </script>
-    
+
+        <script>
+            function uploadResume(){
+                var resumeFile = document.getElementById("resumefile").files;
+
+                if (resumeFile.length == 0) return;
+
+                var form = new FormData(),
+                    url = 'http://www.lgueas.cn',
+                    file = resumeFile[0];
+                form.append('file', file);
+
+                var xhr = new XMLHttpRequest();
+                xhr.open("post", url, true);
+                
+                //上传进度事件
+                xhr.upload.addEventListener("progress", function(result) {
+                    if (result.lengthComputable) {
+                        //上传进度
+                        var percent = (result.loaded / result.total * 100).toFixed(2); 
+                    }
+                }, false);
+                
+                xhr.addEventListener("readystatechange", function() {
+                    var result = xhr;
+                    if (result.status != 200) { //error
+                        console.log('上传失败', result.status, result.statusText, result.response);
+                    } 
+                    else if (result.readyState == 4) { //finished
+                        console.log('上传成功', result);
+                    }
+                });
+                xhr.send(form); 
+            }
+        </script>
+
+<script>
+        function uploadTranscript(){
+            var transcriptFile = document.getElementById("transcriptfile").files;
+
+            if (transcriptFile.length == 0) return;
+
+            var form = new FormData(),
+                url = 'http://www.lgueas.cn',
+                file = transcriptFile[0];
+            form.append('file', file);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("post", url, true);
+            
+            //上传进度事件
+            xhr.upload.addEventListener("progress", function(result) {
+                if (result.lengthComputable) {
+                    //上传进度
+                    var percent = (result.loaded / result.total * 100).toFixed(2); 
+                }
+            }, false);
+            
+            xhr.addEventListener("readystatechange", function() {
+                var result = xhr;
+                if (result.status != 200) { //error
+                    console.log('上传失败', result.status, result.statusText, result.response);
+                } 
+                else if (result.readyState == 4) { //finished
+                    console.log('上传成功', result);
+                }
+            });
+            xhr.send(form); 
+        }
+    </script>
+
+<script>
+        function uploadRecommendation(){
+            var recommendationFile = document.getElementById("recommendationfile").files;
+
+            if (recommendationFile.length == 0) return;
+
+            var form = new FormData(),
+                url = 'http://www.lgueas.cn',
+                file = recommendationFile[0];
+            form.append('file', file);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("post", url, true);
+            
+            //上传进度事件
+            xhr.upload.addEventListener("progress", function(result) {
+                if (result.lengthComputable) {
+                    //上传进度
+                    var percent = (result.loaded / result.total * 100).toFixed(2); 
+                }
+            }, false);
+            
+            xhr.addEventListener("readystatechange", function() {
+                var result = xhr;
+                if (result.status != 200) { //error
+                    console.log('上传失败', result.status, result.statusText, result.response);
+                } 
+                else if (result.readyState == 4) { //finished
+                    console.log('上传成功', result);
+                }
+            });
+            xhr.send(form); 
+        }
+    </script>
     </body>
 </html>
     
