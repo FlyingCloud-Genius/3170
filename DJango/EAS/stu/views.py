@@ -19,4 +19,9 @@ def exercise(request):
 
 def exams(request):
     pass
-    return render(request, 'stu/personal-profile.html')
+    return render(request, 'stu/tables-exams.html')
+
+
+def grades(request):
+    pass
+    return render(request, 'stu/tables-grades.html')
