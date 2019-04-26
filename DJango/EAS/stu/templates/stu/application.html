@@ -1,0 +1,284 @@
+{#stu/templates/stu/application#}
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="generator" content="vscode">
+        <meta name="viewport"  content="width=device-width, initial-scale=1">
+        <meta name="author"    content="HSY, MZH">
+        <meta name="keywords"  content="EAS, GRE, Application">
+        
+        <title>EAS | Dream Schools</title>
+        <link rel="icon" href="{% static 'images/png/logo.png'%}">
+        <!--css-->
+        <link rel="stylesheet" href="{% static 'css/vendor/bootstrap/css/bootstrap.min.css'%}">
+        <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="{% static 'css/theme.css'%}" rel="stylesheet">
+        <link href="{% static 'css/bootstrap-reset.css'%}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/style.default.css'%}" id="theme-stylesheet">
+        <link href="{% static 'css/style.css'%}" rel="stylesheet">
+        <link href="{% static 'css/style-responsive.css'%}" rel="stylesheet">
+        <link href="{% static 'css/flexslider.css'%}"      rel="stylesheet">
+        <link href="{% static 'css/jquery.bxslider.css'%}" rel="stylesheet">
+        <link href="{% static 'css/jquery.fancybox.css'%}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/rs-style.css'%}" media="screen">
+        <link rel="stylesheet" href="{% static 'css/settings.css'%}" media="screen">
+        <link rel="stylesheet" href="{% static 'css/orionicons.css'%}">
+        <link rel="stylesheet" href="{% static 'css/custom.css'%}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <style type="text/css">.dropdown-submenu:hover>.dropdown-menu{display:none}</style>
+
+    </head>
+    <body>
+        <!--header start-->
+        <header class="header-frontend">
+            <div class="navbar navbar-default navbar-static-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="../home" style="font-size: 50px">EA<span>S</span></a>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <!-- <li><a href="introduction">About</a></li> -->
+                            <li><a href="enrollment">Enrollment</a></li>
+                            <li class="dropdown">
+                                    <a href="exercise" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Exercises</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="exercise#verbal">Verbal Reasoning</a></li>
+                                        <li><a href="exercise#quantitative">Quantitative Reasoning</a></li>
+                                        <li><a href="exercise#writing">Analytical Writing</a></li>
+                                    </ul>
+                            </li>
+                            <li class="dropdown">
+                                    <a href="application" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Dream Schools</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="application#usa">USA</a></li>
+                                        <li><a href="application#europe">Europe</a></li>
+                                        <li><a href="application#asia">Asia</a></li>
+                                        <li><a href="application#others">Others</a></li>
+                                    </ul>
+                            </li>
+                            <li><a href="../support-us">Support Us</a></li>
+                            <li class="inactive"><a></a></li>
+                            <li class="myprofile">
+                                <a href=""><img src="{% static 'images/jpg/p1.jpeg'%}" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
+                            </li>
+                            <li class="mylogin"><a href="../home">Log Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--header end-->
+        <div class="d-flex align-items-stretch">
+            <div id="sidebar" class="sidebar py-3" style="width: 300px">
+                <div class="text-gray-400 text-uppercase px-3 px-lg-4 py-4 font-weight-bold small headings-font-family text-center">CONTENT</div>
+                <ul class="sidebar-menu list-unstyled">
+                    <li class="sidebar-list-item" style="height: 40px"><a href="#usa" class="sidebar-link text-muted"><i class="fas fa-globe-americas mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 3px">USA</span></a></li>
+                    <li class="sidebar-list-item" style="height: 40px"><a href="#europe" class="sidebar-link text-muted"><i class="fas fa-globe-europe mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 3px">Europe</span></a></li>
+                    <li class="sidebar-list-item" style="height: 40px"><a href="#asia" class="sidebar-link text-muted"><i class="fas fa-globe-asia mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 3px">Asia</span></a></li>
+                    <li class="sidebar-list-item" style="height: 40px"><a href="#others" class="sidebar-link text-muted"><i class="fas fa-globe-africa mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 2px">Others</span></a></li>
+            </div> 
+            <!-- main page-->
+            <div class="container-fluid px-xl-5">
+                <section class="py-5">
+                    <div class="row">
+                        <!-- usa -->
+                        <a name="usa"></a>
+                        <div class="col-lg-8 mb-5">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">USA Famous Schools</h3>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table card-text mytr">
+                                        <thead>
+                                            <tr>                                            
+                                                <th>School Name</th>                                            
+                                                <th>School Requirements</th>
+                                                <th>School Official Website</th>
+                                                <th>School Contact Tel.</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- europe -->
+                        <a name="europe"></a>
+                        <div class="col-lg-8 mb-5">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">European Famous Schools</h3>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table card-text mytr">
+                                        <thead>
+                                            <tr>                                            
+                                                <th>School Name</th>                                            
+                                                <th>School Requirements</th>
+                                                <th>School Official Website</th>
+                                                <th>School Contact Tel.</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- asia -->
+                        <a name="asia"></a>
+                        <div class="col-lg-8 mb-5">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Asian Famous Schools</h3>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table card-text mytr">
+                                        <thead>
+                                            <tr>                                            
+                                                <th>School Name</th>                                            
+                                                <th>School Requirements</th>
+                                                <th>School Official Website</th>
+                                                <th>School Contact Tel.</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- others -->
+                        <a name="others"></a>
+                        <div class="col-lg-8 mb-5">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Other Famous Schools</h3>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table card-text mytr">
+                                        <thead>
+                                            <tr>                                            
+                                                <th>School Name</th>                                            
+                                                <th>School Requirements</th>
+                                                <th>School Official Website</th>
+                                                <th>School Contact Tel.</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!--footer start-->
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-3">
+                        <h1>contact info</h1>
+                        <address>
+                            <p>Address: 2001 Longxiang Road,</p>
+                            <p>Longgang District, Shenzhen</p>
+                            <p>Phone : (86 755) 8427 3626</p>
+                            <p>Fax : (86 755) 8427 3691</p>
+                            <p>Email : <a href="mailto:eashelp@foxmail.com">eashelp@foxmail.com</a></p>
+                        </address>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="privacy" style="margin-top:200px">
+                            <a href="http://www.cuhk.edu.cn/">Copyright © 2019 All Rights Reserved. CUHK(SZ) Students</a>
+                            <a href="http://www.miitbeian.gov.cn/">粤ICP备14099122-1号</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-3">
+                        <h1>stay connected</h1>
+                        <ul class="social-link-footer list-unstyled pull-right">
+                            <li><a href="https://space.bilibili.com/18005273"><img src="{% static 'images/icon/Bilibili.ico'%}" height="30" width="30"></a></li>
+                            <li><a href="https://github.com/FlyingCloud-Genius/3170/issues"><img src="{% static 'images/icon/GitHub.ico'%}" height="30" width="30"></a></li>
+                            <li><a href="https://www.zhihu.com/people/ziheng-mo/activities"><img src="{% static 'images/icon/ZhiHu.ico'%}" height="30" width="30"></a></li>
+                            <li><a href="https://user.qzone.qq.com/133228573/"><img src="{% static 'images/icon/Tencent.ico'%}" height="30" width="30"></a></li>
+                            <li><a href="http://tieba.baidu.com/f?kw=%CF%E3%B8%DB%D6%D0%CE%C4%B4%F3%D1%A7%C9%EE%DB%DA"><img src="{% static 'images/icon/TieBa.ico'%}" height="30" width="30"></a></li>
+                            <li><a href="https://www.facebook.com/Welcome-2267653903313743/"><i class="fab fa-facebook-square" style="font-size:30px"></i></a></li>
+                            <li><a href="../support-us"><i class="fab fa-weixin" style="font-size:30px"></i></a></li>
+                            <li><a href="http://www.cuhk.edu.cn/academics/caiwei/"><img src="{% static 'images/icon/WeiBo.ico'%}" height="30" width="30"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- footer end -->
+
+        <!-- js placed at the end of the document so the pages load faster -->
+        <script src="{% static 'js/jquery.js'%}"></script>
+        <script src="{% static 'js/jquery-1.8.3.min.js'%}"></script>
+        <script src="{% static 'js/bootstrap.min.js'%}"></script>
+        <script type="text/javascript" src="{% static 'js/hover-dropdown.js'%}"></script>
+        <script defer="" src="{% static 'js/jquery.flexslider.js'%}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.bxslider.js'%}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.parallax-1.1.3.js'%}"></script>
+        <script src="{% static 'js/jquery.easing.min.js'%}"></script>
+        <script src="{% static 'js/link-hover.js'%}"></script>
+        <script src="{% static 'js/jquery.fancybox.pack.js'%}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.themepunch.plugins.min.js'%}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.themepunch.revolution.min.jsd'%}"></script>
+        <script src="{% static 'js/common-scripts.js'%}"></script>
+        <script src="{% static 'js/revulation-slide.js'%}"></script>
+        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="{% static 'js/jquery/jquery.min.js'%}"></script>
+        <script src="{% static 'js/popper.js/umd/popper.min.js'%}"> </script>
+        <script src="{% static 'js/bootstrap.js/js/bootstrap.min.js'%}"></script>
+        <script src="{% static 'js/jquery.cookie/jquery.cookie.js'%}"> </script>
+        <script src="{% static 'js/chart.js/Chart.min.js'%}"></script>
+        <script src="{% static 'js/js.cookie.min.js'%}"></script>
+        <script src="{% static 'js/charts-home.js'%}"></script>
+        <script src="{% static 'js/front.js'%}"></script>
+        
+        <script>
+            RevSlide.initRevolutionSlider();
+
+            $(window).load(function() {
+                $('[data-zlname = reverse-effect]').mateHover({
+                    position: 'y-reverse',
+                    overlayStyle: 'rolling',
+                    overlayBg: '#fff',
+                    overlayOpacity: 0.7,
+                    overlayEasing: 'easeOutCirc',
+                    rollingPosition: 'top',
+                    popupEasing: 'easeOutBack',
+                    popup2Easing: 'easeOutBack'
+                });
+            });
+
+            $(window).load(function() {
+                $('.flexslider').flexslider({
+                    animation: "slide",
+                    start: function(slider) {
+                        $('body').removeClass('loading');
+                    }
+                });
+            });
+
+            jQuery(".fancybox").fancybox();
+        </script>
+
+        <script>
+            $(function(){
+                $('#myCarousel').carousel({interval:2500});
+                $("#myCarousel").carousel('cycle');
+            });
+        </script>
+    </body>
+</html>
+    
