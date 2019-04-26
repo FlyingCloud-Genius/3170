@@ -1804,6 +1804,15 @@ ul#filters > .active > span {
     transition: all .3s ease;
 }
 
+.header-frontend .nav .myprofile a:hover{
+    background-color: #fff ;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
 .header-frontend .nav .inactive a{
     pointer-events: none;
 }
