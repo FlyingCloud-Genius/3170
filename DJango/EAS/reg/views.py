@@ -10,6 +10,7 @@ from django.contrib import messages
 # Create your views here.
 from .models import RegInfo
 from stu.models import Student, StuPhones
+from uni.models import University
 # from .forms import InfoForm
 
 
@@ -30,8 +31,15 @@ def login(request):
 
 
                         if accountType == "Student":
-                            return redirect('/stu/profile') #render(request, 'reg/index.html')
-
+                            if Student.objects.filter(stu_email=userEmail).exists() == True:
+                                return redirect('/stu/profile') #render(request, 'reg/index.html')
+                            else:
+                                message = "This account is not a sutdent!"
+                        elif accountType == "University":
+                            if University.objects.filter(uni_email=userEmail).exists() == True:                            
+                                return redirect('/uni/profile')
+                            else:
+                                message = "This account is not a university!"
 
 
                             
@@ -82,16 +90,13 @@ def register(request):
                                 Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
                                 Stu = Student.objects.create(stu_id=sid, stu_email=userEmail, stu_name=userName, reg=Reg)
                                 StuPhones.objects.create(stu=Stu, stu_phone=phone)
-                                
-
                                 return redirect('login')
                                
                             elif accountType == "University":
                                 uid = "1" + time.strftime("%Y%m%d%H%M%S", time.localtime()) 
-                                print(sid)
-                                #RegInfo.objects.create(reg_id=userEmail, reg_password=password)
-                                #Student.objects.create(stu_id=sid, stu_email=userEmail, stu_name=userName)
-                                #StuPhones.objects.create(stu_id=sid, stu_phone=str(phone))
+                                print(uid)
+                                Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
+                                Uni = University.objects.create(uni_id=uid, uni_email=userEmail, uni_name=userName, uni_phone=phone, reg=Reg)
                                 return redirect('login')                                
 
 
