@@ -3,19 +3,19 @@ use EAS;
 
 create table reg_info
 (   reg_id varchar(30) not null,
-    reg_password varchar(16) not null,
+    reg_password varchar(16),
     primary key (reg_id)
 );
 
 create table student
 (   stu_id char(15) not null,
-    stu_name varchar(40) not NULL,
-    stu_gender int not null,
-    stu_birthday date not NULL,
-    stu_major varchar(50) not null,
-    stu_email varchar(30) not null,
-    stu_c_uni varchar(50) not null,
-    reg_id varchar(30) not null,
+    stu_name varchar(40),
+    stu_gender int,
+    stu_birthday date,
+    stu_major varchar(50),
+    stu_email varchar(30),
+    stu_c_uni varchar(50),
+    reg_id varchar(30),
     PRIMARY key (stu_id),
     foreign key (reg_id) references reg_info(reg_id)
 );
@@ -36,12 +36,14 @@ create table stu_interests
 
 create table university
 (   uni_id char(15) not null,
-    uni_email varchar(30) not null,
-    uni_name varchar(100) not null,
-    uni_phone varchar(20) not null,
-    required_GRE_score int not null,
-    uni_address varchar(100) not null,
-    reg_id varchar(30) not null,
+    uni_email varchar(30),
+    uni_name varchar(100),
+    uni_phone varchar(20),
+    required_GRE_score int,
+    uni_address varchar(100),
+    reg_id varchar(30),
+    uni_web varchar(100),
+    uni_photo varchar(100),
     primary key (uni_id),
     foreign key (reg_id) references reg_info(reg_id)
 );
@@ -56,8 +58,8 @@ create table uni_open_major
 
 create table stu_application
 (   stu_app_id char(15) not null,
-    stu_resume varchar(100) not null,
-    transcript varchar(100) not null,
+    stu_resume varchar(100),
+    transcript varchar(100),
     recommendation varchar(50),
     paper_title varchar(100),
     conference varchar(50),
@@ -71,7 +73,7 @@ create table stu_application
 );
 
 create table stu_dream_majors
-(   stu_dream_major varchar(20) not null,
+(   stu_dream_major varchar(20),
     stu_app_id char(15) not null,
     primary key (stu_app_id, stu_dream_major),
     foreign key (stu_app_id) references stu_application(stu_app_id)
@@ -79,8 +81,8 @@ create table stu_dream_majors
 
 create table GRE_exam
 (   exam_id char(15) not null,
-    exam_location varchar(100) not null,
-    exam_time DATETIME not null,
+    exam_location varchar(100),
+    exam_time DATETIME,
     primary key (exam_id)
 );
 
@@ -94,10 +96,9 @@ create table attendance
 
 create table guardian
 (   guardian_id char(15) not null,
-    guardian_email varchar(30) not null,
-    guard_fname varchar(10) not null,
-    guard_lname varchar(10) not null,
-    guardian_phone varchar(20) not null,
+    guardian_email varchar(30),
+    guard_name varchar(40),
+    guardian_phone varchar(20),
     reg_id varchar(30),
     primary key (guardian_id),
     foreign key (reg_id) references reg_info(reg_id)
@@ -113,20 +114,19 @@ create table guard
 
 create table question_base
 (   que_id char(15) not null,
-    que_analysis varchar(10000) not null,
-    difficulty_level int not null,
-    que_content varchar(10000) not null,
-    answer varchar(500) not null,
-    que_type varchar(100) not null,
+    que_analysis varchar(10000),
+    difficulty_level int,
+    que_content varchar(10000),
+    answer varchar(500),
+    que_type varchar(100),
     primary key (que_id)
 );
 
 CREATE TABLE adjudicator (
     adju_id 	CHAR(15) NOT NULL,
-    adju_email  varCHAR(30) NOT NULL,
-    adju_phone  varCHAR(20) NOT NULL,
-    adju_fname  varCHAR(10) NOT NULL,
-    adju_lname  varCHAR(10) NOT NULL,
+    adju_email  varCHAR(30),
+    adju_phone  varCHAR(20),
+    adju_name  varCHAR(10),
     PRIMARY KEY (adju_id)
 );
 
@@ -137,7 +137,7 @@ CREATE TABLE blank_sheet (
 
 CREATE TABLE answer_sheet (
     ans_id 		CHAR(15)   NOT NULL,
-    ans_answer 	varCHAR(10000)  NOT NULL,
+    ans_answer 	varCHAR(10000),
     ans_score 	varCHAR(4),
     source_paper CHAR(15) NOT NULL,
     examinee 	CHAR(15)   NOT NULL,
@@ -167,4 +167,3 @@ CREATE TABLE derive (
     FOREIGN KEY (sheet_id)
         REFERENCES question_base (que_id)
 );
-
