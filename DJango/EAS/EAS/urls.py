@@ -20,6 +20,7 @@ urlpatterns = [
     path('reg/', include('reg.urls')),
     path('stu/', include('stu.urls')),
     path('uni/', include('uni.urls')),
+    path('guardian/', include('guardian.urls')),
     path('home/', include('home.urls')),
     path('support-us/', include('support.urls')),
     path('admin/', admin.site.urls),

@@ -11,6 +11,7 @@ from django.contrib import messages
 from .models import RegInfo
 from stu.models import Student, StuPhones
 from uni.models import University
+from guardian.models import Guardian
 # from .forms import InfoForm
 
 
@@ -28,8 +29,6 @@ def login(request):
                 try:
                     user = RegInfo.objects.get(reg_id = userEmail)
                     if user.reg_password == password:
-
-
                         if accountType == "Student":
                             if Student.objects.filter(stu_email=userEmail).exists() == True:
                                 return redirect('/stu/profile') #render(request, 'reg/index.html')
@@ -40,9 +39,11 @@ def login(request):
                                 return redirect('/uni/profile')
                             else:
                                 message = "This account is not a university!"
-
-
-                            
+                        elif accountType == "Guardian":
+                            if Guardian.objects.filter(guardian_email=userEmail).exists() == True:                            
+                                return redirect('/guardian/profile')
+                            else:
+                                message = "This account is not a guardian!"                           
                     else:
                         message = "Incorrect password!"
                 except:
@@ -71,22 +72,14 @@ def register(request):
         print("accounttype:")
         print(accountType)
         if accountType != "I am" and accountType != None:           
-            if userEmail != "" and password != "" and repPassword != "" and userName != "" and phone != None:        #check if user doesn't complete his/her form
-                if "@" in userEmail:                                            #check if this is a formal E-mail formate
-                    if RegInfo.objects.filter(reg_id=userEmail).exists() == False: #check if the account had existed
-                        if password == repPassword:                             #check if the two passwords are differents 
+            if userEmail != "" and password != "" and repPassword != "" and userName != "" and phone != None: #check if user doesn't complete his/her form
+                if "@" in userEmail:                                                        #check if this is a formal E-mail formate
+                    if RegInfo.objects.filter(reg_id=userEmail).exists() == False:          #check if the account had existed
+                        if password == repPassword:                                         #check if the two passwords are differents 
                             print(userEmail + " " + password)
                             if accountType == "Student":
                                 sid = "0" + time.strftime("%Y%m%d%H%M%S", time.localtime()) 
                                 print(sid)
-                                # try:                              
-                                #     Student.objects.create(stu_id=sid, stu_email=userEmail, stu_name=userName)
-                                #     StuPhones.objects.create(stu=sid, stu_phone=str(phone))
-                                #     RegInfo.objects.create(reg_id=userEmail, reg_password=password)
-                                #     return redirect('login')
-                                # except:
-                                #     message = "Register fail, please try again."
-
                                 Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
                                 Stu = Student.objects.create(stu_id=sid, stu_email=userEmail, stu_name=userName, reg=Reg)
                                 StuPhones.objects.create(stu=Stu, stu_phone=phone)
@@ -98,9 +91,12 @@ def register(request):
                                 Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
                                 Uni = University.objects.create(uni_id=uid, uni_email=userEmail, uni_name=userName, uni_phone=phone, reg=Reg)
                                 return redirect('login')                                
-
-
-                            #RegInfo.objects.create(reg_id=userEmail, reg_password=password)                                                       
+                            elif accountType == "Guardian":
+                                gid = "2" + time.strftime("%Y%m%d%H%M%S", time.localtime())
+                                print(gid)
+                                Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
+                                Gua = Guardian.objects.create(guardian_id=gid, guardian_email=userEmail, guard_name=userName, guardian_phone=phone, reg=Reg) 
+                                return redirect('login')                                                     
                         else:
                             message = "Your second password is not match, please try again."
                     else:

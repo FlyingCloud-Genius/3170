@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'reg.apps.RegConfig',
     'stu.apps.StuConfig',
     'uni.apps.UniConfig',
+    'guardian.apps.GuardianConfig',
     'home.apps.HomeConfig',
     'support.apps.SupportConfig',
     'django.contrib.admin',
