@@ -25,7 +25,7 @@ SECRET_KEY = 'bg-6a_e%kbrbr-uzm6jmr5krof)jq9@ah2@0bkautk^g5ak(ui'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['120.78.82.130']
 
 
 # Application definition
@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'reg.apps.RegConfig',
     'stu.apps.StuConfig',
+    'uni.apps.UniConfig',
     'home.apps.HomeConfig',
     'support.apps.SupportConfig',
     'django.contrib.admin',

@@ -1,6 +1,8 @@
 from django.db import models
 from reg.models import RegInfo
+from uni.models import University
 
+# Create your models here.
 class Student(models.Model):
     stu_id = models.CharField(primary_key=True, max_length=15)
     stu_name = models.CharField(max_length=40)    
@@ -36,28 +38,28 @@ class StuInterests(models.Model):
         unique_together = (('stu', 'stu_interest'),)
 
 
-# class StuApplication(models.Model):
-#     stu_app_id = models.CharField(primary_key=True, max_length=15)
-#     stu_resume = models.CharField(max_length=100)
-#     transcript = models.CharField(max_length=100)
-#     recommendation = models.CharField(max_length=50, blank=True, null=True)
-#     paper_title = models.CharField(max_length=100, blank=True, null=True)
-#     conference = models.CharField(max_length=50, blank=True, null=True)
-#     other_comments = models.CharField(max_length=50, blank=True, null=True)
-#     paper_url = models.CharField(max_length=100, blank=True, null=True)
-#     stu = models.ForeignKey('Student', models.DO_NOTHING)
-#     apply_uni = models.ForeignKey('University', models.DO_NOTHING)
+class StuApplication(models.Model):
+    stu_app_id = models.CharField(primary_key=True, max_length=15)
+    stu_resume = models.CharField(max_length=100)
+    transcript = models.CharField(max_length=100)
+    recommendation = models.CharField(max_length=50, blank=True, null=True)
+    paper_title = models.CharField(max_length=100, blank=True, null=True)
+    conference = models.CharField(max_length=50, blank=True, null=True)
+    other_comments = models.CharField(max_length=50, blank=True, null=True)
+    paper_url = models.CharField(max_length=100, blank=True, null=True)
+    stu = models.ForeignKey('Student', models.DO_NOTHING)
+    apply_uni = models.ForeignKey(University, models.DO_NOTHING)
 
-#     class Meta:
-#         managed = False
-#         db_table = 'stu_application'
+    class Meta:
+        managed = False
+        db_table = 'stu_application'
 
 
-# class StuDreamMajors(models.Model):
-#     stu_dream_major = models.CharField(max_length=20)
-#     stu_app = models.ForeignKey(StuApplication, models.DO_NOTHING, primary_key=True)
+class StuDreamMajors(models.Model):
+    stu_dream_major = models.CharField(max_length=20)
+    stu_app = models.ForeignKey(StuApplication, models.DO_NOTHING, primary_key=True)
 
-#     class Meta:
-#         managed = False
-#         db_table = 'stu_dream_majors'
-#         unique_together = (('stu_app', 'stu_dream_major'),)
+    class Meta:
+        managed = False
+        db_table = 'stu_dream_majors'
+        unique_together = (('stu_app', 'stu_dream_major'),)
