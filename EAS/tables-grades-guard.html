@@ -105,8 +105,8 @@
 
                         <li class="d-flex align-items-center my-4 col-lg-3">
                             <div class="custom-control custom-checkbox  my-4 ">
-                                <input id="availablity" type="checkbox" class="custom-control-input" />
-                                <label for="availablity" class="custom-control-label">Only consider unchecked paper sheet</label>
+                                <input id="availability" type="checkbox" class="custom-control-input" />
+                                <label for="availability" class="custom-control-label">Only consider unchecked paper sheet</label>
                             </div>
                         </li>
 
@@ -256,13 +256,11 @@
             var cityIndex = selectCity.selectedIndex;
             var city = selectCity.options[cityIndex].value;
             var tbody = ""
-            console.log(document.getElementById("availablity").checked)
 
 
-            if (document.getElementById("availablity").checked == true){
+            if (document.getElementById("availability").checked == true){
                 for (i in answers){
                     if (answers[i].City == city && answers[i].checked == "false"){
-                        console.log(answers[i].checked)
                         tbody += "<tr class='align-items-center'>" +
                                     "<th>" + answers[i].ExamID + "</th>" +
                                     "<th scope='row'>" + answers[i].PaperSheetID + "</th>" +
@@ -301,7 +299,6 @@
 
     <script>
         function onClickCommit(i, answerID){
-            console.log(answerID)
             grade = document.getElementById("grade"+String(i)).value;
             console.log("answerID: " + answerID + "  Grade: " + grade);
         }

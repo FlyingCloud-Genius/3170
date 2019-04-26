@@ -84,9 +84,9 @@
                     <h4 class="text-uppercase mb-5 text-center">Edit Or Add Exercises</h4>
                     <ul class="d-flex border border-primary shadow pl-0">
                         <li class="d-flex align-items-center my-4 col-lg-3">
-                            <label for="Location" class="mt-1">Type: </label>
-                            <div id="Location" class="select ml-2">
-                                <select id="selectCity" name="account" class="form-control" style="width:250px">
+                            <label for="Location" class="mt-1" style="width:100px">Question Type: </label>
+                            <div id="Location" class="select ml-2 mt-2" style="width:300px">
+                                <select id="selectType" name="account" class="form-control" style="width:250px">
                                     <option>Verbal Reasoning</option>
                                     <option>Quantitative Reasoning</option>
                                     <option>Analytical Writing</option>
@@ -111,16 +111,20 @@
                     <div class="row">
                         <div class="col-lg-12 mb-4">
                             <div class="card">
-                                <div class="card-header">                                   
+                                <div class="card-header">
+                                    <h5 class="text-uppercase mb-0 ">Questions</h6>                                   
                                 </div>
                                 <div class="card-body">
                                     <table class="table card-text">
                                         <thead>
                                         <tr>
-                                            <th>Exercises ID</th>
-                                            <th>Exercises Type</th>
-                                            <th>Exercises Content</th>
-                                            <th>Exercises Analysis</th>
+                                            <th>ID</th>
+                                            <th>Type</th>
+                                            <th>Difficulty</th>
+                                            <th>Content</th>
+                                            <th>Answer</th>
+                                            <th>Analysis</th>
+                                            <th>Edit</th>
                                         </tr>
                                         </thead>
                                         <tbody id = "searchResult">
@@ -130,6 +134,38 @@
                             </div>
                         </div>
                     </div>
+                </section>
+
+                <section class="pb-5 border border-primary">
+                    <form>
+                        <div class="d-flex ml-3 mt-3">
+                                <p>ID</p>
+                                <input id="questionID" type="text" name="username" placeholder="" class="">
+                        </div>
+                        <div class="d-flex ml-3 mt-3">
+                                <p>Type</p>
+                                <input id="questionType" type="text" name="username" placeholder="" class="">
+                        </div>                        
+                    </form>
+                    <div class="ml-3 mt-3">
+                        <h7 class="text-uppercase">question content</h7>
+                        <input style="width:0px" type=file id=contentfile style="visibility:hidden" onchange=contentfilepath.value=this.value>
+                        <input type=textfield id=contentfilepath>
+                        <input type=button id=contentfilebutton value=browser onclick=contentfile.click()>
+                    </div>
+                    <div class="ml-3 mt-3">
+                        <h7 class="text-uppercase">question answer</h7>
+                        <input style="width:0px" type=file id=answerfile style="visibility:hidden" onchange=answerfilepath.value=this.value>
+                        <input type=textfield id=answerfilepath>
+                        <input type=button id=answerfilebutton value=browser onclick=answerfile.click()>
+                    </div>
+                    <div class="ml-3 mt-3">
+                        <h7 class="text-uppercase">question analysis</h7>
+                        <input style="width:0px" type=file id=analysisfile style="visibility:hidden" onchange=analysisfilepath.value=this.value>
+                        <input type=textfield id=analysisfilepath>
+                        <input type=button id=analysisfilebutton value=browser onclick=analysisfile.click()>
+                    </div>
+                    <button class="pull-right mr-4" onclick="onClickSubmit()">Submit</button>
                 </section>
             </div>
         </div>
@@ -228,41 +264,70 @@
     </script>
 
     <script>
+        var questions = new Array();
+        questions[0] = {ID:"000001", type:"Analytical Writing", difficulty:"3", content:"Tian'an Gate", answer:"Yes", analysis:"hahahahaha"};
+        questions[1] = {ID:"000002", type:"Verbal Reasoning", difficulty:"2", content:"Tian'an Gate", answer:"Yes", analysis:"hahahahaha"};
+        questions[2] = {ID:"000003", type:"Quantitative Reasoning", difficulty:"1", content:"Tian'an Gate", answer:"Yes", analysis:"hahahahaha"};
+        questions[3] = {ID:"000004", type:"Verbal Reasoning", difficulty:"5", content:"Tian'an Gate", answer:"Yes", analysis:"hahahahaha"};
+        questions[4] = {ID:"000005", type:"Verbal Reasoning", difficulty:"4", content:"Tian'an Gate", answer:"Yes", analysis:"hahahahaha"};
+        questions[5] = {ID:"000006", type:"Quantitative Reasoning", difficulty:"1", content:"Tian'an Gate", answer:"Yes", analysis:"hahahahaha"};
+        questions[6] = {ID:"000007", type:"Analytical Writing", difficulty:"2", content:"Tian'an Gate", answer:"Yes", analysis:"hahahahaha"};
+        
         function onClickSearch() {
-            var exams = new Array();
-            exams[0] = {City:"Beijing", ExamID:"1", ExamTime:"2011-11-04", ExamLocation:"Tian'an Gate", Availability:"Yes"};
-            exams[1] = {City:"Beijing", ExamID:"2", ExamTime:"2011-12-04", ExamLocation:"Huang Fu Jing", Availability:"No"};
-            exams[2] = {City:"Beijing", ExamID:"3", ExamTime:"2011-10-04", ExamLocation:"Zhong Nan Hai", Availability:"No"};
-            exams[3] = {City:"Shanghai", ExamID:"4", ExamTime:"2011-01-04", ExamLocation:"Wai Tan", Availability:"Yes"};
-            exams[4] = {City:"Shanghai", ExamID:"5", ExamTime:"2011-06-04", ExamLocation:"Dong Fang Ming Zhu", Availability:"Yes"};
-            exams[5] = {City:"Shanghai", ExamID:"6", ExamTime:"2011--04-04", ExamLocation:"Pu Dong Xing Cheng", Availability:"No"};
-            exams[6] = {City:"Guangzhou", ExamID:"7", ExamTime:"2011-02-04", ExamLocation:"Bai Yun Park", Availability:"Yes"};
-            
-            var selectCity = document.getElementById("selectCity");
-            var cityIndex = selectCity.selectedIndex;
-            var city = selectCity.options[cityIndex].value;
+            var selectCity = document.getElementById("selectType");
+            var typeIndex = selectCity.selectedIndex;
+            var type = selectCity.options[typeIndex].value;
             var tbody = ""
 
-            for (i in exams){
-                console.log(exams[i]);
-                if (exams[i].City == city){
+            for (i in questions){
+                console.log(questions[i]);
+                if (questions[i].type == type){
                     tbody += "<tr class='align-items-center'>" +
+                                "<th>" + questions[i].ID + "</th>" +
+                                "<th>" + questions[i].type + "</th>" +
+                                "<th>" + questions[i].difficulty + "</th>" +
+                                "<th>" + questions[i].content + "</th>" +
+                                "<th>" + questions[i].answer+ "</th>" +
+                                "<th>" + questions[i].analysis+ "</th>" +
                                 "<th>" +
-                                    "<div class='custom-control custom-checkbox align-items-center '>" +
-                                        "<input id='customCheck1.1' type='checkbox' class='custom-control-input' />" +
-                                        "<label for='customCheck1.1' class='custom-control-label'>|</label>" +
-                                    "</div>" +
+                                    "<button type='button' onclick='onClickEdit("+String(i)+")'>Edit</button>" +
                                 "</th>" +
-                                "<th>" + exams[i].City + "</th>" +
-                                "<th scope='row'>" + exams[i].ExamID + "</th>" +
-                                "<td>" + exams[i].ExamTime + "</td>" +
-                                "<td>" + exams[i].ExamLocation + "</td>" +
-                                "<td>" + exams[i].Availability+ "</td>" +
                             "</tr>";
                 }
             }
-
             document.getElementById("searchResult").innerHTML = tbody;
+        }
+
+        function onClickEdit(i){
+            var questionID = document.getElementById("questionID");
+            var questionType = document.getElementById("questionType");
+            var contentfile = document.getElementById("contentfilepath");
+            var answerfile = document.getElementById("answerfilepath");
+            var analysisfile = document.getElementById("analysisfilepath");
+            questionID.value = questions[i].ID;
+            questionType.value = questions[i].type;
+            contentfile.value = questions[i].content;
+            answerfile.value = questions[i].answer;
+            analysisfile.value = questions[i].analysis;
+        }
+
+        function onClickSubmit(){
+            var questionID = document.getElementById("questionID");
+            var questionType = document.getElementById("questionType");
+            var contentfile = document.getElementById("contentfilepath");
+            var answerfile = document.getElementById("answerfilepath");
+            var analysisfile = document.getElementById("analysisfilepath");
+            var newID = questionID.value;
+            var newType = questionType.value;
+            var newContent = contentfile.value;
+            var newAnswer = answerfile.value;
+            var newAnalysis = analysisfile.value;
+            questionID.value = "";
+            questionType.value = "";
+            contentfile.value = "";
+            answerfile.value = "";
+            analysisfile.value = "";
+            console.log("ID: "+newID+" Type: "+newType+" content: "+newContent+" answer: "+newAnswer+" analysis: "+newAnalysis);
         }
     </script>
 
