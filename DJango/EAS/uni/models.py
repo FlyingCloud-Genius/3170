@@ -12,7 +12,7 @@ class University(models.Model):
     reg = models.ForeignKey(RegInfo, models.DO_NOTHING)
     uni_web = models.CharField(max_length = 100)
     uni_photo = models.CharField(max_length = 100)
-    
+
 
     class Meta:
         managed = False
@@ -28,3 +28,20 @@ class UniOpenMajor(models.Model):
         managed = False
         db_table = 'uni_open_major'
         unique_together = (('uni', 'open_major'),)
+
+
+class StuApplication(models.Model):
+    stu_app_id = models.CharField(primary_key=True, max_length=15)
+    stu_resume = models.CharField(max_length=100, blank=True, null=True)
+    transcript = models.CharField(max_length=100, blank=True, null=True)
+    recommendation = models.CharField(max_length=50, blank=True, null=True)
+    paper_title = models.CharField(max_length=100, blank=True, null=True)
+    conference = models.CharField(max_length=50, blank=True, null=True)
+    other_comments = models.CharField(max_length=50, blank=True, null=True)
+    paper_url = models.CharField(max_length=100, blank=True, null=True)
+    stu = models.ForeignKey('Student', models.DO_NOTHING)
+    apply_uni = models.ForeignKey('University', models.DO_NOTHING)
+
+    class Meta:
+        managed = False
+        db_table = 'stu_application'

@@ -6,11 +6,15 @@ from .models import University, UniOpenMajor
 def profile(request):
     if request.method == "GET":
         uni = University.objects.get(uni_email = "admissions@cuhk.edu.cn")
+        #get university info
         name = uni.uni_name
         phone = uni.uni_phone
         email = uni.uni_email
         web = uni.uni_web
         adress = uni.uni_address
         # photo
+
+        #get student application
+        
         return render_to_response('uni/university-profile.html', locals())
     return HttpResponse(request)
