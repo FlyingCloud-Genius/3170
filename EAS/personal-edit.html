@@ -2,10 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Sign Up</title>
+    <title>Edit Information</title>
     <link rel="shortcut icon" href="./images/png/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author"    content="HSY, MZH">
+    <meta name="author"   content="HSY, MZH">
     
     <!-- css -->
     <link rel="stylesheet" href="./css/vendor/bootstrap/css/bootstrap.min.css">
@@ -21,25 +21,12 @@
   <body>
     <div class="page-holder d-flex align-items-center">
         <div class="container">                                                                         
-            <div class="row align-items-center py-5">
-                <div class="col-lg-5 px-lg-4">
+            <div class="row align-items-center py-5 justify-content-center">
+
+                <div class="text-center">
                     <h1 class="text-base text-primary text-uppercase mb-4" onclick="javascript:window.location.href='home.html'">Exam and Application System</h1>
-                    <h2 class="mb-4">Welcome my friend!</h2>
-                    <p class="text-muted">We secure. We contain. We protect.</p>
+                    <h2 class="mb-4">Edit Your Information Here</h2>
                     <form id="loginForm" action="index.html" class="mt-4">
-
-                    <div class="form-group mb-4">
-                        <select id="selectAccount" name="accountType" class="form-control shadow" style="width: 130px">
-                                <option>I am</option>
-                                <option>Student</option>
-                                <option>University</option>
-                                <option>Guardian</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group mb-4">
-                        <input type="text" name="userEmail" placeholder="Email address" class="form-control border-0 shadow form-control-lg">
-                    </div>
 
                     <div class="form-group mb-4">
                         <input type="password" name="password" placeholder="Password" class="form-control border-0 shadow form-control-lg text-violet">
@@ -49,6 +36,31 @@
                         <input type="password" name="reppassword" placeholder="Repeat Password" class="form-control border-0 shadow form-control-lg text-violet">
                     </div>
 
+                    <div class="row mb-4">
+                        <div class="col-xl-6 col-lg-6 mb-4 mb-xl-0">
+                            <input type="text" name="firstName" placeholder="First name" class="form-control border-0 shadow form-control-lg text-violet">
+                        </div>
+                        <div class="col-xl-6 col-lg-6 mb-4 mb-xl-0">
+                            <input type="text" name="lastName" placeholder="Last name" class="form-control border-0 shadow form-control-lg text-violet">
+                        </div>
+                    </div>
+                        
+                    <div class="form-group mb-4">
+                        <input type="text" name="phoneNum" placeholder="Phone number" class="form-control border-0 shadow form-control-lg text-violet">
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <input type="text" name="gender" placeholder="Gender" class="form-control border-0 shadow form-control-lg text-violet">
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <input type="text" name="university" placeholder="Undergraduate University" class="form-control border-0 shadow form-control-lg text-violet">
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <input type="text" name="major" placeholder="Major" class="form-control border-0 shadow form-control-lg text-violet">
+                    </div>
+
                     <div class="form-group mb-4">
                         <div class="custom-control custom-checkbox">
                             <input id="customCheck1" type="checkbox" checked class="custom-control-input">
@@ -56,15 +68,10 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-block btn-lg px-4">Register</button>
+                    <button class="btn btn-primary btn-block btn-lg px-4">Submit</button>
+                    <button class="btn btn-primary btn-block btn-lg px-4" style="background-color: rgb(196, 193, 193); border-color: rgb(196, 193, 193)">Discard Changes</button>
                     </form>
 
-                </div>
-
-                <div class="col-5 col-lg-7 mx-auto mb-5 mb-lg-0">
-                    <div class="pr-lg-5" style="margin-left:150px">
-                        <img src="./images/jpg/man.png" alt="" class="img-fluid">
-                    </div>    
                 </div>
 
             </div>
