@@ -149,15 +149,17 @@
                             <div class="profile-main">
                                 <div class="profile-pic">
                                     <img src="{% static 'images/jpg/ucla.jpg'%}" alt="">
-                                    <h3>University of California, Los Angeles</h3>
+                                    <h3>{{name}}}</h3>
                                     <div class="">     
                                         <ul class="profile-address">
                                             </br>
-                                            <li><b>Contact Phone : </b><span class="w3">+8612345678901</span></li>
+                                            <li><b>Contact Phone : </b><span class="w3">{{phone}}</span></li>
                                             </br>
-                                            <li><b>Contact Email : </b><span class="w3">ucla@gmail.com</span></li>
+                                            <li><b>Contact Email : </b><span class="w3">{{email}}</span></li>
                                             </br>
-                                            <li><b>Official Website : </b><span class="w3"><a href="http://www.ucla.com/">http://www.ucla.com/</a></span></li>
+                                            <li><b>Official Website : </b><span class="w3"><a href="http://www.ucla.com/">{{web}}</a></span></li>
+                                            </br>
+                                            <li><b>University Address : </b><span class="w3">{{address}}</span></li>
                                             </br>
                                         </ul>
                                     </div>
