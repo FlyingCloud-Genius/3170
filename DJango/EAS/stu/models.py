@@ -8,7 +8,6 @@ class Student(models.Model):
     stu_name = models.CharField(max_length=40)    
     stu_email = models.CharField(max_length=30)
     stu_gender = models.IntegerField(blank=True, null=True)
-    stu_birthday = models.DateField(blank=True, null=True)
     stu_major = models.CharField(max_length=50, blank=True, null=True)
     stu_c_uni = models.CharField(max_length=50, blank=True, null=True)
     reg = models.ForeignKey(RegInfo, models.DO_NOTHING)

@@ -8,7 +8,6 @@ class University(models.Model):
     uni_name = models.CharField(max_length=100)
     uni_phone = models.CharField(max_length=20)
     required_gre_score = models.IntegerField(db_column='required_GRE_score', blank=True, null=True)  # Field name made lowercase.
-    uni_address = models.CharField(max_length=100, blank=True, null=True)
     reg = models.ForeignKey(RegInfo, models.DO_NOTHING)
     uni_web = models.CharField(max_length = 100)
     uni_photo = models.CharField(max_length = 100)

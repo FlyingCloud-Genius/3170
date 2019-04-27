@@ -11,7 +11,6 @@ def profile(request):
         phone = uni.uni_phone
         email = uni.uni_email
         web = uni.uni_web
-        adress = uni.uni_address
         # photo
 
         #get student application
