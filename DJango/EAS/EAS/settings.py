@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['120.78.82.130', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'GRE_exam.apps.GreExamConfig',
     'reg.apps.RegConfig',
     'stu.apps.StuConfig',
     'uni.apps.UniConfig',
