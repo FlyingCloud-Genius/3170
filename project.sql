@@ -10,7 +10,9 @@ create table reg_info
 
 create table student
 (   stu_id char(15) not null,
-    stu_name varchar(40),
+    stu_fname varchar(0),
+    stu_lname varchar(20),
+    stu_phone varchar(20),
     stu_gender int,
     stu_major varchar(50),
     stu_email varchar(30),
@@ -18,20 +20,6 @@ create table student
     reg_id varchar(30),
     PRIMARY key (stu_id),
     foreign key (reg_id) references reg_info(reg_id)
-);
-
-create table stu_phones
-(   stu_phone varchar(20) not null,
-    stu_id char(15) not null,
-    primary key (stu_phone, stu_id),
-    FOREIGN key (stu_id) references student(stu_id) 
-);
-
-create table stu_interests
-(   stu_interest varchar(20),
-    stu_id char(15) not null,
-    primary key (stu_id),
-    foreign key (stu_id) references student(stu_id)
 );
 
 create table university
@@ -60,10 +48,6 @@ create table stu_application
     stu_resume varchar(100),
     transcript varchar(100),
     recommendation varchar(50),
-    paper_title varchar(100),
-    conference varchar(50),
-    other_comments varchar(50),
-    paper_url varchar(100),
     stu_id char(15) not null,
     apply_uni_id char(15) not null,
     primary key (stu_app_id),
@@ -82,6 +66,7 @@ create table exam
 (   exam_id char(15) not null,
     exam_location varchar(100),
     exam_time DATETIME,
+    availability bool,
     primary key (exam_id)
 );
 
@@ -96,7 +81,8 @@ create table attendance
 create table guardian
 (   guardian_id char(15) not null,
     guardian_email varchar(30),
-    guard_name varchar(40),
+    guard_fname varchar(20),
+    guardian_lname varchar(20),
     guardian_phone varchar(20),
     reg_id varchar(30),
     primary key (guardian_id),
