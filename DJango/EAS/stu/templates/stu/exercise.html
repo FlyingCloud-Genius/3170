@@ -43,28 +43,28 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
                             <!-- <li><a href="introduction">About</a></li> -->
-                            <li><a href="enrollment">Enrollment</a></li>
+                            <li><a href={{enrollLink}}>Enrollment</a></li>
                             <li class="dropdown">
-                                    <a href="exercise" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Exercises</a>
+                                    <a href={{exeLink}} class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Exercises</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="exercise#verbal">Verbal Reasoning</a></li>
-                                        <li><a href="exercise#quantitative">Quantitative Reasoning</a></li>
-                                        <li><a href="exercise#writing">Analytical Writing</a></li>
+                                        <li><a href={{exeVerLink}}>Verbal Reasoning</a></li>
+                                        <li><a href={{exeQuaLink}}>Quantitative Reasoning</a></li>
+                                        <li><a href={{exeWriLink}}>Analytical Writing</a></li>
                                     </ul>
                             </li>
                             <li class="dropdown">
-                                    <a href="application" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Dream Schools</a>
+                                    <a href={{appLink}} class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Dream Schools</a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="application#usa">USA</a></li>
-                                        <li><a href="application#europe">Europe</a></li>
-                                        <li><a href="application#asia">Asia</a></li>
-                                        <li><a href="application#others">Others</a></li>
+                                        <li><a href={{appUSALink}}>USA</a></li>
+                                        <li><a href={{appEURLink}}>Europe</a></li>
+                                        <li><a href={{appASILink}}>Asia</a></li>
+                                        <li><a href={{appOthLink}}>Others</a></li>
                                     </ul>
                             </li>
                             <li><a href="../support-us">Support Us</a></li>
                             <li class="inactive"><a></a></li>
                             <li class="myprofile">
-                                <a href=""><img src="{% static 'images/jpg/p1.jpeg'%}" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
+                                <a href={{proLink}}><h7 style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"><strong>{{name}}</strong></h7></a>
                             </li>
                             <li class="mylogin"><a href="../home">Log Out</a></li>
                         </ul>
