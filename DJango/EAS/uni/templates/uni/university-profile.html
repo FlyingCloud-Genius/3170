@@ -39,7 +39,7 @@
             <div class="navbar navbar-default navbar-static-top">
                 <div class="container">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="../home" style="font-size: 50px">EA<span>S</span></a>
+                        <a class="navbar-brand" href="../../home" style="font-size: 50px">EA<span>S</span></a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
@@ -62,12 +62,12 @@
                                         <li><a href="application.html#others">Others</a></li>
                                     </ul>
                             </li> -->
-                            <li><a href="../support-us">Support Us</a></li>
+                            <li><a href="../../support-us">Support Us</a></li>
                             <li class="inactive"><a></a></li>
                             <li class="myprofile">
                                 <a href="university-profile.html"><img src= "{% static 'images/jpg/ucla.jpg'%}" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
                             </li>
-                            <li class="mylogin"><a href="../home">Log Out</a></li>
+                            <li class="mylogin"><a href="../../home">Log Out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                 <ul class="sidebar-menu list-unstyled">
                     <li class="sidebar-list-item"><a href="#received" class="sidebar-link text-muted"><i class="o-app-layout-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 1px">Received Application</span></a></li>
                     <li class="sidebar-list-item"><a href="#information" class="sidebar-link text-muted"><i class="o-home-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 1px">University Information</span></a></li>
-                    <li class="sidebar-list-item"><a href="../home" class="sidebar-link text-muted"><i class="o-exit-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 2px">Log Out</span></a></li>
+                    <li class="sidebar-list-item"><a href="../../home" class="sidebar-link text-muted"><i class="o-exit-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 2px">Log Out</span></a></li>
             </div> 
             <!-- main page-->
             <div class="container-fluid px-xl-5">
@@ -157,9 +157,11 @@
                                             </br>
                                         </ul>
                                     </div>
-                                    <div class="form-group">       
-                                        <button type="submit" class="btn btn-primary" onclick="javascript:window.location.href='university-edit.html';">Edit</button>
-                                    </div>
+                                    <form id="idOnClick" class="mt-4" method = "POST">
+                                        <div class="form-group">       
+                                            <button type="submit" class="btn btn-primary">Edit</button>
+                                        </div>
+                                    </form>
                                     <div class="clear"></div>
                                 </div>
                             </div>
@@ -199,7 +201,7 @@
                             <li><a href="https://user.qzone.qq.com/133228573/"><img src="{% static 'images/icon/Tencent.ico'%}" height="30" width="30"></a></li>
                             <li><a href="http://tieba.baidu.com/f?kw=%CF%E3%B8%DB%D6%D0%CE%C4%B4%F3%D1%A7%C9%EE%DB%DA"><img src="{% static 'images/icon/TieBa.ico'%}" height="30" width="30"></a></li>
                             <li><a href="https://www.facebook.com/Welcome-2267653903313743/"><i class="fab fa-facebook-square" style="font-size:30px"></i></a></li>
-                            <li><a href="../support-us"><i class="fab fa-weixin" style="font-size:30px"></i></a></li>
+                            <li><a href="../../support-us"><i class="fab fa-weixin" style="font-size:30px"></i></a></li>
                             <li><a href="http://www.cuhk.edu.cn/academics/caiwei/"><img src="{% static 'images/icon/WeiBo.ico'%}" height="30" width="30"></a></li>
                         </ul>
                     </div>
