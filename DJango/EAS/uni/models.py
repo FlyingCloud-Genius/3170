@@ -1,6 +1,7 @@
 from django.db import models
 from reg.models import RegInfo
 
+
 # Create your models here.
 class University(models.Model):
     uni_id = models.CharField(primary_key=True, max_length=15)
