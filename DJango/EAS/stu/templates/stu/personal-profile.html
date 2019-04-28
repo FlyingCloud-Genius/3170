@@ -13,6 +13,7 @@
         <title>EAS | Personal Profile</title>
         <link rel="icon" href="{% static 'images/png/logo.png'%}">
         <!--css-->
+        {% block css %}
         <link href="{% static 'css/vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet" >
         <link href="{% static 'css/bootstrap.min.css'%}" rel="stylesheet">
         <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" >
@@ -33,7 +34,7 @@
         <link href="{% static 'css/component.css'%}" rel="stylesheet" >
         <link href="{% static 'css/default.css'%}" rel="stylesheet" >
         <style type="text/css">.dropdown-submenu:hover>.dropdown-menu{display:none}</style>
-
+        {% endblock %}
     </head>
     <body>
         <!--header start-->
@@ -211,16 +212,20 @@
                                             </br>
                                             <li><b>Phone : </b><span class="w3">{{phone}}</span></li>
                                             </br>
-                                            <li><b>Email Address: </b><span class="w3" id="Eaddress"></span></li>
+                                            <li><b>Email Address: </b><span class="w3" id="Eaddress">{{email}}</span></li>
                                             </br>
                                             <li><b>Undergraduate University : </b><span class="w3">{{university}}</span></li>
                                             </br>
                                             <li><b>Major : </b><span class="w3">{{major}}</span></li>
                                             </br>
                                         </ul>
-                                        <div class="form-group">       
-                                            <button type="submit" class="btn btn-primary" onclick="javascript:var EA = JSON.parse('{{email}}'); window.location.href='editor/' + EA ;">Edit</button>
-                                        </div>                                       
+                                        <form id="editForm" method="POST">
+
+                                            <!-- {% csrf_token %} -->
+                                            <div class="form-group">       
+                                                <button type="submit" class="btn btn-primary" >Edit</button>
+                                            </div> 
+                                        </form>                                      
                                     </div>
                                     <div class="clear"></div>
                                 </div>
@@ -477,7 +482,7 @@
             }
         </script>
 
-<script>
+    <script>
         function uploadTranscript(){
             var transcriptFile = document.getElementById("transcriptfile").files;
 
@@ -512,7 +517,7 @@
         }
     </script>
 
-<script>
+    <script>
         function uploadRecommendation(){
             var recommendationFile = document.getElementById("recommendationfile").files;
 
@@ -545,13 +550,6 @@
             });
             xhr.send(form); 
         }
-    </script>
-
-    <script>
-        var json = '{{email|safe}}';
-        var obj = JSON.parse(json);
-        document.getElementById("Eaddress").innerHTML = obj;
-        
     </script>
     </body>
 </html>

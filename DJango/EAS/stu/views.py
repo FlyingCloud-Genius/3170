@@ -1,14 +1,15 @@
 from django.shortcuts import render, render_to_response, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import messages
-import json
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 from .models import Student
 
-def profile(request, userEamil):
+@csrf_exempt
+def profile(request, userID):
     if request.method == "GET":
-        stu = Student.objects.get(stu_email = userEamil)
+        stu = Student.objects.get(stu_id = userID)
         # print("gender: ")
         # print(stu.stu_gender)
         name = stu.stu_fname + stu.stu_lname
@@ -22,40 +23,41 @@ def profile(request, userEamil):
         email = stu.stu_email
         university = stu.stu_c_uni
         major = stu.stu_major
-        #return render_to_response('stu/personal-profile.html', locals())
-        return render(request, 'stu/personal-profile.html', {'gender':gender, 'name':name, 'phone':phone, 'email':email, 'university':university, 'major':major}) #, {'gender': gender}
+        return render_to_response('stu/personal-profile.html', locals())
+        #return render(request, 'stu/personal-profile.html', {'gender':gender, 'name':name, 'phone':phone, 'email':json.dumps(email), 'university':university, 'major':major}) #, {'gender': gender}
+    elif request.method == "POST":
+        return redirect('/stu/editor/%s' %userID) 
+    else:
+        return render(request, 'stu/personal-profile.html')
 
-    return render(request, 'stu/personal-profile.html')
-
-
-def editor(request, userEamil):
+@csrf_exempt
+def editor(request, userID):
     if request.method == "POST":
         message = "You should agree with the privacy of Exam and Application System"
         check_box = request.POST.getlist('check_box')
         if check_box:        
-            genderSet = {0:"male", 1:"female"}
-            stu = Student.objects.get(stu_email=userEamil)
-            stu.stu_fname = request.POST.get('firstName')
-            stu.stu_lname = request.POST.get('lastName')
-            stu.stu_phone = request.POST.get('phoneNum')
-            stu.stu_c_uni = request.POST.get('university')
-            stu.stu_major = request.POST.get('major')
+            genderSet = {"male":0, "female":1}
+            stu = Student.objects.get(stu_id=userID)
+            if request.POST.get('firstName') != "":
+                stu.stu_fname = request.POST.get('firstName')
+            if request.POST.get('lastName') != "":    
+                stu.stu_lname = request.POST.get('lastName')
+            if request.POST.get('phoneNum') != "":    
+                stu.stu_phone = request.POST.get('phoneNum')
+            if request.POST.get('university') != "":     
+                stu.stu_c_uni = request.POST.get('university')
+            if request.POST.get('major') != "": 
+                stu.stu_major = request.POST.get('major')
 
-            gender = str(request.POST.get('gender'))
-            gender = gender.lower()
-            if genderSet.__contains__(gender) == True:
-                stu.stu_gender = genderSet[gender]
+            if request.POST.get('gender') != "":
+                gender = str(request.POST.get('gender'))
+                gender = gender.lower()
+                if genderSet.__contains__(gender) == True:
+                    stu.stu_gender = genderSet.get(gender)
             
             stu.save()
-            print(stu.stu_gender)
-            return redirect('/stu/profile/%s' %userEmail) 
+            return redirect('/stu/profile/%s' %userID) 
         return render(request, 'stu/personal-edit.html', {"message": message}) 
-            
-
-
-        
-        
-
     return render(request, 'stu/personal-edit.html')
 
 
