@@ -131,6 +131,7 @@
                                             <th>Exam ID</th>
                                             <th>Exam Time</th>
                                             <th>City</th>
+                                            <th>Answer ID</th>
                                             <th>Grades </th>
                                         </tr>
                                         </thead>
@@ -139,6 +140,7 @@
                                             <th>1</th>
                                             <th>2011-11-04</th>
                                             <th>Shenzhen</th>
+                                            <th>1</th>
                                             <th>320</th>
                                         </tr>
                                         </tbody>
@@ -201,23 +203,23 @@
                             <div class="profile-main">
                                 <div class="profile-pic wthree">
                                     <img src="{% static 'images/jpg/p1.jpeg'%}" alt="" >
-                                    <h3>Laila</h3>
+                                    <h3>{{name}}</h3>
                                     <div>     
                                         <ul class="profile-address">
                                             </br>
                                             <li><b>Sex : </b><span class="w3">{{gender}}</span></li>
                                             </br>
-                                            <li><b>Phone : </b><span class="w3">+8612345678901</span></li>
+                                            <li><b>Phone : </b><span class="w3">{{phone}}</span></li>
                                             </br>
-                                            <li><b>Email Address: </b><span class="w3">laila@gmail.com</span></li>
+                                            <li><b>Email Address: </b><span class="w3" id="Eaddress"></span></li>
                                             </br>
-                                            <li><b>Undergraduate University : </b><span class="w3">CUHK</span></li>
+                                            <li><b>Undergraduate University : </b><span class="w3">{{university}}</span></li>
                                             </br>
-                                            <li><b>Major : </b><span class="w3">Computer Science</span></li>
+                                            <li><b>Major : </b><span class="w3">{{major}}</span></li>
                                             </br>
                                         </ul>
                                         <div class="form-group">       
-                                            <button type="submit" class="btn btn-primary" onclick="javascript:window.location.href='editor';">Edit</button>
+                                            <button type="submit" class="btn btn-primary" onclick="javascript:var EA = JSON.parse('{{email}}'); window.location.href='editor/' + EA ;">Edit</button>
                                         </div>                                       
                                     </div>
                                     <div class="clear"></div>
@@ -543,6 +545,13 @@
             });
             xhr.send(form); 
         }
+    </script>
+
+    <script>
+        var json = '{{email|safe}}';
+        var obj = JSON.parse(json);
+        document.getElementById("Eaddress").innerHTML = obj;
+        
     </script>
     </body>
 </html>

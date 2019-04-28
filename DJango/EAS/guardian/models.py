@@ -5,7 +5,8 @@ from reg.models import RegInfo
 class Guardian(models.Model):
     guardian_id = models.CharField(primary_key=True, max_length=15)
     guardian_email = models.CharField(max_length=30, blank=True, null=True)
-    guard_name = models.CharField(max_length=40, blank=True, null=True)
+    guard_fname = models.CharField(max_length=20, blank=True, null=True)
+    guardian_lname = models.CharField(max_length=20, blank=True, null=True)
     guardian_phone = models.CharField(max_length=20, blank=True, null=True)
     reg = models.ForeignKey(RegInfo, models.DO_NOTHING, blank=True, null=True)
 

@@ -29,42 +29,47 @@
                 <div class="text-center">
                     <h1 class="text-base text-primary text-uppercase mb-4" onclick="javascript:window.location.href='../home'">Exam and Application System</h1>
                     <h2 class="mb-4">Edit Your Information Here</h2>
-                    <form id="loginForm" action="index.html" class="mt-4">
+                    <form id="loginForm" class="mt-4" method="POST">
 
-                    <div class="row mb-4">
-                        <div class="col-xl-6 col-lg-6 mb-4 mb-xl-0">
-                            <input type="text" name="firstName" placeholder="First name" class="form-control border-0 shadow form-control-lg text-violet">
+                        {% if message %}
+                        <div class="alert alert-warning">{{ message }}</div>
+                        {% endif %}
+
+                        {% csrf_token %}
+                        <div class="row mb-4">
+                            <div class="col-xl-6 col-lg-6 mb-4 mb-xl-0">
+                                <input type="text" name="firstName" placeholder="First name" class="form-control border-0 shadow form-control-lg text-violet">
+                            </div>
+                            <div class="col-xl-6 col-lg-6 mb-4 mb-xl-0">
+                                <input type="text" name="lastName" placeholder="Last name" class="form-control border-0 shadow form-control-lg text-violet">
+                            </div>
                         </div>
-                        <div class="col-xl-6 col-lg-6 mb-4 mb-xl-0">
-                            <input type="text" name="lastName" placeholder="Last name" class="form-control border-0 shadow form-control-lg text-violet">
+                            
+                        <div class="form-group mb-4">
+                            <input type="text" name="phoneNum" placeholder="Phone number" class="form-control border-0 shadow form-control-lg text-violet">
                         </div>
-                    </div>
-                        
-                    <div class="form-group mb-4">
-                        <input type="text" name="phoneNum" placeholder="Phone number" class="form-control border-0 shadow form-control-lg text-violet">
-                    </div>
 
-                    <div class="form-group mb-4">
-                        <input type="text" name="gender" placeholder="Gender" class="form-control border-0 shadow form-control-lg text-violet">
-                    </div>
-
-                    <div class="form-group mb-4">
-                        <input type="text" name="university" placeholder="Undergraduate University" class="form-control border-0 shadow form-control-lg text-violet">
-                    </div>
-
-                    <div class="form-group mb-4">
-                        <input type="text" name="major" placeholder="Major" class="form-control border-0 shadow form-control-lg text-violet">
-                    </div>
-
-                    <div class="form-group mb-4">
-                        <div class="custom-control custom-checkbox">
-                            <input id="customCheck1" type="checkbox" checked class="custom-control-input">
-                            <label for="customCheck1" class="custom-control-label">I agree with the <a href="../supportus">privacy</a> of Exam and Application System</label>
+                        <div class="form-group mb-4">
+                            <input type="text" name="gender" placeholder="Gender" class="form-control border-0 shadow form-control-lg text-violet">
                         </div>
-                    </div>
 
-                    <button class="btn btn-primary btn-block btn-lg px-4">Submit</button>
-                    <button class="btn btn-primary btn-block btn-lg px-4" style="background-color: rgb(196, 193, 193); border-color: rgb(196, 193, 193)">Discard Changes</button>
+                        <div class="form-group mb-4">
+                            <input type="text" name="university" placeholder="Undergraduate University" class="form-control border-0 shadow form-control-lg text-violet">
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <input type="text" name="major" placeholder="Major" class="form-control border-0 shadow form-control-lg text-violet">
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <div class="custom-control custom-checkbox">
+                                <input id="customCheck1" type="checkbox" checked class="custom-control-input" name="check_box">
+                                <label for="customCheck1" class="custom-control-label">I agree with the <a href="../support-us">privacy</a> of Exam and Application System</label>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary btn-block btn-lg px-4">Submit</button>
+                        <button class="btn btn-primary btn-block btn-lg px-4" style="background-color: rgb(196, 193, 193); border-color: rgb(196, 193, 193)">Discard Changes</button>
                     </form>
 
                 </div>
