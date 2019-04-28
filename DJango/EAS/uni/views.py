@@ -17,3 +17,18 @@ def profile(request):
         
         return render_to_response('uni/university-profile.html', locals())
     return HttpResponse(request)
+
+def infoChange(request):
+    if request == "POST" and request.POST:
+        uni_name = request.POST.get("username")
+        uni_phone = request.POST.get("contactNum")
+        uni_web = request.POST.get("officialWebsite")
+        uni_score = request.POST.get("requirement")
+        uni = University()
+        uni.uni_name = uni_name
+        uni.uni_web = uni_web
+        uni.uni_phone = uni_phone
+        uni.required_gre_score = uni_score
+        uni.save() #changes saved
+        result = "success"
+    return render(request, "templates/uni/university-profile.html", {"result": result})
