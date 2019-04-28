@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from .models import University, UniOpenMajor
 # Create your views here.
 def profile(request):
-    if request.method == "GET":
+    if request.method == "GET" and request.GET:
         uni = University.objects.get(uni_email = "admissions@cuhk.edu.cn")
         #get university info
         name = uni.uni_name
@@ -24,7 +24,7 @@ def infoChange(request):
         uni_phone = request.POST.get("contactNum")
         uni_web = request.POST.get("officialWebsite")
         uni_score = request.POST.get("requirement")
-        uni = University()
+        uni = University.objects.get(uni_email = )
         uni.uni_name = uni_name
         uni.uni_web = uni_web
         uni.uni_phone = uni_phone

@@ -1,3 +1,4 @@
+drop database EAS;
 create database EAS;
 use EAS;
 
@@ -38,7 +39,7 @@ create table university
     uni_email varchar(30),
     uni_name varchar(100),
     uni_phone varchar(20),
-    required_GRE_score int,
+    required_score int,
     reg_id varchar(30),
     uni_web varchar(100),
     uni_photo varchar(100),
@@ -77,7 +78,7 @@ create table stu_dream_majors
     foreign key (stu_app_id) references stu_application(stu_app_id)
 );
 
-create table GRE_exam
+create table exam
 (   exam_id char(15) not null,
     exam_location varchar(100),
     exam_time DATETIME,
@@ -89,7 +90,7 @@ create table attendance
     exam_id char(15) not null,
     primary key (stu_id, exam_id),
     FOREIGN key (stu_id) references student(stu_id),
-    foreign key (exam_id) references GRE_exam(exam_id)
+    foreign key (exam_id) references exam(exam_id)
 );
 
 create table guardian
@@ -107,7 +108,7 @@ create table guard
     exam_id char(15) not null,
     primary key (guardian_id, exam_id),
     foreign key (guardian_id) references guardian(guardian_id),
-    foreign key (exam_id) references GRE_exam(exam_id)
+    foreign key (exam_id) references exam(exam_id)
 );
 
 create table question_base
@@ -120,48 +121,22 @@ create table question_base
     primary key (que_id)
 );
 
-CREATE TABLE adjudicator (
-    adju_id 	CHAR(15) NOT NULL,
-    adju_email  varCHAR(30),
-    adju_phone  varCHAR(20),
-    adju_name  varCHAR(10),
-    PRIMARY KEY (adju_id)
-);
-
-CREATE TABLE blank_sheet (
-    sheet_id CHAR(15) NOT NULL,
-    PRIMARY KEY (sheet_id)
-);
-
 CREATE TABLE answer_sheet (
     ans_id 		CHAR(15)   NOT NULL,
     ans_answer 	varCHAR(10000),
     ans_score 	varCHAR(4),
-    source_paper CHAR(15) NOT NULL,
     examinee 	CHAR(15)   NOT NULL,
     PRIMARY KEY (ans_id),
-    FOREIGN KEY (source_paper)
-        REFERENCES blank_sheet (sheet_id),
     FOREIGN KEY (examinee)
         REFERENCES student (stu_id)
 );
 
 CREATE TABLE grade (
     ans_id 	CHAR(15) NOT NULL,
-    adju_id CHAR(15) NOT NULL,
-    PRIMARY KEY (ans_id , adju_id),
+    guardian_id CHAR(15) NOT NULL,
+    PRIMARY KEY (ans_id , guardian_id),
     FOREIGN KEY (ans_id)
         REFERENCES answer_sheet (ans_id),
-    FOREIGN KEY (adju_id)
-        REFERENCES adjudicator (adju_id)
-);
-
-CREATE TABLE derive (
-    sheet_id CHAR(15) NOT NULL,
-    que_id 	 CHAR(15) NOT NULL,
-    PRIMARY KEY (sheet_id , que_id),
-    FOREIGN KEY (sheet_id)
-        REFERENCES blank_sheet (sheet_id),
-    FOREIGN KEY (sheet_id)
-        REFERENCES question_base (que_id)
+    FOREIGN KEY (guardian_id)
+        REFERENCES guardian (guardian_id)
 );
