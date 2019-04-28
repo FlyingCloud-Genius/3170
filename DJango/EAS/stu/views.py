@@ -17,6 +17,13 @@ def profile(request):
     return HttpResponse(request)
 
 
+def editor(request, userEamil):
+    print("args")
+    print(userEamil)
+    pass
+    return render(request, 'stu/personal-edit.html')
+
+
 def application(request):
     pass
     return render(request, 'stu/application.html')

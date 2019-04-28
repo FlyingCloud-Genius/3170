@@ -84,6 +84,7 @@
                     <li class="sidebar-list-item"><a href="#grades" class="sidebar-link text-muted"><i class="o-table-content-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 3px">Historical Score</span></a></li>
                     <li class="sidebar-list-item"><a href="#application" class="sidebar-link text-muted"><i class="o-survey-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 7px">My Application</span></a></li>
                     <li class="sidebar-list-item"><a href="#information" class="sidebar-link text-muted"><i class="o-id-card-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 2px">Personal Information</span></a></li>
+                    <li class="sidebar-list-item"><a href="#new" class="sidebar-link text-muted"><i class="o-like-hand-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 2px">New Application</span></a></li>
                     <li class="sidebar-list-item"><a href="../reg/login" class="sidebar-link text-muted"><i class="o-exit-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 2px">Log Out</span></a></li>
             </div> 
             <!-- main page-->
@@ -140,6 +141,7 @@
                                             <th>Shenzhen</th>
                                             <th>320</th>
                                         </tr>
+                                        </tbody>
                                     </table>
                                     <div class="form-group">       
                                         <button type="submit" class="btn btn-primary fa-pull-right" onclick="javascript:window.location.href='grades';">Show more -></button>
@@ -170,8 +172,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
+
                         <!-- Your Application-->
                         <div class="col-lg-8 mb-5">
                             <div class="card">
@@ -201,7 +202,7 @@
                                 <div class="profile-pic wthree">
                                     <img src="{% static 'images/jpg/p1.jpeg'%}" alt="" >
                                     <h3>Laila</h3>
-                                    <div class="">     
+                                    <div>     
                                         <ul class="profile-address">
                                             </br>
                                             <li><b>Sex : </b><span class="w3">{{gender}}</span></li>
@@ -215,8 +216,123 @@
                                             <li><b>Major : </b><span class="w3">Computer Science</span></li>
                                             </br>
                                         </ul>
+                                        <div class="form-group">       
+                                            <button type="submit" class="btn btn-primary" onclick="javascript:window.location.href='editor';">Edit</button>
+                                        </div>                                       
                                     </div>
                                     <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 mb-5">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Upload Files</h3>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table card-text mytr">
+                                        <thead>
+                                        <tr>                                            
+                                            <th>FileName</th>
+                                            <th>File</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <th>Resume</th>
+                                            <th>
+                                                <div class="select d-flex align-items-center justify-content-center">
+                                                    <input style="width:0px" type=file id=resumefile style="visibility:hidden" onchange=resumefilepath.value=this.value>
+                                                    <input type=textfield id=resumefilepath>
+                                                    <input type=button id=resumefilebutton value=browser onclick=resumefile.click()>
+                                                </div>
+                                            </th>
+                                            <th>
+                                                <div>
+                                                    <input type="submit" value="Upload" onclick="uploadResume()">
+                                                </div>
+                                            </th>
+                                        </tbody>
+                                        <tbody>
+                                            <th>Transcript</th>
+                                            <th>
+                                                <div class="select d-flex align-items-center justify-content-center">
+                                                    <input style="width:0px" type=file id=transcriptfile style="visibility:hidden" onchange=transcriptfilepath.value=this.value>
+                                                    <input type=textfield id=transcriptfilepath>
+                                                    <input type=button id=transcriptfilebutton value=browser onclick=transcriptfile.click()>
+                                                </div>
+                                            </th>
+                                            <th>
+                                                <div>
+                                                    <input type="submit" value="Upload" onclick="uploadTranscript()">
+                                                </div>
+                                            </th>
+                                        </tbody>
+                                        <tbody>
+                                            <th>Recommendation</th>
+                                            <th>
+                                                <div class="select d-flex align-items-center justify-content-center">
+                                                    <input style="width:0px" type=file id=recommendationfile style="visibility:hidden" onchange=recommendationfilepath.value=this.value>
+                                                    <input type=textfield id=recommendationfilepath>
+                                                    <input type=button id=recommendationfilebutton value=browser onclick=recommendationfile.click()>
+                                                </div>
+                                            </th>
+                                            <th>
+                                                <div>
+                                                    <input type="submit" value="Upload" onclick="uploadRecommendation()">
+                                                </div>
+                                            </th>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- New Application -->
+                        <a name="new"></a>
+                        <div class="col-lg-8 mb-5">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">New Application</h3>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table card-text mytr">
+                                        <thead>
+                                            <tr>                                            
+                                                <th>School Name</th>
+                                                <th>Dream Major 1</th>
+                                                <th>Dream Major 2</th>
+                                                <th>Dream Major 3</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    <select id="selectAccount" name="account" style="font-size:15px; width: 300px">
+                                                        <option>Please Choose</option>    
+                                                        <option>UCLA</option>
+                                                        <option>UCB</option>
+                                                    </select>
+                                                </th>
+                                                <th>
+                                                    <input style="font-size:15px; width: 75px; font-weight: normal">
+                                                </th>
+                                                <th>
+                                                    <input style="font-size:15px; width: 75px; font-weight: normal">
+                                                </th>
+                                                <th>
+                                                    <input style="font-size:15px; width: 75px; font-weight: normal">
+                                                </th>
+                                                <th>
+                                                    <div>
+                                                        <input type="submit" value="Submit" onclick="">
+                                                    </div>
+                                                </th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -323,7 +439,111 @@
                 $("#myCarousel").carousel('cycle');
             });
         </script>
-    
+
+        <script>
+            function uploadResume(){
+                var resumeFile = document.getElementById("resumefile").files;
+
+                if (resumeFile.length == 0) return;
+
+                var form = new FormData(),
+                    url = 'http://www.lgueas.cn',
+                    file = resumeFile[0];
+                form.append('file', file);
+
+                var xhr = new XMLHttpRequest();
+                xhr.open("post", url, true);
+                
+                //上传进度事件
+                xhr.upload.addEventListener("progress", function(result) {
+                    if (result.lengthComputable) {
+                        //上传进度
+                        var percent = (result.loaded / result.total * 100).toFixed(2); 
+                    }
+                }, false);
+                
+                xhr.addEventListener("readystatechange", function() {
+                    var result = xhr;
+                    if (result.status != 200) { //error
+                        console.log('上传失败', result.status, result.statusText, result.response);
+                    } 
+                    else if (result.readyState == 4) { //finished
+                        console.log('上传成功', result);
+                    }
+                });
+                xhr.send(form); 
+            }
+        </script>
+
+<script>
+        function uploadTranscript(){
+            var transcriptFile = document.getElementById("transcriptfile").files;
+
+            if (transcriptFile.length == 0) return;
+
+            var form = new FormData(),
+                url = 'http://www.lgueas.cn',
+                file = transcriptFile[0];
+            form.append('file', file);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("post", url, true);
+            
+            //上传进度事件
+            xhr.upload.addEventListener("progress", function(result) {
+                if (result.lengthComputable) {
+                    //上传进度
+                    var percent = (result.loaded / result.total * 100).toFixed(2); 
+                }
+            }, false);
+            
+            xhr.addEventListener("readystatechange", function() {
+                var result = xhr;
+                if (result.status != 200) { //error
+                    console.log('上传失败', result.status, result.statusText, result.response);
+                } 
+                else if (result.readyState == 4) { //finished
+                    console.log('上传成功', result);
+                }
+            });
+            xhr.send(form); 
+        }
+    </script>
+
+<script>
+        function uploadRecommendation(){
+            var recommendationFile = document.getElementById("recommendationfile").files;
+
+            if (recommendationFile.length == 0) return;
+
+            var form = new FormData(),
+                url = 'http://www.lgueas.cn',
+                file = recommendationFile[0];
+            form.append('file', file);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("post", url, true);
+            
+            //上传进度事件
+            xhr.upload.addEventListener("progress", function(result) {
+                if (result.lengthComputable) {
+                    //上传进度
+                    var percent = (result.loaded / result.total * 100).toFixed(2); 
+                }
+            }, false);
+            
+            xhr.addEventListener("readystatechange", function() {
+                var result = xhr;
+                if (result.status != 200) { //error
+                    console.log('上传失败', result.status, result.statusText, result.response);
+                } 
+                else if (result.readyState == 4) { //finished
+                    console.log('上传成功', result);
+                }
+            });
+            xhr.send(form); 
+        }
+    </script>
     </body>
 </html>
     

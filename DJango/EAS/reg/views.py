@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.urls import reverse
 
 # Create your views here.
 from .models import RegInfo
@@ -66,36 +67,33 @@ def register(request):
         userEmail = request.POST.get('userEmail')
         password = str(request.POST.get('password'))
         repPassword = str(request.POST.get('reppassword'))
-        userName = request.POST.get('userName')
-        phone = str(request.POST.get('phoneNum'))
         message = "Please select your account type!"
-        print("accounttype:")
-        print(accountType)
+
         if accountType != "I am" and accountType != None:           
-            if userEmail != "" and password != "" and repPassword != "" and userName != "" and phone != None: #check if user doesn't complete his/her form
+            if userEmail != "" and password != "" and repPassword != "":                    #check if user doesn't complete his/her form
                 if "@" in userEmail:                                                        #check if this is a formal E-mail formate
                     if RegInfo.objects.filter(reg_id=userEmail).exists() == False:          #check if the account had existed
                         if password == repPassword:                                         #check if the two passwords are differents 
-                            print(userEmail + " " + password)
+
                             if accountType == "Student":
                                 sid = "0" + time.strftime("%Y%m%d%H%M%S", time.localtime()) 
-                                print(sid)
-                                Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
-                                Stu = Student.objects.create(stu_id=sid, stu_email=userEmail, stu_name=userName, reg=Reg)
-                                StuPhones.objects.create(stu=Stu, stu_phone=phone)
-                                return redirect('login')
+                                #print(sid)
+                                #Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
+                                #Stu = Student.objects.create(stu_id=sid, stu_email=userEmail, reg=Reg)
+                                return redirect('../stu/editor/%s' %userEmail, userEmail )
                                
                             elif accountType == "University":
                                 uid = "1" + time.strftime("%Y%m%d%H%M%S", time.localtime()) 
-                                print(uid)
+                                #print(uid)
                                 Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
-                                Uni = University.objects.create(uni_id=uid, uni_email=userEmail, uni_name=userName, uni_phone=phone, reg=Reg)
-                                return redirect('login')                                
+                                Uni = University.objects.create(uni_id=uid, uni_email=userEmail, reg=Reg)
+                                return redirect('login')  
+
                             elif accountType == "Guardian":
                                 gid = "2" + time.strftime("%Y%m%d%H%M%S", time.localtime())
-                                print(gid)
+                                #print(gid)
                                 Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
-                                Gua = Guardian.objects.create(guardian_id=gid, guardian_email=userEmail, guard_name=userName, guardian_phone=phone, reg=Reg) 
+                                Gua = Guardian.objects.create(guardian_id=gid, guardian_email=userEmail, reg=Reg) 
                                 return redirect('login')                                                     
                         else:
                             message = "Your second password is not match, please try again."
