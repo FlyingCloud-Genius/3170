@@ -262,13 +262,13 @@
 
     <script>
         var questions = new Array();
-        questions[0] = {ID:"000001", type:"Analytical Writing", difficulty:"3", content:"Tian'an Gate", answer:"Yes", analysis:"hahahahaha"};
-        questions[1] = {ID:"000002", type:"Verbal Reasoning", difficulty:"2", content:"Tian'an Gate", answer:"Yes", analysis:"hahahahaha"};
-        questions[2] = {ID:"000003", type:"Quantitative Reasoning", difficulty:"1", content:"Tian'an Gate", answer:"Yes", analysis:"hahahahaha"};
-        questions[3] = {ID:"000004", type:"Verbal Reasoning", difficulty:"5", content:"Tian'an Gate", answer:"Yes", analysis:"hahahahaha"};
-        questions[4] = {ID:"000005", type:"Verbal Reasoning", difficulty:"4", content:"Tian'an Gate", answer:"Yes", analysis:"hahahahaha"};
-        questions[5] = {ID:"000006", type:"Quantitative Reasoning", difficulty:"1", content:"Tian'an Gate", answer:"Yes", analysis:"hahahahaha"};
-        questions[6] = {ID:"000007", type:"Analytical Writing", difficulty:"2", content:"Tian'an Gate", answer:"Yes", analysis:"hahahahaha"};
+        questions[0] = {ID:"000001", type:"Analytical Writing", difficulty:"3", content:"content000001", answer:"answer000001", analysis:"analysis000001"};
+        questions[1] = {ID:"000002", type:"Verbal Reasoning", difficulty:"2", content:"content000002", answer:"answer000002", analysis:"analysis000002"};
+        questions[2] = {ID:"000003", type:"Quantitative Reasoning", difficulty:"1", content:"content000003", answer:"answer000003", analysis:"analysis000003"};
+        questions[3] = {ID:"000004", type:"Verbal Reasoning", difficulty:"5", content:"content000004", answer:"answer000004", analysis:"analysis000004"};
+        questions[4] = {ID:"000005", type:"Verbal Reasoning", difficulty:"4", content:"content000005", answer:"answer000005", analysis:"analysis000005"};
+        questions[5] = {ID:"000006", type:"Quantitative Reasoning", difficulty:"1", content:"content000006", answer:"answer000006", analysis:"analysis000006"};
+        questions[6] = {ID:"000007", type:"Analytical Writing", difficulty:"2", content:"content000007", answer:"answer000007", analysis:"analysis000007"};
         
         function onClickSearch() {
             var selectCity = document.getElementById("selectType");
@@ -283,9 +283,9 @@
                                 "<th>" + questions[i].ID + "</th>" +
                                 "<th>" + questions[i].type + "</th>" +
                                 "<th>" + questions[i].difficulty + "</th>" +
-                                "<th>" + questions[i].content + "</th>" +
-                                "<th>" + questions[i].answer+ "</th>" +
-                                "<th>" + questions[i].analysis+ "</th>" +
+                                "<th>" + "<a href='' target='_blank'>" + questions[i].content + "</a>" + "</th>" +
+                                "<th>" + "<a href='' target='_blank'>" + questions[i].answer + "</a>" + "</th>" +
+                                "<th>" + "<a href='' target='_blank'>" + questions[i].analysis + "</a>" + "</th>" +
                                 "<th>" +
                                     "<button type='button' onclick='onClickEdit("+String(i)+")'>Edit</button>" +
                                 "</th>" +

@@ -128,8 +128,8 @@
                                         <thead>
                                         <tr>
                                             <th>Exam ID</th>
-                                            <th>Paper sheet ID</th>
                                             <th>Answer sheet ID</th>
+                                            <th>Student Solution</th>
                                             <th>Grade</th>
                                             <th>Commit</th>
                                         </tr>
@@ -241,13 +241,13 @@
     <script>
         function onClickSearch() {
             var answers = new Array();
-            answers[0] = {City:"Beijing", ExamID:"000001", PaperSheetID:"000001", AnswerSheetID:"000001", checked:"false"};
-            answers[1] = {City:"Beijing", ExamID:"000002", PaperSheetID:"000002", AnswerSheetID:"000002", checked:"false"};
-            answers[2] = {City:"Beijing", ExamID:"000003", PaperSheetID:"000003", AnswerSheetID:"000003", checked:"true"};
-            answers[3] = {City:"Shanghai", ExamID:"000004", PaperSheetID:"000004", AnswerSheetID:"000004", checked:"false"};
-            answers[4] = {City:"Shanghai", ExamID:"000005", PaperSheetID:"000005", AnswerSheetID:"000005", checked:"false"};
-            answers[5] = {City:"Shanghai", ExamID:"000006", PaperSheetID:"000006", AnswerSheetID:"000006", checked:"true"};
-            answers[6] = {City:"Guangzhou", ExamID:"000007", PaperSheetID:"000007", AnswerSheetID:"000007", checked:"false"};
+            answers[0] = {City:"Beijing", ExamID:"000001", AnswerSheetID:"000001", Solution:"000001", checked:"false"};
+            answers[1] = {City:"Beijing", ExamID:"000002", AnswerSheetID:"000002", Solution:"000002", checked:"false"};
+            answers[2] = {City:"Beijing", ExamID:"000003", AnswerSheetID:"000003", Solution:"000003", checked:"true"};
+            answers[3] = {City:"Shanghai", ExamID:"000004", AnswerSheetID:"000004", Solution:"000004", checked:"false"};
+            answers[4] = {City:"Shanghai", ExamID:"000005", AnswerSheetID:"000005", Solution:"000005", checked:"false"};
+            answers[5] = {City:"Shanghai", ExamID:"000006", AnswerSheetID:"000006", Solution:"000006", checked:"true"};
+            answers[6] = {City:"Guangzhou", ExamID:"000007", AnswerSheetID:"000007", Solution:"000007", checked:"false"};
             
             var selectCity = document.getElementById("selectCity");
             var cityIndex = selectCity.selectedIndex;
@@ -260,8 +260,8 @@
                     if (answers[i].City == city && answers[i].checked == "false"){
                         tbody += "<tr class='align-items-center'>" +
                                     "<th>" + answers[i].ExamID + "</th>" +
-                                    "<th scope='row'>" + answers[i].PaperSheetID + "</th>" +
-                                    "<th>" + answers[i].AnswerSheetID + "</th>" +
+                                    "<th scope='row'>" + answers[i].AnswerSheetID + "</th>" +
+                                    "<th>" + "<a href='' target='_blank'>" + answers[i].Solution + "</a>" + "</th>" +
                                     "<th>" + 
                                         "<input id='grade"+String(i)+"' type='text'>" +
                                     "</th>" +
@@ -278,8 +278,8 @@
                     if (answers[i].City == city){
                         tbody += "<tr class='align-items-center'>" +
                                     "<th>" + answers[i].ExamID + "</th>" +
-                                    "<th scope='row'>" + answers[i].PaperSheetID + "</th>" +
-                                    "<th>" + answers[i].AnswerSheetID + "</th>" +
+                                    "<th scope='row'>" + answers[i].AnswerSheetID + "</th>" +
+                                    "<th>" + "<a href='' target='_blank'>" + answers[i].Solution + "</th>" +
                                     "<th>" + 
                                         "<input id='grade"+String(i)+"' type='text'>" +
                                     "</th>" +

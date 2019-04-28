@@ -119,8 +119,9 @@
                                     <table class="table card-text mytr">
                                         <thead>
                                             <tr>                                            
-                                                <th>Exam ID</th>
+                                                <th>Answer Sheet ID</th>
                                                 <th>Applicant Name</th>
+                                                <th>Student Solution</th>
                                                 <th>Applicant Score</th>
                                                 <th></th>
                                             </tr>
@@ -128,17 +129,18 @@
                                         <tbody>
                                             <script>
                                                 var applicants = new Array();
-                                                applicants[0] = {ID:"00001", Name:"hahaha", score:"326"};
-                                                applicants[1] = {ID:"00002", Name:"wawawa", score:"317"};
-                                                applicants[2] = {ID:"00003", Name:"hehehe", score:"330"};
-                                                applicants[3] = {ID:"00004", Name:"kikiki", score:"324"};
-                                                applicants[4] = {ID:"00005", Name:"brabrabra", score:"318"};
-                                                applicants[5] = {ID:"00006", Name:"wuwuwu", score:"320"};
+                                                applicants[0] = {AnswerID:"00001", Name:"hahaha", Solution:"solution00001", score:"326"};
+                                                applicants[1] = {AnswerID:"00002", Name:"wawawa", Solution:"solution00002", score:"317"};
+                                                applicants[2] = {AnswerID:"00003", Name:"hehehe", Solution:"solution00003", score:"330"};
+                                                applicants[3] = {AnswerID:"00004", Name:"kikiki", Solution:"solution00004", score:"324"};
+                                                applicants[4] = {AnswerID:"00005", Name:"brabrabra", Solution:"solution00005", score:"318"};
+                                                applicants[5] = {AnswerID:"00006", Name:"wuwuwu", Solution:"solution00006", score:"320"};
                                     
                                                 for (i in applicants){
                                                     document.write("<tr class='align-items-center'>" +
-                                                                        "<th>" + applicants[i].ID + "</th>" +
+                                                                        "<th>" + applicants[i].AnswerID + "</th>" +
                                                                         "<th scope='row'>" + applicants[i].Name + "</th>" +
+                                                                        "<th>" + "<a href='' target='_blank'>" + applicants[i].Solution + "</a>" + "</th>" +
                                                                         "<th align='center'>" + applicants[i].score + "</th>" +
                                                                         "<th>" +
                                                                             "<div class='select ml-2 d-flex align-items-center justify-content-center'>" + 
