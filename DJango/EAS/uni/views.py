@@ -26,25 +26,26 @@ def profile(request, userEmail):
         return redirect('../editorCreate/%s' %userEmail)
     return HttpResponse(request)
 
+@csrf_exempt
 def editorCreate(request, userEmail):
+    print(request.GET.get('username'))
+    print(request.GET.get('contactNum'))
+    print(request.GET.get('officialWebsite'))
+    print(request.GET.get('requirement'))
+
     if request.method == "GET":
+        print ("fuck")
         return render(request, "uni/university-edit.html")
-    return render_to_response('uni/university-edit.html', locals())
+    elif request.method == "POST" and request.POST:
+        if request.POST.get('username') == request.POST.get('contactNum') == request.POST.get('officialWebsite') == request.POST.get('requirement') != None:
+            return redirect("../profile/%s" %userEmail)
 
-
-def infoEdition(request, userEmail):
-    if request.method == "POST":
         uni = University.objects.get(uni_email = userEmail)
-        if request.POST.get('password') != request.POST.get('reppassword'):
-            message = "the passwords has to be the same!!"
-            return render_to_response('uni/university-edit.html', {"message": message})
         uni.uni_name = request.POST.get('username')
         uni.uni_phone = request.POST.get('contactNum')
         uni.uni_web = request.POST.get('officialWebsite')
         uni.required_score = request.POST.get('requirement')
-        
-        regInfo = RegInfo.objects.get(reg_id = uni.reg)
-        regInfo.password = request.POST.get('password')
-        regInfo.save()
         uni.save()
-    return redirect(request, 'profile/%s' %userEmail) 
+        return redirect('../profile/%s' %userEmail) 
+    return render_to_response('uni/university-edit.html', locals())
+
