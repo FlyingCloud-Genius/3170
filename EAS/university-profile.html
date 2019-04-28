@@ -104,16 +104,16 @@
                                         <tbody id="applicants">
                                             <script>
                                                 var applicants = new Array();
-                                                applicants[0] = {ID:"00001", Name:"hahaha", highestGrades:"A", resume:"/resume/a.doc"};
-                                                applicants[1] = {ID:"00002", Name:"lalala", highestGrades:"A-", resume:"/resume/b.doc"};
-                                                applicants[2] = {ID:"00003", Name:"hehehe", highestGrades:"A", resume:"/resume/c.doc"};
+                                                applicants[0] = {ID:"00001", Name:"hahaha", highestGrades:"A", resume:"resume00001"};
+                                                applicants[1] = {ID:"00002", Name:"lalala", highestGrades:"A-", resume:"resume00002"};
+                                                applicants[2] = {ID:"00003", Name:"hehehe", highestGrades:"A", resume:"resume00003"};
                                     
                                                 for (i in applicants){
                                                     document.write("<tr class='align-items-center'>" +
                                                                         "<th>" + applicants[i].ID + "</th>" +
                                                                         "<th scope='row'>" + applicants[i].Name + "</th>" +
                                                                         "<th align='center'>" + applicants[i].highestGrades + "</th>" +
-                                                                        "<th>" + applicants[i].resume + "</th>" +
+                                                                        "<th>" + "<a href='' target='_blank'>" + applicants[i].resume + "</a>" + "</th>" +
                                                                         "<th>" +
                                                                             "<div id='Location' class='select ml-2 d-flex align-items-center justify-content-center'>" + 
                                                                                 "<select id='selectCity' name='account' class='form-control' style='width:100px'>" +

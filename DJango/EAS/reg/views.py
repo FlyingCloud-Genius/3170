@@ -6,11 +6,10 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.urls import reverse
 
 # Create your views here.
 from .models import RegInfo
-from stu.models import Student, StuPhones
+from stu.models import Student
 from uni.models import University
 from guardian.models import Guardian
 # from .forms import InfoForm
@@ -32,7 +31,7 @@ def login(request):
                     if user.reg_password == password:
                         if accountType == "Student":
                             if Student.objects.filter(stu_email=userEmail).exists() == True:
-                                return redirect('/stu/profile') #render(request, 'reg/index.html')
+                                return redirect('/stu/profile/%s' %userEmail) #render(request, 'reg/index.html')
                             else:
                                 message = "This account is not a sutdent!"
                         elif accountType == "University":
@@ -63,45 +62,48 @@ def index(request):
 
 def register(request):
     if request.method == "POST":
+        check_box = request.POST.getlist('check_box')
         accountType = request.POST.get('accountType')
         userEmail = request.POST.get('userEmail')
         password = str(request.POST.get('password'))
         repPassword = str(request.POST.get('reppassword'))
-        message = "Please select your account type!"
+        message = "You should agree with the privacy of Exam and Application System!"
+        if check_box:
+            if accountType != "I am" and accountType != None:           
+                if userEmail != "" and password != "" and repPassword != "":                    #check if user doesn't complete his/her form
+                    if "@" in userEmail:                                                        #check if this is a formal E-mail formate
+                        if RegInfo.objects.filter(reg_id=userEmail).exists() == False:          #check if the account had existed
+                            if password == repPassword:                                         #check if the two passwords are differents 
 
-        if accountType != "I am" and accountType != None:           
-            if userEmail != "" and password != "" and repPassword != "":                    #check if user doesn't complete his/her form
-                if "@" in userEmail:                                                        #check if this is a formal E-mail formate
-                    if RegInfo.objects.filter(reg_id=userEmail).exists() == False:          #check if the account had existed
-                        if password == repPassword:                                         #check if the two passwords are differents 
+                                if accountType == "Student":
+                                    sid = "0" + time.strftime("%Y%m%d%H%M%S", time.localtime()) 
+                                    #print(sid)
+                                    Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
+                                    Stu = Student.objects.create(stu_id=sid, stu_email=userEmail, reg=Reg)
+                                    return redirect('../stu/editor/%s' %userEmail, userEmail )
+                                
+                                elif accountType == "University":
+                                    uid = "1" + time.strftime("%Y%m%d%H%M%S", time.localtime()) 
+                                    #print(uid)
+                                    Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
+                                    Uni = University.objects.create(uni_id=uid, uni_email=userEmail, reg=Reg)
+                                    return redirect('login')  
 
-                            if accountType == "Student":
-                                sid = "0" + time.strftime("%Y%m%d%H%M%S", time.localtime()) 
-                                #print(sid)
-                                #Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
-                                #Stu = Student.objects.create(stu_id=sid, stu_email=userEmail, reg=Reg)
-                                return redirect('../stu/editor/%s' %userEmail, userEmail )
-                               
-                            elif accountType == "University":
-                                uid = "1" + time.strftime("%Y%m%d%H%M%S", time.localtime()) 
-                                #print(uid)
-                                Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
-                                Uni = University.objects.create(uni_id=uid, uni_email=userEmail, reg=Reg)
-                                return redirect('login')  
-
-                            elif accountType == "Guardian":
-                                gid = "2" + time.strftime("%Y%m%d%H%M%S", time.localtime())
-                                #print(gid)
-                                Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
-                                Gua = Guardian.objects.create(guardian_id=gid, guardian_email=userEmail, reg=Reg) 
-                                return redirect('login')                                                     
+                                elif accountType == "Guardian":
+                                    gid = "2" + time.strftime("%Y%m%d%H%M%S", time.localtime())
+                                    #print(gid)
+                                    Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
+                                    Gua = Guardian.objects.create(guardian_id=gid, guardian_email=userEmail, reg=Reg) 
+                                    return redirect('login')                                                     
+                            else:
+                                message = "Your second password is not match, please try again."
                         else:
-                            message = "Your second password is not match, please try again."
+                            message = "The account is already exist!"
                     else:
-                        message = "The account is already exist!"
+                        message = "Please enter correct E-mail format."
                 else:
-                    message = "Please enter correct E-mail format."
+                    message = "Please complete the forms of Email and password!"
             else:
-                message = "Please complete the forms of Email and password!"
+                message = "Please select your account type!"
         return render(request, 'reg/register.html', {"message": message})
     return render(request, 'reg/register.html')

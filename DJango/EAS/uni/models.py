@@ -12,7 +12,6 @@ class University(models.Model):
     uni_web = models.CharField(max_length = 100)
     uni_photo = models.CharField(max_length = 100)
 
-
     class Meta:
         managed = False
         db_table = 'university'
