@@ -10,8 +10,6 @@ from .models import Student
 def profile(request, userID):
     if request.method == "GET":
         stu = Student.objects.get(stu_id = userID)
-        # print("gender: ")
-        # print(stu.stu_gender)
         name = stu.stu_fname + stu.stu_lname
         if stu.stu_gender == 0:
             gender = "Male"

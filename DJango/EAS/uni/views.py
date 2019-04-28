@@ -19,6 +19,8 @@ def profile(request, userEmail):
         #get student application
         
         return render_to_response('uni/university-profile.html', locals())
+    elif request.method == "POST":
+        return redirect('uni/infoEdition/%s' %userEmail, locals()) 
     return HttpResponse(request)
 
 def infoEdition(request, userEmail):
