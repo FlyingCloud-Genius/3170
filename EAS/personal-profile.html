@@ -197,7 +197,7 @@
                                 <div class="profile-pic wthree">
                                     <img src="./images/jpg/p1.jpeg" alt="" >
                                     <h3>Laila</h3>
-                                    <div class="">     
+                                    <div>     
                                         <ul class="profile-address">
                                             </br>
                                             <li><b>Sex : </b><span class="w3" name = "gender">Female</span></li>
@@ -211,6 +211,9 @@
                                             <li><b>Major : </b><span class="w3" name = "major">Computer Science</span></li>
                                             </br>
                                         </ul>
+                                        <div class="form-group">       
+                                            <button type="submit" class="btn btn-primary" onclick="javascript:window.location.href='personal-edit.html';">Edit</button>
+                                        </div>
                                     </div>
                                     <div class="clear"></div>
                                 </div>
@@ -227,7 +230,7 @@
                                         <tr>                                            
                                             <th>FileName</th>
                                             <th>File</th>
-                                            <th>Submit</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -242,6 +245,36 @@
                                             <th>
                                                 <div>
                                                     <input type="submit" value="Upload" onclick="uploadResume()">
+                                                </div>
+                                            </th>
+                                        </tbody>
+                                        <tbody>
+                                            <th>Transcript</th>
+                                            <th>
+                                                <div class="select d-flex align-items-center justify-content-center">
+                                                    <input style="width:0px" type=file id=transcriptfile style="visibility:hidden" onchange=transcriptfilepath.value=this.value>
+                                                    <input type=textfield id=transcriptfilepath>
+                                                    <input type=button id=transcriptfilebutton value=browser onclick=transcriptfile.click()>
+                                                </div>
+                                            </th>
+                                            <th>
+                                                <div>
+                                                    <input type="submit" value="Upload" onclick="uploadTranscript()">
+                                                </div>
+                                            </th>
+                                        </tbody>
+                                        <tbody>
+                                            <th>Recommendation</th>
+                                            <th>
+                                                <div class="select d-flex align-items-center justify-content-center">
+                                                    <input style="width:0px" type=file id=recommendationfile style="visibility:hidden" onchange=recommendationfilepath.value=this.value>
+                                                    <input type=textfield id=recommendationfilepath>
+                                                    <input type=button id=recommendationfilebutton value=browser onclick=recommendationfile.click()>
+                                                </div>
+                                            </th>
+                                            <th>
+                                                <div>
+                                                    <input type="submit" value="Upload" onclick="uploadRecommendation()">
                                                 </div>
                                             </th>
                                         </tbody>
@@ -263,17 +296,29 @@
                                         <thead>
                                             <tr>                                            
                                                 <th>School Name</th>
-                                                <th>Apply</th>
+                                                <th>Dream Major 1</th>
+                                                <th>Dream Major 2</th>
+                                                <th>Dream Major 3</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <th>
-                                                    <select id="selectAccount" name="account" style="font-size:15px; width: 400px">
+                                                    <select id="selectAccount" name="account" style="font-size:15px; width: 300px">
                                                         <option>Please Choose</option>    
                                                         <option>UCLA</option>
                                                         <option>UCB</option>
                                                     </select>
+                                                </th>
+                                                <th>
+                                                    <input style="font-size:15px; width: 75px; font-weight: normal">
+                                                </th>
+                                                <th>
+                                                    <input style="font-size:15px; width: 75px; font-weight: normal">
+                                                </th>
+                                                <th>
+                                                    <input style="font-size:15px; width: 75px; font-weight: normal">
                                                 </th>
                                                 <th>
                                                     <div>
