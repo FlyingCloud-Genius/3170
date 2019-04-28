@@ -37,15 +37,14 @@ def login(request):
                             else:
                                 message = "This account is not a sutdent!"
                         elif accountType == "University":
-                            if University.objects.filter(uni_email=userEmail).exists() == True:                            
-                                return redirect('/uni/profile')
+                            if University.objects.filter(uni_email=userEmail).exists() == True:    
+                                uni = University.objects.get(uni_email = userEmail)
+                                return redirect('/uni/profile/%s' %uni.uni_email)
                             else:
                                 message = "This account is not a university!"
                         elif accountType == "Guardian":
                             if Guardian.objects.filter(guardian_email=userEmail).exists() == True:                            
-                                guardian = Guardian.objects.get(guardian_email = userEamil)
-                                guardianID = guardian.guardian_id
-                                return redirect('/guardian/profile/%s' %guardianID)
+                                return redirect('/guardian/profile')
                             else:
                                 message = "This account is not a guardian!"                           
                     else:
@@ -91,15 +90,14 @@ def register(request):
                                     #print(uid)
                                     Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
                                     Uni = University.objects.create(uni_id=uid, uni_email=userEmail, reg=Reg)
-                                    return redirect('login')
+                                    return redirect('login')  
 
                                 elif accountType == "Guardian":
                                     gid = "2" + time.strftime("%Y%m%d%H%M%S", time.localtime())
                                     #print(gid)
-                                    print(userEmail + password)
                                     Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
                                     Gua = Guardian.objects.create(guardian_id=gid, guardian_email=userEmail, reg=Reg) 
-                                    return redirect('../guardian/editor/%s' %gid)                                                     
+                                    return redirect('login')                                                     
                             else:
                                 message = "Your second password is not match, please try again."
                         else:
