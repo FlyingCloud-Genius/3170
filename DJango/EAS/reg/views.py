@@ -31,7 +31,7 @@ def login(request):
                     if user.reg_password == password:
                         if accountType == "Student":
                             if Student.objects.filter(stu_email=userEmail).exists() == True:
-                                stu = Student.objects.get(stu_email = userEamil)
+                                stu = Student.objects.get(stu_email = userEmail)
                                 stuID = stu.stu_id
                                 return redirect('/stu/profile/%s' %stuID) #render(request, 'reg/index.html')
                             else:
