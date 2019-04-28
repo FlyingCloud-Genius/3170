@@ -65,7 +65,7 @@
                             <li><a href="../support-us">Support Us</a></li>
                             <li class="inactive"><a></a></li>
                             <li class="myprofile">
-                                <a href=""><img src="{% static 'images/jpg/ucla.jpg'%}" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
+                                <a href="university-profile.html"><img src= "{% static 'images/jpg/ucla.jpg'%}" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
                             </li>
                             <li class="mylogin"><a href="../home">Log Out</a></li>
                         </ul>
@@ -101,26 +101,22 @@
                                                 <th>Applicant Name</th>
                                                 <th>Applicant Highest Grades</th>
                                                 <th>Applicant Resume</th>
-                                                <th>Pass or Not</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody id="applicants">
                                             <script>
                                                 var applicants = new Array();
-                                                applicants[0] = {ID:"00001", Name:"hahaha", highestGrades:"A", resume:"/resume/a.doc"};
-                                                applicants[1] = {ID:"00002", Name:"lalala", highestGrades:"A-", resume:"/resume/b.doc"};
-                                                applicants[2] = {ID:"00003", Name:"hehehe", highestGrades:"A", resume:"/resume/c.doc"};
-                                                applicants[3] = {ID:"00004", Name:"brabra", highestGrades:"B+", resume:"/resume/d.doc"};
-                                                applicants[4] = {ID:"00005", Name:"kikiki", highestGrades:"A-", resume:"/resume/e.doc"};
-                                                applicants[5] = {ID:"00006", Name:"wawawa", highestGrades:"B", resume:"/resume/f.doc"};
-                                                applicants[6] = {ID:"00007", Name:"wuwuwu", highestGrades:"B+", resume:"/resume/g.doc"};
+                                                applicants[0] = {ID:"00001", Name:"hahaha", highestGrades:"A", resume:"resume00001"};
+                                                applicants[1] = {ID:"00002", Name:"lalala", highestGrades:"A-", resume:"resume00002"};
+                                                applicants[2] = {ID:"00003", Name:"hehehe", highestGrades:"A", resume:"resume00003"};
                                     
                                                 for (i in applicants){
                                                     document.write("<tr class='align-items-center'>" +
                                                                         "<th>" + applicants[i].ID + "</th>" +
                                                                         "<th scope='row'>" + applicants[i].Name + "</th>" +
                                                                         "<th align='center'>" + applicants[i].highestGrades + "</th>" +
-                                                                        "<th>" + applicants[i].resume + "</th>" +
+                                                                        "<th>" + "<a href='' target='_blank'>" + applicants[i].resume + "</a>" + "</th>" +
                                                                         "<th>" +
                                                                             "<div id='Location' class='select ml-2 d-flex align-items-center justify-content-center'>" + 
                                                                                 "<select id='selectCity' name='account' class='form-control' style='width:100px'>" +
@@ -129,7 +125,7 @@
                                                                                     "<option>Reject</option>" +
                                                                                     "<option>TBD</option>" +
                                                                                 "</select>" +
-                                                                                '<button type="submit" class="btn btn-primary" onclick="" style="margin-left: 20px">Submit</button>' +
+                                                                                '<button type="submit" class="btn btn-primary" onclick="" style="margin-left: 20px">Agree</button>' +
                                                                             "</div>" +
                                                                         "</th>" +
                                                                    "</tr>");
@@ -149,7 +145,7 @@
                             <div class="profile-main">
                                 <div class="profile-pic">
                                     <img src="{% static 'images/jpg/ucla.jpg'%}" alt="">
-                                    <h3>{{name}}}</h3>
+                                    <h3>{{name}}</h3>
                                     <div class="">     
                                         <ul class="profile-address">
                                             </br>
@@ -160,6 +156,9 @@
                                             <li><b>Official Website : </b><span class="w3"><a href="http://www.ucla.com/">{{web}}</a></span></li>
                                             </br>
                                         </ul>
+                                    </div>
+                                    <div class="form-group">       
+                                        <button type="submit" class="btn btn-primary" onclick="javascript:window.location.href='university-edit.html';">Edit</button>
                                     </div>
                                     <div class="clear"></div>
                                 </div>
@@ -194,7 +193,7 @@
                     <div class="col-lg-3 col-sm-3">
                         <h1>stay connected</h1>
                         <ul class="social-link-footer list-unstyled pull-right">
-                            <li><a href="https://space.bilibili.com/18005273"><img src="{% static 'images/icon/Bilibili.ico'%}" height="30" width="30"></a></li>
+                            <li><a href=" "><img src="{% static 'images/icon/Bilibili.ico'%}" height="30" width="30"></a></li>
                             <li><a href="https://github.com/FlyingCloud-Genius/3170/issues"><img src="{% static 'images/icon/GitHub.ico'%}" height="30" width="30"></a></li>
                             <li><a href="https://www.zhihu.com/people/ziheng-mo/activities"><img src="{% static 'images/icon/ZhiHu.ico'%}" height="30" width="30"></a></li>
                             <li><a href="https://user.qzone.qq.com/133228573/"><img src="{% static 'images/icon/Tencent.ico'%}" height="30" width="30"></a></li>
@@ -234,7 +233,7 @@
         <script src="{% static 'js/js.cookie.min.js'%}"></script>
         <script src="{% static 'js/charts-home.js'%}"></script>
         <script src="{% static 'js/front.js'%}"></script>
-        
+
         <script>
             RevSlide.initRevolutionSlider();
 

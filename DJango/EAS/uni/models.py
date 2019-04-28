@@ -1,5 +1,8 @@
 from django.db import models
 from reg.models import RegInfo
+from django.shortcuts import render, redirect
+from django.contrib import messages
+
 
 # Create your models here.
 class University(models.Model):

@@ -7,6 +7,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
+
 # Create your views here.
 from .models import RegInfo
 from stu.models import Student
@@ -37,8 +38,9 @@ def login(request):
                             else:
                                 message = "This account is not a sutdent!"
                         elif accountType == "University":
-                            if University.objects.filter(uni_email=userEmail).exists() == True:                            
-                                return redirect('/uni/profile')
+                            if University.objects.filter(uni_email=userEmail).exists() == True:    
+                                uni = University.objects.get(uni_email = userEmail)
+                                return redirect('/uni/profile/%s' %uni.uni_email)
                             else:
                                 message = "This account is not a university!"
                         elif accountType == "Guardian":
