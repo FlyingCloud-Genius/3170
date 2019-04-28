@@ -5,12 +5,12 @@ from uni.models import University
 # Create your models here.
 class Student(models.Model):
     stu_id = models.CharField(primary_key=True, max_length=15)
-    stu_name = models.CharField(max_length=40)    
-    stu_email = models.CharField(max_length=30)
+    stu_name = models.CharField(max_length=40, blank=True, null=True)
     stu_gender = models.IntegerField(blank=True, null=True)
     stu_major = models.CharField(max_length=50, blank=True, null=True)
+    stu_email = models.CharField(max_length=30, blank=True, null=True)
     stu_c_uni = models.CharField(max_length=50, blank=True, null=True)
-    reg = models.ForeignKey(RegInfo, models.DO_NOTHING)
+    reg = models.ForeignKey(RegInfo, models.DO_NOTHING, blank=True, null=True)
 
     class Meta:
         managed = False
