@@ -31,7 +31,9 @@ def login(request):
                     if user.reg_password == password:
                         if accountType == "Student":
                             if Student.objects.filter(stu_email=userEmail).exists() == True:
-                                return redirect('/stu/profile/%s' %userEmail) #render(request, 'reg/index.html')
+                                stu = Student.objects.get(stu_email = userEamil)
+                                stuID = stu.stu_id
+                                return redirect('/stu/profile/%s' %stuID) #render(request, 'reg/index.html')
                             else:
                                 message = "This account is not a sutdent!"
                         elif accountType == "University":
@@ -80,7 +82,7 @@ def register(request):
                                     #print(sid)
                                     Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
                                     Stu = Student.objects.create(stu_id=sid, stu_email=userEmail, reg=Reg)
-                                    return redirect('../stu/editor/%s' %userEmail, userEmail )
+                                    return redirect('../stu/editor/%s' %sid)
                                 
                                 elif accountType == "University":
                                     uid = "1" + time.strftime("%Y%m%d%H%M%S", time.localtime()) 
