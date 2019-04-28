@@ -21,8 +21,18 @@ def profile(request, userID):
         email = stu.stu_email
         university = stu.stu_c_uni
         major = stu.stu_major
+
+        enrollLink = "../enrollment/" + userID
+        exeLink = "../exercise/" + userID
+        exeVerLink = "../exercise/" + userID + "#verbal"
+        exeQuaLink = "../exercise/" + userID + "#quantitative"
+        exeWriLink = "../exercise/" + userID + "#writing"
+        appLink = "../application/" + userID
+        appUSALink = "../application/" + userID + "#usa"
+        appEURLink = "../application/" + userID + "#europe"
+        appASILink = "../application/" + userID + "#asia"
+        appOthLink = "../application/" + userID + "#others"       
         return render_to_response('stu/personal-profile.html', locals())
-        #return render(request, 'stu/personal-profile.html', {'gender':gender, 'name':name, 'phone':phone, 'email':json.dumps(email), 'university':university, 'major':major}) #, {'gender': gender}
     elif request.method == "POST":
         return redirect('/stu/editor/%s' %userID) 
     else:
@@ -59,21 +69,81 @@ def editor(request, userID):
     return render(request, 'stu/personal-edit.html')
 
 
-def application(request):
-    pass
+def application(request, userID):
+    if request.method == "GET":
+        stu = Student.objects.get(stu_id=userID)
+
+        name = stu.stu_fname + stu.stu_lname
+        proLink = "../profile/" + userID
+        enrollLink = "../enrollment/" + userID
+        exeLink = "../exercise/" + userID
+        exeVerLink = "../exercise/" + userID + "#verbal"
+        exeQuaLink = "../exercise/" + userID + "#quantitative"
+        exeWriLink = "../exercise/" + userID + "#writing"
+        appLink = "../application/" + userID
+        appUSALink = "../application/" + userID + "#usa"
+        appEURLink = "../application/" + userID + "#europe"
+        appASILink = "../application/" + userID + "#asia"
+        appOthLink = "../application/" + userID + "#others"       
+        return render_to_response('stu/application.html', locals())
     return render(request, 'stu/application.html')
 
 
-def exercise(request):
-    pass
+def exercise(request, userID):
+    if request.method == "GET":
+        stu = Student.objects.get(stu_id=userID)
+
+        name = stu.stu_fname + stu.stu_lname
+        proLink = "../profile/" + userID
+        enrollLink = "../enrollment/" + userID
+        exeLink = "../exercise/" + userID
+        exeVerLink = "../exercise/" + userID + "#verbal"
+        exeQuaLink = "../exercise/" + userID + "#quantitative"
+        exeWriLink = "../exercise/" + userID + "#writing"
+        appLink = "../application/" + userID
+        appUSALink = "../application/" + userID + "#usa"
+        appEURLink = "../application/" + userID + "#europe"
+        appASILink = "../application/" + userID + "#asia"
+        appOthLink = "../application/" + userID + "#others"       
+        return render_to_response('stu/exercise.html', locals())
     return render(request, 'stu/exercise.html')
 
 
-def exams(request):
-    pass
+def exams(request, userID):
+    if request.method == "GET":
+        stu = Student.objects.get(stu_id=userID)
+
+        name = stu.stu_fname + stu.stu_lname
+        proLink = "../profile/" + userID
+        enrollLink = "../enrollment/" + userID
+        exeLink = "../exercise/" + userID
+        exeVerLink = "../exercise/" + userID + "#verbal"
+        exeQuaLink = "../exercise/" + userID + "#quantitative"
+        exeWriLink = "../exercise/" + userID + "#writing"
+        appLink = "../application/" + userID
+        appUSALink = "../application/" + userID + "#usa"
+        appEURLink = "../application/" + userID + "#europe"
+        appASILink = "../application/" + userID + "#asia"
+        appOthLink = "../application/" + userID + "#others"       
+        return render_to_response('stu/tables-exams.html', locals())
     return render(request, 'stu/tables-exams.html')
 
 
-def grades(request):
-    pass
+def grades(request, userID):
+    if request.method == "GET":
+        stu = Student.objects.get(stu_id=userID)
+
+        name = stu.stu_fname + stu.stu_lname
+        proLink = "../profile/" + userID
+        enrollLink = "../enrollment/" + userID
+        exeLink = "../exercise/" + userID
+        exeVerLink = "../exercise/" + userID + "#verbal"
+        exeQuaLink = "../exercise/" + userID + "#quantitative"
+        exeWriLink = "../exercise/" + userID + "#writing"
+        appLink = "../application/" + userID
+        appUSALink = "../application/" + userID + "#usa"
+        appEURLink = "../application/" + userID + "#europe"
+        appASILink = "../application/" + userID + "#asia"
+        appOthLink = "../application/" + userID + "#others"       
+        return render_to_response('stu/tables-grades.html', locals())
     return render(request, 'stu/tables-grades.html')
