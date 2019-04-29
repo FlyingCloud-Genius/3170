@@ -18,6 +18,7 @@ def profile(request, userEmail):
         # photo
 
         #get student application
+        profileLink = "uni/university-profile/" + userEmail
         
         return render_to_response('uni/university-profile.html', locals())
 

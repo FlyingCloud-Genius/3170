@@ -44,7 +44,9 @@ def login(request):
                                 message = "This account is not a university!"
                         elif accountType == "Guardian":
                             if Guardian.objects.filter(guardian_email=userEmail).exists() == True:                            
-                                return redirect('/guardian/profile')
+                                guardian = Guardian.objects.get(guardian_email = userEmail)
+                                guardianID = guardian.guardian_id
+                                return redirect('/guardian/profile/%s' %guardianID)
                             else:
                                 message = "This account is not a guardian!"                           
                     else:
@@ -55,7 +57,6 @@ def login(request):
                 message = "All forms should be filled!"
         return render(request, 'reg/login.html', {"message": message})
     return render(request, 'reg/login.html')
-
 
 def register(request):
     if request.method == "POST":
@@ -84,14 +85,14 @@ def register(request):
                                     #print(uid)
                                     Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
                                     Uni = University.objects.create(uni_id=uid, uni_email=userEmail, reg=Reg)
-                                    return redirect('login')  
+                                    return redirect('../uni/editorCreate/%s' %userEmail)  
 
                                 elif accountType == "Guardian":
                                     gid = "2" + time.strftime("%Y%m%d%H%M%S", time.localtime())
                                     #print(gid)
                                     Reg = RegInfo.objects.create(reg_id=userEmail, reg_password=password)
                                     Gua = Guardian.objects.create(guardian_id=gid, guardian_email=userEmail, reg=Reg) 
-                                    return redirect('login')                                                     
+                                    return redirect('../guardian/editor/%s' %gid)                                                      
                             else:
                                 message = "Your second password is not match, please try again."
                         else:
