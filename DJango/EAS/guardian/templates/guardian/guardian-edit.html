@@ -33,6 +33,9 @@
                     <h2 class="mb-4">Edit Your Information Here</h2>
                     <form id="loginForm" class="mt-4" method="POST">
 
+                    {% if message %}
+                    <div class="alert alert-warning">{{ message }}</div>
+                    {% endif %}
                     <div class="row mb-4">
                         <div class="col-xl-6 col-lg-6 mb-4 mb-xl-0">
                             <input type="text" name="firstName" placeholder="First name" class="form-control border-0 shadow form-control-lg text-violet">

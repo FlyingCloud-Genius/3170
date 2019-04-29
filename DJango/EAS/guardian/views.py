@@ -28,25 +28,24 @@ def profile(request, userID):
 
 @csrf_exempt
 def editor(request, userID):
-    print(userID)
-    print("111111111111111111111111111")
     if request.method == "POST":
-        print("222222222222222222222222222222")
         message = "You should agree with the privacy of Exam and Application System"
         check_box = request.POST.getlist('check_box')
-        print("333333333333333333333333333333")
         if check_box: 
             print(userID)       
             guardian = Guardian.objects.get(guardian_id=userID)
-            if request.POST.get('firstName') != "":
-                guardian.guardian_fname = request.POST.get('firstName')
-            if request.POST.get('lastName') != "":    
-                guardian.guardian_lname = request.POST.get('lastName')
-            if request.POST.get('phoneNum') != "":    
-                guardian.guardian_phone = request.POST.get('phoneNum')   
-            guardian.save()
-            print("444444444444444444444444444444444444")
-            return redirect('/guardian/profile/%s' %userID) 
+            if ((request.POST.get('firstName') == "" and guardian.guardian_fname == None) or (request.POST.get('lastName') == ""  and guardian.guardian_lname == None)):
+                message = "Your name must be filled !"
+                return render(request, 'guardian/guardian-edit.html', {"message": message})
+            else:
+                if request.POST.get('firstName') != "":
+                    guardian.guardian_fname = request.POST.get('firstName')
+                if request.POST.get('lastName') != "":    
+                    guardian.guardian_lname = request.POST.get('lastName')
+                if request.POST.get('phoneNum') != "":    
+                    guardian.guardian_phone = request.POST.get('phoneNum')   
+                guardian.save()
+                return redirect('/guardian/profile/%s' %userID) 
         return render(request, 'guardian/guardian-edit.html', {"message": message}) 
     return render(request, 'guardian/guardian-edit.html')
 
