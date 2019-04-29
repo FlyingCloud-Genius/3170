@@ -73,28 +73,33 @@ def editor(request, userID):
     if request.method == "POST":
         message = "You should agree with the privacy of Exam and Application System"
         check_box = request.POST.getlist('check_box')
-        if check_box:        
-            genderSet = {"male":0, "female":1}
-            stu = Student.objects.get(stu_id=userID)
-            if request.POST.get('firstName') != "":
-                stu.stu_fname = request.POST.get('firstName')
-            if request.POST.get('lastName') != "":    
-                stu.stu_lname = request.POST.get('lastName')
-            if request.POST.get('phoneNum') != "":    
-                stu.stu_phone = request.POST.get('phoneNum')
-            if request.POST.get('university') != "":     
-                stu.stu_c_uni = request.POST.get('university')
-            if request.POST.get('major') != "": 
-                stu.stu_major = request.POST.get('major')
+        stu = Student.objects.get(stu_id=userID)
+        stu.stu_fname = request.POST.get('firstName')
+        stu.stu_lname = request.POST.get('lastName')
+        if request.POST.get('firstName') != "" and request.POST.get('lastName') != "":
+            if check_box:        
+                genderSet = {"male":0, "female":1}
+                # stu = Student.objects.get(stu_id=userID)
+                # if request.POST.get('firstName') != "":
+                #     stu.stu_fname = request.POST.get('firstName')
+                # if request.POST.get('lastName') != "":    
+                #     stu.stu_lname = request.POST.get('lastName')
+                if request.POST.get('phoneNum') != "":    
+                    stu.stu_phone = request.POST.get('phoneNum')
+                if request.POST.get('university') != "":     
+                    stu.stu_c_uni = request.POST.get('university')
+                if request.POST.get('major') != "": 
+                    stu.stu_major = request.POST.get('major')
 
-            if request.POST.get('gender') != "":
-                gender = str(request.POST.get('gender'))
-                gender = gender.lower()
-                if genderSet.__contains__(gender) == True:
-                    stu.stu_gender = genderSet.get(gender)
-            
+                if request.POST.get('gender') != "":
+                    gender = str(request.POST.get('gender'))
+                    gender = gender.lower()
+                    if genderSet.__contains__(gender) == True:
+                        stu.stu_gender = genderSet.get(gender)
             stu.save()
-            return redirect('/stu/profile/%s' %userID) 
+            return redirect('/stu/profile/%s' %userID)
+        else:
+            message = "First name and last name should be filled!" 
         return render(request, 'stu/personal-edit.html', {"message": message}) 
     return render(request, 'stu/personal-edit.html')
 
