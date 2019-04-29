@@ -45,9 +45,9 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <!-- <li><a href="introduction">About</a></li> -->
-                        <li><a href="exercises">Manage Exercises</a></li>
-                        <li><a href="grades">Manage Grades</a></li>
-                        <li><a href="exams">Manage Exams</a></li>
+                        <li><a href={{ExercisesLink}}>Manage Exercises</a></li>
+                        <li><a href={{GradesLink}}>Manage Grades</a></li>
+                        <li><a href={{ExamsLink}}>Manage Exams</a></li>
                         <!-- <li class="dropdown">
                                 <a href="exercise" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Exercises</a>
                                 <ul class="dropdown-menu">
@@ -68,7 +68,7 @@
                         <li><a href="../support-us">Support Us</a></li>
                         <li class="inactive"><a></a></li>
                         <li class="myprofile">
-                            <a href="profile"><img src="{% static 'images/jpg/logo2.jpg'%}" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
+                            <a href={{ProfileLink}}><img src="{% static 'images/jpg/logo2.jpg'%}" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
                         </li>
                         <li class="mylogin"><a href="../home">Log Out</a></li>
                     </ul>

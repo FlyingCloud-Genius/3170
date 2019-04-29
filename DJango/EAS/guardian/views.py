@@ -13,6 +13,11 @@ def profile(request, userID):
         name = guardian.guardian_fname + " " + guardian.guardian_lname
         phone = guardian.guardian_phone
         email = guardian.guardian_email
+
+        ProfileLink = "../profile/" + userID
+        ExercisesLink = "../exercises/" + userID
+        GradesLink = "../grades/" + userID
+        ExamsLink = "../exams/" + userID
         return render_to_response('guardian/guardian-profile.html', locals())
     elif request.method == 'POST':
         print("7777777777777777777777777777")
@@ -45,16 +50,40 @@ def editor(request, userID):
         return render(request, 'guardian/guardian-edit.html', {"message": message}) 
     return render(request, 'guardian/guardian-edit.html')
 
-def exams(request):
-    pass
+def exams(request, userID):
+    if request.method == "GET":
+        guardian = Guardian.objects.get(guardian_id=userID)
+
+        name = guardian.guardian_fname + guardian.guardian_lname
+        ProfileLink = "../profile/" + userID
+        ExercisesLink = "../exercises/" + userID
+        GradesLink = "../grades/" + userID
+        ExamsLink = "../exams/" + userID
+        return render_to_response('guardian/tables-exams-guard.html', locals())
     return render(request, 'guardian/tables-exams-guard.html')
 
 
-def exercises(request):
-    pass
+def exercises(request, userID):
+    if request.method == "GET":
+        guardian = Guardian.objects.get(guardian_id=userID)
+
+        name = guardian.guardian_fname + guardian.guardian_lname
+        ProfileLink = "../profile/" + userID
+        ExercisesLink = "../exercises/" + userID
+        GradesLink = "../grades/" + userID
+        ExamsLink = "../exams/" + userID
+        return render_to_response('guardian/tables-exercises-guard.html', locals())
     return render(request, 'guardian/tables-exercises-guard.html')
 
 
-def grades(request):
-    pass
+def grades(request, userID):
+    if request.method == "GET":
+        guardian = Guardian.objects.get(guardian_id=userID)
+
+        name = guardian.guardian_fname + guardian.guardian_lname
+        ProfileLink = "../profile/" + userID
+        ExercisesLink = "../exercises/" + userID
+        GradesLink = "../grades/" + userID
+        ExamsLink = "../exams/" + userID
+        return render_to_response('guardian/tables-grades-guard.html', locals())
     return render(request, 'guardian/tables-grades-guard.html')
