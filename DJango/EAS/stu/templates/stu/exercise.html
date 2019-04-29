@@ -91,12 +91,24 @@
                                     <table class="table card-text mytr">
                                         <thead>
                                         <tr>                                            
-                                            <th>Exercises ID</th>                                            
-                                            <th>Type</th>
+                                            <th>Exercises ID</th>
+                                            <th>Difficulty Level</th>
                                             <th>Exercises Content</th>
+                                            <th>Exercises Answer</th>
                                             <th>Exercises Analysis</th>
                                         </tr>
                                         </thead>
+                                        <tbody>
+                                            {% for item in verbalExercise %}
+                                            <tr>
+                                                <th>{{item.que_id}}</th>
+                                                <th>{{item.difficulty_level}}</th>
+                                                <th><a href="download/?name={{item.que_content}}">content</a></th>
+                                                <th><a href="download/?name={{item.answer}}">answer</a></th>
+                                                <th><a href="download/?name={{item.que_analysis}}">analysis</a></th>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -120,13 +132,24 @@
                                                 <th>Exercises Analysis</th>
                                             </tr>
                                         </thead>
+                                        <tbody>
+                                            {% for item in quantitativeExercise %}
+                                            <tr>
+                                                <th>{{item.que_id}}</th>
+                                                <th>{{item.difficulty_level}}</th>
+                                                <th><a href="download/?name={{item.que_content}}">content</a></th>
+                                                <th><a href="download/?name={{item.answer}}">answer</a></th>
+                                                <th><a href="download/?name={{item.que_analysis}}">analysis</a></th>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <!-- Your Application-->
+                        <!-- writing -->
                         <a name="writing"></a>
                         <div class="col-lg-10 mb-5">
                             <div class="card">
@@ -143,6 +166,17 @@
                                                 <th>Exercises Analysis</th>
                                             </tr>
                                         </thead>
+                                        <tbody>
+                                            {% for item in writingExercise %}
+                                            <tr>
+                                                <th>{{item.que_id}}</th>
+                                                <th>{{item.difficulty_level}}</th>
+                                                <th><a href="download/?name={{item.que_content}}">content</a></th>
+                                                <th><a href="download/?name={{item.answer}}">answer</a></th>
+                                                <th><a href="download/?name={{item.que_analysis}}">analysis</a></th>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
