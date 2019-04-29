@@ -44,7 +44,7 @@ def login(request):
                                 message = "This account is not a university!"
                         elif accountType == "Guardian":
                             if Guardian.objects.filter(guardian_email=userEmail).exists() == True:                            
-                                guardian = Guardian.objects.get(guardian_email = userEamil)
+                                guardian = Guardian.objects.get(guardian_email = userEmail)
                                 guardianID = guardian.guardian_id
                                 return redirect('/guardian/profile/%s' %guardianID)
                             else:
