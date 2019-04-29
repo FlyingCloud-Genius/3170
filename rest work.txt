@@ -1,4 +1,1 @@
-﻿university 头像删除
-guardian的跳转
-
-文件上传和下载
+﻿文件上传和下载

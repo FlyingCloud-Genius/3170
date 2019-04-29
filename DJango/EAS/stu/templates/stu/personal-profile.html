@@ -90,7 +90,7 @@
                     <div class="row">
                         <!-- Examination Schedule-->
                         <a name="schedule"></a>
-                        <div class="col-lg-8 mb-5">
+                        <div class="col-lg-10 mb-5">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Examination Schedules</h3>
@@ -113,7 +113,6 @@
                                             </tr>
                                             {% endfor %}
                                         </tbody>
-
                                     </table>
                                 </div>
                             </div>
@@ -122,7 +121,7 @@
                     <div class="row">
                         <!-- Historical Grades-->
                         <a name="grades"></a>
-                        <div class="col-lg-8 mb-5">
+                        <div class="col-lg-10 mb-5">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Historical Grades</h3>
@@ -131,21 +130,19 @@
                                     <table class="table card-text mytr">
                                         <thead>
                                         <tr>                                            
-                                            <th>Exam ID</th>
-                                            <th>Exam Time</th>
-                                            <th>City</th>
                                             <th>Answer Sheet ID</th>
+                                            <th>Answer Sheet</th>
                                             <th>Grades</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <th>1</th>
-                                            <th>2011-11-04</th>
-                                            <th>Shenzhen</th>
-                                            <th>1</th>
-                                            <th>320</th>
-                                        </tr>
+                                            {% for item in ansRes %}
+                                            <tr>
+                                                <th>{{item.ans_id}}</th>
+                                                <th><a href="download/?name={{item.student_solution}}">Solution</a></th>
+                                                <th>{{item.ans_score}}</th>
+                                            </tr>
+                                            {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>
@@ -155,7 +152,7 @@
                     <div class="row">
                         <!-- Your Application-->
                         <a name="application"></a>
-                        <div class="col-lg-8 mb-5">
+                        <div class="col-lg-10 mb-5">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">School Applications</h3>
@@ -165,30 +162,25 @@
                                         <thead>
                                         <tr>                                            
                                             <th>Application ID</th>
+                                            <th>Resume</th>
+                                            <th>Transcript</th>
+                                            <th>Recommendation</th>
                                             <th>University</th>
                                             <th>Status</th>
                                         </tr>
                                         </thead>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Your Application-->
-                        <div class="col-lg-8 mb-5">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Exam Applications</h3>
-                                </div>
-                                <div class="card-body">
-                                    <table class="table card-text mytr">
-                                        <thead>
-                                        <tr>                                            
-                                            <th>Exam ID</th>
-                                            <th>Exam Time</th>
-                                            <th>City</th>
-                                        </tr>
-                                        </thead>
+                                        <tbody>
+                                            {% for item in appliedAppRes %}
+                                            <tr>
+                                                <th>{{item.stu_app_id}}</th>
+                                                <th><a href="download/?name={{item.stu_resume}}">resume</a></th>
+                                                <th><a href="download/?name={{item.transcript}}">transcript</a></th>
+                                                <th><a href="download/?name={{item.recommendation}}">recommendation</a></th>
+                                                <th>{{item.uniName}}</th>
+                                                <th>{{item.status}}</th>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -198,7 +190,7 @@
                     <div class="row">
                         <!-- Your Information -->
                         <a name="information"></a>
-                        <div class="col-lg-8 mb-5">
+                        <div class="col-lg-10 mb-5">
                             <div class="profile-main">
                                 <div class="profile-pic wthree">
                                     <h3>{{name}}</h3>
@@ -229,10 +221,13 @@
                             </div>
                         </div>
                     </div>
+
+                    <form enctype="multipart/form-data" action={{uploadURL}} method="POST"> 
+                    {% csrf_token %}
                     <div class="row">
                         <!-- New Application -->
                         <a name="new"></a>
-                        <div class="col-lg-8 mb-5">
+                        <div class="col-lg-10 mb-5">
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">New Application</h3>
@@ -243,21 +238,13 @@
                                         <tr>                                            
                                             <th>FileName</th>
                                             <th>File</th>
-                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                             <th>Resume</th>
                                             <th>
                                                 <div class="select d-flex align-items-center justify-content-center">
-                                                    <input style="width:0px" type=file id=resumefile style="visibility:hidden" onchange=resumefilepath.value=this.value>
-                                                    <input type=textfield id=resumefilepath>
-                                                    <input type=button id=resumefilebutton value=browser onclick=resumefile.click()>
-                                                </div>
-                                            </th>
-                                            <th>
-                                                <div>
-                                                    <input type="submit" value="Upload" onclick="uploadResume()">
+                                                    <input type="file" name="resume">
                                                 </div>
                                             </th>
                                         </tbody>
@@ -265,14 +252,7 @@
                                             <th>Transcript</th>
                                             <th>
                                                 <div class="select d-flex align-items-center justify-content-center">
-                                                    <input style="width:0px" type=file id=transcriptfile style="visibility:hidden" onchange=transcriptfilepath.value=this.value>
-                                                    <input type=textfield id=transcriptfilepath>
-                                                    <input type=button id=transcriptfilebutton value=browser onclick=transcriptfile.click()>
-                                                </div>
-                                            </th>
-                                            <th>
-                                                <div>
-                                                    <input type="submit" value="Upload" onclick="uploadTranscript()">
+                                                    <input type="file" name="transcript">
                                                 </div>
                                             </th>
                                         </tbody>
@@ -280,14 +260,7 @@
                                             <th>Recommendation</th>
                                             <th>
                                                 <div class="select d-flex align-items-center justify-content-center">
-                                                    <input style="width:0px" type=file id=recommendationfile style="visibility:hidden" onchange=recommendationfilepath.value=this.value>
-                                                    <input type=textfield id=recommendationfilepath>
-                                                    <input type=button id=recommendationfilebutton value=browser onclick=recommendationfile.click()>
-                                                </div>
-                                            </th>
-                                            <th>
-                                                <div>
-                                                    <input type="submit" value="Upload" onclick="uploadRecommendation()">
+                                                    <input type="file" name="recommendation">
                                                 </div>
                                             </th>
                                         </tbody>
@@ -295,44 +268,30 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-8 mb-5">
+                        <div class="col-lg-10 mb-5">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px"></h3>
+                                    <h4 class="h6 text-uppercase mb-0 text-center"></h4>
                                 </div>
                                 <div class="card-body">
                                     <table class="table card-text mytr">
                                         <thead>
                                             <tr>                                            
                                                 <th>School Name</th>
-                                                <th>Dream Major 1</th>
-                                                <th>Dream Major 2</th>
-                                                <th>Dream Major 3</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <th>
-                                                    <select id="selectAccount" name="account" style="font-size:15px; width: 300px">
-                                                        <option>Please Choose</option>    
-                                                        <option>UCLA</option>
-                                                        <option>UCB</option>
+                                                    <select id="selectAccount" name="account" style="font-size:15px; width: 300px">   
+                                                        {% for item in uniNameitems %}
+                                                        <option>{{item}}</option>
+                                                        {% endfor %}
                                                     </select>
                                                 </th>
                                                 <th>
-                                                    <input style="font-size:15px; width: 75px; font-weight: normal">
-                                                </th>
-                                                <th>
-                                                    <input style="font-size:15px; width: 75px; font-weight: normal">
-                                                </th>
-                                                <th>
-                                                    <input style="font-size:15px; width: 75px; font-weight: normal">
-                                                </th>
-                                                <th>
-                                                    <div>
-                                                        <input type="submit" value="Submit" onclick="">
-                                                    </div>
+                                                    <input type="submit" value="Submit">
                                                 </th>
                                             </tr>
                                         </tbody>
@@ -341,6 +300,8 @@
                             </div>
                         </div>
                     </div>
+                    </form>
+
                 </section>
             </div>
         </div>
@@ -443,111 +404,6 @@
                 $("#myCarousel").carousel('cycle');
             });
         </script>
-
-        <script>
-            function uploadResume(){
-                var resumeFile = document.getElementById("resumefile").files;
-
-                if (resumeFile.length == 0) return;
-
-                var form = new FormData(),
-                    url = 'http://www.lgueas.cn',
-                    file = resumeFile[0];
-                form.append('file', file);
-
-                var xhr = new XMLHttpRequest();
-                xhr.open("post", url, true);
-                
-                //上传进度事件
-                xhr.upload.addEventListener("progress", function(result) {
-                    if (result.lengthComputable) {
-                        //上传进度
-                        var percent = (result.loaded / result.total * 100).toFixed(2); 
-                    }
-                }, false);
-                
-                xhr.addEventListener("readystatechange", function() {
-                    var result = xhr;
-                    if (result.status != 200) { //error
-                        console.log('上传失败', result.status, result.statusText, result.response);
-                    } 
-                    else if (result.readyState == 4) { //finished
-                        console.log('上传成功', result);
-                    }
-                });
-                xhr.send(form); 
-            }
-        </script>
-
-    <script>
-        function uploadTranscript(){
-            var transcriptFile = document.getElementById("transcriptfile").files;
-
-            if (transcriptFile.length == 0) return;
-
-            var form = new FormData(),
-                url = 'http://www.lgueas.cn',
-                file = transcriptFile[0];
-            form.append('file', file);
-
-            var xhr = new XMLHttpRequest();
-            xhr.open("post", url, true);
-            
-            //上传进度事件
-            xhr.upload.addEventListener("progress", function(result) {
-                if (result.lengthComputable) {
-                    //上传进度
-                    var percent = (result.loaded / result.total * 100).toFixed(2); 
-                }
-            }, false);
-            
-            xhr.addEventListener("readystatechange", function() {
-                var result = xhr;
-                if (result.status != 200) { //error
-                    console.log('上传失败', result.status, result.statusText, result.response);
-                } 
-                else if (result.readyState == 4) { //finished
-                    console.log('上传成功', result);
-                }
-            });
-            xhr.send(form); 
-        }
-    </script>
-
-    <script>
-        function uploadRecommendation(){
-            var recommendationFile = document.getElementById("recommendationfile").files;
-
-            if (recommendationFile.length == 0) return;
-
-            var form = new FormData(),
-                url = 'http://www.lgueas.cn',
-                file = recommendationFile[0];
-            form.append('file', file);
-
-            var xhr = new XMLHttpRequest();
-            xhr.open("post", url, true);
-            
-            //上传进度事件
-            xhr.upload.addEventListener("progress", function(result) {
-                if (result.lengthComputable) {
-                    //上传进度
-                    var percent = (result.loaded / result.total * 100).toFixed(2); 
-                }
-            }, false);
-            
-            xhr.addEventListener("readystatechange", function() {
-                var result = xhr;
-                if (result.status != 200) { //error
-                    console.log('上传失败', result.status, result.statusText, result.response);
-                } 
-                else if (result.readyState == 4) { //finished
-                    console.log('上传成功', result);
-                }
-            });
-            xhr.send(form); 
-        }
-    </script>
     </body>
 </html>
     

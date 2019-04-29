@@ -21,11 +21,23 @@ class Student(models.Model):
 
 class StuApplication(models.Model):
     stu_app_id = models.CharField(primary_key=True, max_length=15)
-    stu_resume = models.CharField(max_length=100, blank=True, null=True)
-    transcript = models.CharField(max_length=100, blank=True, null=True)
-    recommendation = models.CharField(max_length=50, blank=True, null=True)
-    stu = models.ForeignKey('Student', models.DO_NOTHING)
-    apply_uni = models.ForeignKey(University, models.DO_NOTHING)
+    stu_resume = models.CharField(max_length=1000, blank=True, null=True)
+    transcript = models.CharField(max_length=1000, blank=True, null=True)
+    recommendation = models.CharField(max_length=1000, blank=True, null=True)
+    stu_id = models.CharField(max_length=15)
+    apply_uni_id = models.CharField(max_length=15)
+    status = models.CharField(max_length=255)
+
+    def as_dict(self):
+        return {
+            "stu_app_id":self.stu_app_id,
+            "stu_resume":self.stu_resume,
+            "transcript":self.transcript,
+            "recommendation":self.recommendation,
+            "stu_id":self.stu_id,
+            "apply_uni_id":self.apply_uni_id,
+            "status":self.status
+        }
 
     class Meta:
         managed = False
@@ -60,6 +72,19 @@ class StuExam(models.Model):
         managed = False
         db_table = 'exam'
 
+class StuExercise(models.Model):
+    que_id = models.CharField(primary_key=True, max_length=15)
+    que_analysis = models.CharField(max_length=1000, blank=True, null=True)
+    difficulty_level = models.IntegerField(blank=True, null=True)
+    que_content = models.CharField(max_length=1000, blank=True, null=True)
+    answer = models.CharField(max_length=1000, blank=True, null=True)
+    que_type = models.CharField(max_length=100, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'question_base'
+    
+
 class AppliedExam(models.Model):
     stu_id = models.CharField(max_length=15)
     exam_id = models.CharField(max_length=15)
@@ -67,3 +92,13 @@ class AppliedExam(models.Model):
     class Meta:
         managed = False
         db_table = 'attendance'
+
+class StuAnswerSheet(models.Model):
+    ans_id = models.CharField(primary_key=True, max_length=15)
+    student_solution = models.CharField(max_length=1000)
+    ans_score = models.CharField(max_length=4)
+    examinee = models.CharField(max_length=15)
+
+    class Meta:
+        managed = False
+        db_table = "answer_sheet"

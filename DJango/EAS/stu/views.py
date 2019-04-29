@@ -1,25 +1,46 @@
 from django.shortcuts import render, render_to_response, redirect
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, FileResponse
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 import json
+import time
+import os
 
 # Create your views here.
-from .models import Student, StuExam, AppliedExam
+from .models import Student, StuExam, AppliedExam, University, StuExercise, StuAnswerSheet, StuApplication
 
 @csrf_exempt
 def profile(request, userID):
     if request.method == "GET":
         appliedExam =  list(AppliedExam.objects.values_list('stu_id', 'exam_id'))
-        print(appliedExam)
+        unirawNameitems = sorted(list(University.objects.values_list('uni_name')))
+        uniNameitems = []
+        for obj in unirawNameitems:
+            uniNameitems.append(obj[0])
         examitems = []
+        examObject = StuExam.objects.all()
         for obj in appliedExam:
             if obj[0] == userID:
-                examObject = StuExam.objects.all()
                 for dd in examObject:
                     if dd.exam_id == obj[1]:
                         examitems += [dd.as_dict()]
-            
+
+        ansSheet = StuAnswerSheet.objects.all()
+        ansRes = []
+        for obj in ansSheet:
+            if obj.examinee == userID and obj.ans_score:
+                ansRes.append(obj)
+
+        appliedApplication = StuApplication.objects.all()
+        appliedAppRes = []
+        for obj in appliedApplication:
+            if obj.stu_id == userID:
+                temp = {}
+                temp.update(obj.as_dict())
+                c = {'uniName':University.objects.get(uni_id=obj.apply_uni_id).uni_name}
+                temp.update(c)
+                appliedAppRes.append(temp)
+
         stu = Student.objects.get(stu_id = userID)
         name = stu.stu_fname + stu.stu_lname
         if stu.stu_gender == 0:
@@ -39,10 +60,7 @@ def profile(request, userID):
         exeQuaLink = "../exercise/" + userID + "#quantitative"
         exeWriLink = "../exercise/" + userID + "#writing"
         appLink = "../application/" + userID
-        appUSALink = "../application/" + userID + "#usa"
-        appEURLink = "../application/" + userID + "#europe"
-        appASILink = "../application/" + userID + "#asia"
-        appOthLink = "../application/" + userID + "#others"       
+        uploadURL = "../profile/uploadfile/" + userID      
         return render_to_response('stu/personal-profile.html', locals())
 
     elif request.method == "POST":
@@ -83,8 +101,10 @@ def editor(request, userID):
 
 def application(request, userID):
     if request.method == "GET":
-        stu = Student.objects.get(stu_id=userID)
+        university = University.objects.all()
+        universityItem = list(university)
 
+        stu = Student.objects.get(stu_id=userID)
         name = stu.stu_fname + stu.stu_lname
         proLink = "../profile/" + userID
         enrollLink = "../enrollment/" + userID
@@ -92,19 +112,26 @@ def application(request, userID):
         exeVerLink = "../exercise/" + userID + "#verbal"
         exeQuaLink = "../exercise/" + userID + "#quantitative"
         exeWriLink = "../exercise/" + userID + "#writing"
-        appLink = "../application/" + userID
-        appUSALink = "../application/" + userID + "#usa"
-        appEURLink = "../application/" + userID + "#europe"
-        appASILink = "../application/" + userID + "#asia"
-        appOthLink = "../application/" + userID + "#others"       
+        appLink = "../application/" + userID  
         return render_to_response('stu/application.html', locals())
     return render(request, 'stu/application.html')
 
 
 def exercise(request, userID):
     if request.method == "GET":
-        stu = Student.objects.get(stu_id=userID)
+        allExercise = StuExercise.objects.all()
+        verbalExercise = []
+        quantitativeExercise = []
+        writingExercise = []
+        for obj in allExercise:
+            if obj.que_type == "verbal":
+                verbalExercise.append(obj)
+            if obj.que_type == "quantitative":
+                quantitativeExercise.append(obj)
+            if obj.que_type == "writing":
+                writingExercise.append(obj)
 
+        stu = Student.objects.get(stu_id=userID)
         name = stu.stu_fname + stu.stu_lname
         proLink = "../profile/" + userID
         enrollLink = "../enrollment/" + userID
@@ -112,11 +139,7 @@ def exercise(request, userID):
         exeVerLink = "../exercise/" + userID + "#verbal"
         exeQuaLink = "../exercise/" + userID + "#quantitative"
         exeWriLink = "../exercise/" + userID + "#writing"
-        appLink = "../application/" + userID
-        appUSALink = "../application/" + userID + "#usa"
-        appEURLink = "../application/" + userID + "#europe"
-        appASILink = "../application/" + userID + "#asia"
-        appOthLink = "../application/" + userID + "#others"       
+        appLink = "../application/" + userID       
         return render_to_response('stu/exercise.html', locals())
     return render(request, 'stu/exercise.html')
 
@@ -153,3 +176,53 @@ def exams(request, userID):
         return render(request, 'stu/tables-exams.html', {"message": "success"})
     
     return render(request, 'stu/tables-exams.html')
+
+def download(request):
+    name = request.GET.get('name')
+    file = open(name, 'rb')
+    response = FileResponse(file)
+    response['Content-Type']='application/msword'
+    response['Content-Disposition']='attachment;filename='+name
+    return response
+
+@csrf_exempt
+def upload_file(request, userID): 
+    if request.method == "POST":
+        resume = request.FILES.get("resume", None)
+        transcript = request.FILES.get("transcript", None)
+        recommendation = request.FILES.get("recommendation", None)
+
+        stu_app_id = "X" + time.strftime("%Y%m%d%H%M%S", time.localtime()) 
+        stu_resume_name = "/root/upload/resume/resume/" + stu_app_id + "resume.pdf"
+        transcript_name = "/root/upload/resume/transcript/" + stu_app_id + "transcript.pdf"
+        recommendation_name = "/root/upload/resume/recommendation/" + stu_app_id + "recommendation.pdf"
+        status = "pending"
+
+        if resume:
+            destination = open(os.path.join("/root/upload/resume/resume",stu_resume_name),'wb+')
+            for chunk in resume.chunks():       
+                destination.write(chunk) 
+            destination.close()
+        if transcript:
+            destination = open(os.path.join("/root/upload/resume/transcript",transcript_name),'wb+')
+            for chunk in transcript.chunks():       
+                destination.write(chunk) 
+            destination.close()
+        if recommendation:
+            destination = open(os.path.join("/root/upload/resume/recommendation",recommendation_name),'wb+')
+            for chunk in recommendation.chunks():       
+                destination.write(chunk) 
+            destination.close()
+        
+        accountType = request.POST.get("account")
+        accountID = ""
+        university = University.objects.all()
+        for obj in university:
+            if obj.uni_name == accountType:
+                accountID = obj.uni_id
+                break
+
+        StuApplication.objects.create(stu_app_id=stu_app_id, stu_resume=stu_resume_name, transcript=transcript_name, recommendation=recommendation_name, stu_id=userID, apply_uni_id=accountID, status=status)
+        
+        return redirect('/stu/profile/%s' %userID, locals()) 
+        # return render(request, 'stu/profile/%s' %userID, locals())
