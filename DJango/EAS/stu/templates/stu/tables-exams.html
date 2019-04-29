@@ -43,7 +43,7 @@
         <div class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="../home" style="font-size: 50px">EA<span>S</span></a>
+                    <a class="navbar-brand" href="../../home" style="font-size: 50px">EA<span>S</span></a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -58,20 +58,14 @@
                                 </ul>
                         </li>
                         <li class="dropdown">
-                                <a href={{appLink}} class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Dream Schools</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href={{appUSALink}}>USA</a></li>
-                                    <li><a href={{appEURLink}}>Europe</a></li>
-                                    <li><a href={{appASILink}}>Asia</a></li>
-                                    <li><a href={{appOthLink}}>Others</a></li>
-                                </ul>
+                            <a href={{appLink}}>Dream Schools</a>
                         </li>
-                        <li><a href="../support-us">Support Us</a></li>
+                        <li><a href="../../support-us">Support Us</a></li>
                         <li class="inactive"><a></a></li>
                         <li class="myprofile">
                             <a href={{proLink}}><h7 style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"><strong>{{name}}</strong></h7></a>
                         </li>
-                        <li class="mylogin"><a href="../home">Log Out</a></li>
+                        <li class="mylogin"><a href="../../home">Log Out</a></li>
                     </ul>
                 </div>
             </div>
@@ -85,18 +79,18 @@
             <!-- main container of the tables-->
             <div class="container-fluid px-xl-5">
                 <section class="py-5">
-                    <h4 class="text-uppercase mb-5 text-center">Applying for New Exam</h4>
+                    {% if message %}
+                    <div class="alert alert-success">{{ message }}</div>
+                    {% endif %}
+                    <h2 class="text-uppercase mb-5 text-center">Applying for New Exam</h2>
                     <ul class="d-flex border border-primary shadow pl-0">
                         <li class="d-flex align-items-center my-4 col-lg-3">
                             <label for="Location" class="mt-1">Cities: </label>
                             <div id="Location" class="select ml-2">
                                 <select id="selectCity" name="account" class="form-control" style="width:200px">
-                                    <option>Beijing</option>
-                                    <option>Shanghai</option>
-                                    <option>Guangzhou</option>
-                                    <option>Shenzhen</option>
-                                    <option>Hong Kong</option>
-                                    <option>Changsha</option>
+                                    {% for item in examCityitem %}
+                                    <option>{{item}}</option>
+                                    {% endfor %}
                                 </select>
                             </div>
                         </li>
@@ -117,32 +111,32 @@
                     </ul>
 
                 </section>
-                <section class="pb-5">
-                    <div class="row">
-                        <div class="col-lg-12 mb-4">
-                            <div class="card">
-                                <div class="card-header">                                   
-                                    <h6 class="text-uppercase mb-0 ">Exams</h6>
-                                </div>
-                                <div class="card-body">
-                                    <table class="table card-text">
-                                        <thead>
-                                        <tr>
-                                            <th>City</th>
-                                            <th>Exam ID</th>
-                                            <th>Exam Time</th>
-                                            <th>Exam Location</th>
-                                            <th>Availability</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody id = "searchResult">
-                                        </tbody>
-                                    </table>
+                <form method="POST"> {% csrf_token %}
+                    <section class="pb-5">
+                        <div class="row">
+                            <div class="col-lg-12 mb-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <table class="table card-text mytr">
+                                            <thead>
+                                            <tr>
+                                                <th>City</th>
+                                                <th>Exam ID</th>
+                                                <th>Exam Time</th>
+                                                <th>Availability</th>
+                                                <th><input type="hidden"></th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id = "searchResult">
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </form>
             </div>
         </div>
     </div>
@@ -176,7 +170,7 @@
                         <li><a href="https://user.qzone.qq.com/133228573/"><img src="{% static 'images/icon/Tencent.ico'%}" height="30" width="30"></a></li>
                         <li><a href="http://tieba.baidu.com/f?kw=%CF%E3%B8%DB%D6%D0%CE%C4%B4%F3%D1%A7%C9%EE%DB%DA"><img src="{% static 'images/icon/TieBa.ico'%}" height="30" width="30"></a></li>
                         <li><a href="https://www.facebook.com/Welcome-2267653903313743/"><i class="fab fa-facebook-square" style="font-size:30px"></i></a></li>
-                        <li><a href="../support-us"><i class="fab fa-weixin" style="font-size:30px"></i></a></li>
+                        <li><a href="../../support-us"><i class="fab fa-weixin" style="font-size:30px"></i></a></li>
                         <li><a href="http://www.cuhk.edu.cn/academics/caiwei/"><img src="{% static 'images/icon/WeiBo.ico'%}" height="30" width="30"></a></li>
                     </ul>
                 </div>
@@ -241,36 +235,23 @@
 
     <script>
         function onClickSearch() {
-            var exams = new Array();
-            exams[0] = {City:"Beijing", ExamID:"1", ExamTime:"2011-11-04", ExamLocation:"Tian'an Gate", Availability:"Yes"};
-            exams[1] = {City:"Beijing", ExamID:"2", ExamTime:"2011-12-04", ExamLocation:"Huang Fu Jing", Availability:"No"};
-            exams[2] = {City:"Beijing", ExamID:"3", ExamTime:"2011-10-04", ExamLocation:"Zhong Nan Hai", Availability:"No"};
-            exams[3] = {City:"Shanghai", ExamID:"4", ExamTime:"2011-01-04", ExamLocation:"Wai Tan", Availability:"Yes"};
-            exams[4] = {City:"Shanghai", ExamID:"5", ExamTime:"2011-06-04", ExamLocation:"Dong Fang Ming Zhu", Availability:"Yes"};
-            exams[5] = {City:"Shanghai", ExamID:"6", ExamTime:"2011--04-04", ExamLocation:"Pu Dong Xing Cheng", Availability:"No"};
-            exams[6] = {City:"Guangzhou", ExamID:"7", ExamTime:"2011-02-04", ExamLocation:"Bai Yun Park", Availability:"Yes"};
-            
+            var exams = {{examJson | safe}};
             var selectCity = document.getElementById("selectCity");
             var cityIndex = selectCity.selectedIndex;
             var city = selectCity.options[cityIndex].value;
             var tbody = ""
-            var showAvailable = document.getElementById("availablity").checked;
+            var showAvailable = document.getElementById("availability").checked;
 
             if (showAvailable == true){
                 for (i in exams){
-                    if (exams[i].City == city && exams[i].Availability == "Yes"){
+                    if (exams[i].examcity == city && exams[i].examavail == "Yes"){
                         tbody += "<tr class='align-items-center'>" +
-                                    "<th>" +
-                                        "<div class='custom-control custom-checkbox align-items-center '>" +
-                                            "<input id='customCheck1.1' type='checkbox' class='custom-control-input' />" +
-                                            "<label for='customCheck1.1' class='custom-control-label'>|</label>" +
-                                        "</div>" +
-                                    "</th>" +
-                                    "<th>" + exams[i].City + "</th>" +
-                                    "<th scope='row'>" + exams[i].ExamID + "</th>" +
-                                    "<td>" + exams[i].ExamTime + "</td>" +
-                                    "<td>" + exams[i].ExamLocation + "</td>" +
-                                    "<td>" + exams[i].Availability+ "</td>" +
+                                    "<th>" + exams[i].examcity + "</th>" +
+                                    "<th>" + exams[i].examid + "</th>" +
+                                    "<th>" + exams[i].examtime + "</th>" +
+                                    "<th>" + exams[i].examavail+ "</th>" +
+                                    '<th><input type="hidden" name="appliedExamID" value="'+ exams[i].examid +'"></th>' + 
+                                    '<th><button type="submit" class="btn btn-primary">Apply</button><th>' +
                                 "</tr>";
                     }
                 }
@@ -278,26 +259,29 @@
             else
             {
                 for (i in exams){
-                    if (exams[i].City == city){
-                        tbody += "<tr class='align-items-center'>" +
-                                    "<th>" +
-                                        "<div class='custom-control custom-checkbox align-items-center '>" +
-                                            "<input id='customCheck1.1' type='checkbox' class='custom-control-input' />" +
-                                            "<label for='customCheck1.1' class='custom-control-label'>|</label>" +
-                                        "</div>" +
-                                    "</th>" +
-                                    "<th>" + exams[i].City + "</th>" +
-                                    "<th scope='row'>" + exams[i].ExamID + "</th>" +
-                                    "<td>" + exams[i].ExamTime + "</td>" +
-                                    "<td>" + exams[i].ExamLocation + "</td>" +
-                                    "<td>" + exams[i].Availability+ "</td>" +
+                    if (exams[i].examcity == city){
+                        if (exams[i].examavail == "No") {
+                            tbody += "<tr class='align-items-center'>" +
+                                    "<th>" + exams[i].examcity + "</th>" +
+                                    "<th>" + exams[i].examid + "</th>" +
+                                    "<th>" + exams[i].examtime + "</th>" +
+                                    "<th>" + exams[i].examavail+ "</th>" +
                                 "</tr>";
+                        }
+                        else {
+                            tbody += "<tr class='align-items-center'>" +
+                                    "<th>" + exams[i].examcity + "</th>" +
+                                    "<th name='appliedExamID'>" + exams[i].examid + "</th>" +
+                                    "<th>" + exams[i].examtime + "</th>" +
+                                    "<th>" + exams[i].examavail+ "</th>" +
+                                    '<th><input type="hidden" name="appliedExamID" value="'+ exams[i].examid +'"></th>' +
+                                    '<th><button type="submit" class="btn btn-primary">Apply</button><th>' +
+                                "</tr>";
+                        }
                     }
                 }
             }
             
-
-
             document.getElementById("searchResult").innerHTML = tbody;
         }
     </script>

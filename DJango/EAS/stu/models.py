@@ -40,3 +40,30 @@ class StuDreamMajors(models.Model):
         managed = False
         db_table = 'stu_dream_majors'
         unique_together = (('stu_app', 'stu_dream_major'),)
+
+class StuExam(models.Model):
+    exam_id = models.CharField(primary_key=True, max_length=15)
+    exam_location = models.CharField(max_length=100)
+    exam_time = models.TimeField()
+    availability = models.IntegerField()
+
+    def as_dict(self):
+        smallDict = {0: "No", 1: "Yes"}
+        return {
+            "examid":self.exam_id,
+            "examtime":self.exam_time.__str__(),
+            "examcity":self.exam_location,
+            "examavail":smallDict[self.availability]
+        }
+
+    class Meta:
+        managed = False
+        db_table = 'exam'
+
+class AppliedExam(models.Model):
+    stu_id = models.CharField(max_length=15)
+    exam_id = models.CharField(max_length=15)
+
+    class Meta:
+        managed = False
+        db_table = 'attendance'

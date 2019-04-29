@@ -7,7 +7,5 @@ urlpatterns = [
     path('profile/<str:userID>', views.profile, name='personal-profile'),
     path('application/<str:userID>', views.application, name='application'),
     path('exercise/<str:userID>', views.exercise, name='exercise'),
-    path('enrollment/<str:userID>', views.exams, name='tables-exams'),
-    path('grades/<str:userID>', views.grades, name='tables-grades'),
-
+    path('enrollment/<str:userID>', views.exams, name='tables-exams')
 ]

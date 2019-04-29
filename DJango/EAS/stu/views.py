@@ -2,13 +2,24 @@ from django.shortcuts import render, render_to_response, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
+import json
 
 # Create your views here.
-from .models import Student
+from .models import Student, StuExam, AppliedExam
 
 @csrf_exempt
 def profile(request, userID):
     if request.method == "GET":
+        appliedExam =  list(AppliedExam.objects.values_list('stu_id', 'exam_id'))
+        print(appliedExam)
+        examitems = []
+        for obj in appliedExam:
+            if obj[0] == userID:
+                examObject = StuExam.objects.all()
+                for dd in examObject:
+                    if dd.exam_id == obj[1]:
+                        examitems += [dd.as_dict()]
+            
         stu = Student.objects.get(stu_id = userID)
         name = stu.stu_fname + stu.stu_lname
         if stu.stu_gender == 0:
@@ -33,6 +44,7 @@ def profile(request, userID):
         appASILink = "../application/" + userID + "#asia"
         appOthLink = "../application/" + userID + "#others"       
         return render_to_response('stu/personal-profile.html', locals())
+
     elif request.method == "POST":
         return redirect('/stu/editor/%s' %userID) 
     else:
@@ -108,11 +120,19 @@ def exercise(request, userID):
         return render_to_response('stu/exercise.html', locals())
     return render(request, 'stu/exercise.html')
 
-
+@csrf_exempt
 def exams(request, userID):
     if request.method == "GET":
-        stu = Student.objects.get(stu_id=userID)
+        examObject = StuExam.objects.all()
+        examCityitem = set()
+        for obj in examObject:
+            examCityitem.add(obj.as_dict()['examcity'])
+        examCityitem = sorted(list(examCityitem))
 
+        examitems = [obj.as_dict() for obj in examObject]
+        examJson = json.dumps(examitems)
+
+        stu = Student.objects.get(stu_id=userID)
         name = stu.stu_fname + stu.stu_lname
         proLink = "../profile/" + userID
         enrollLink = "../enrollment/" + userID
@@ -126,24 +146,10 @@ def exams(request, userID):
         appASILink = "../application/" + userID + "#asia"
         appOthLink = "../application/" + userID + "#others"       
         return render_to_response('stu/tables-exams.html', locals())
+
+    if request.method == "POST":
+        appliedExamID = request.POST.get("appliedExamID")
+        AppliedExam.objects.create(stu_id=userID, exam_id=appliedExamID)
+        return render(request, 'stu/tables-exams.html', {"message": "success"})
+    
     return render(request, 'stu/tables-exams.html')
-
-
-def grades(request, userID):
-    if request.method == "GET":
-        stu = Student.objects.get(stu_id=userID)
-
-        name = stu.stu_fname + stu.stu_lname
-        proLink = "../profile/" + userID
-        enrollLink = "../enrollment/" + userID
-        exeLink = "../exercise/" + userID
-        exeVerLink = "../exercise/" + userID + "#verbal"
-        exeQuaLink = "../exercise/" + userID + "#quantitative"
-        exeWriLink = "../exercise/" + userID + "#writing"
-        appLink = "../application/" + userID
-        appUSALink = "../application/" + userID + "#usa"
-        appEURLink = "../application/" + userID + "#europe"
-        appASILink = "../application/" + userID + "#asia"
-        appOthLink = "../application/" + userID + "#others"       
-        return render_to_response('stu/tables-grades.html', locals())
-    return render(request, 'stu/tables-grades.html')

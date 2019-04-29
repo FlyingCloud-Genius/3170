@@ -1,9 +1,4 @@
-﻿student 那边进到每个分支页面之后support-us还有home的跳转
-university 头像删除
+﻿university 头像删除
 guardian的跳转
 
-表单打印
-
 文件上传和下载
-
-PPT

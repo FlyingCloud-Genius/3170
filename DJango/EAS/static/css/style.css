@@ -1805,7 +1805,7 @@ ul#filters > .active > span {
 }
 
 .header-frontend .nav .myprofile a:hover{
-    background-color: #fff ;
+    background-color: #af6de6;
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
     -ms-transition: all .3s ease;
