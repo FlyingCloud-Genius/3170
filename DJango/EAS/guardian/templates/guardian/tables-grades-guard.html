@@ -244,12 +244,12 @@
                                     "<th scope='row'>" + answers[i].AnswerSheetID + "</th>" +
                                     "<th>" + "<a href='download/?name="+answers[i].Solution+"' download='Solution.pdf'>Solution</a></th>" +
                                     "<th>" + 
-                                        "<input type='text' name='newGrade'>" +
+                                        "<input type='text' name='newGrade"+String(i)+"'>" +
                                     "</th>" +
                                     "<th>" +
                                         "<button type='submit'>Commit</button>" +
                                     "</th>" +
-                                    '<input type="hidden" name="ansID" value='+answers[i].AnswerSheetID+'>' +
+                                    '<input type="hidden" name="ansID'+String(i)+'"value='+answers[i].AnswerSheetID+'>' +
                                 "</tr>";
                     }
                 }
@@ -262,12 +262,12 @@
                                     "<th scope='row'>" + answers[i].AnswerSheetID + "</th>" +
                                     "<th>" + "<a href='download/?name="+answers[i].Solution+"' download='Solution.pdf'>Solution</a></th>" +
                                     "<th>" + 
-                                        "<input type='text' name='newGrade'>" +
+                                        "<input type='text' name='newGrade"+String(i)+"'>" +
                                     "</th>" +
                                     "<th>" +
                                         "<button type='submit'>Commit</button>" +
                                     "</th>" +
-                                    '<input type="hidden" name="ansID" value='+answers[i].AnswerSheetID+'>' +
+                                    '<input type="hidden" name="ansID'+String(i)+'"value='+answers[i].AnswerSheetID+'>' +
                                 "</tr>";
                     }
                     else {
@@ -276,9 +276,7 @@
                                     "<th>" + "<a href='download/?name="+answers[i].Solution+"' download='Solution.pdf'>Solution</a></th>" +
                                     "<th>" + answers[i].Score + "</th>" +
                                     "<th>" +
-                                        "<button type='submit'>Commit</button>" +
                                     "</th>" +
-                                    '<input type="hidden" name="ansID" value='+answers[i].AnswerSheetID+'>' +
                                 "</tr>";
                     }
                 }

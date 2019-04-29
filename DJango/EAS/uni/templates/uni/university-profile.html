@@ -99,14 +99,14 @@
                                                                             "<th>" + "<a href='download/?name="+ applicants[i].recommendation +"' download='recommendation.pdf'>recommendation</a>" + "</th>" +
                                                                             "<th>" +
                                                                                 "<div id='Location' class='select ml-2 d-flex align-items-center justify-content-center'>" + 
-                                                                                    "<select id='selectCity' name='account' class='form-control' style='width:100px'>" +
+                                                                                    "<select id='selectCity' name='account"+ String(i) +"' class='form-control' style='width:100px'>" +
                                                                                         "<option>Choose</option>" +
                                                                                         "<option>Pass</option>" +
                                                                                         "<option>Reject</option>" +
                                                                                         "<option>TBD</option>" +
                                                                                     "</select>" +
                                                                                     '<button type="submit" class="btn btn-primary" style="margin-left: 20px">Agree</button>' +
-                                                                                    '<input type="hidden" name="appliedID" value='+applicants[i].stu_app_id+'>' +
+                                                                                    '<input type="hidden" name="appliedID'+ String(i) +'" value='+applicants[i].stu_app_id+'>' +
                                                                                 "</div>" +
                                                                             "</th>" +
                                                                     "</tr>");

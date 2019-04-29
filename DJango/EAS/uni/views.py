@@ -62,14 +62,20 @@ def editorCreate(request, userEmail):
 @csrf_exempt
 def agree(request, userEmail):
     if request.method == "POST":
-        newStatus = request.POST.get('account')
-        thisAppID =request.POST.get('appliedID')
-        sao = StuApplication.objects.get(stu_app_id=thisAppID)
-        if newStatus == "Pass":
-            sao.status = "Pass"
-        elif newStatus == "Reject":
-            sao.status = "Reject"
-        sao.save()
+        length = len(StuApplication.objects.all())
+        for i in range(length):
+            newStatus = request.POST.get('account'+str(i))
+            thisAppID =request.POST.get('appliedID'+str(i))
+            if thisAppID:
+                sao = StuApplication.objects.get(stu_app_id=thisAppID)
+                if newStatus == "Pass":
+                    sao.status = "Pass"
+                elif newStatus == "Reject":
+                    sao.status = "Reject"
+                elif newStatus == "TBD":
+                    sao.status = "Pending"
+                sao.save(update_fields=['status'])
+
         return redirect('/uni/profile/%s' %userEmail, locals()) 
 
 def download(request):

@@ -80,6 +80,9 @@ def exams(request, userID):
     if request.method == "POST":
         appliedExamID = request.POST.get("appliedExamID")
         AppliedExam.objects.create(stu_id=userID, exam_id=appliedExamID)
+        examObject = StuExam.objects.get(exam_id=appliedExamID)
+        examObject.availability = 0
+        examObject.save(update_fields=['availability'])
         return redirect('/guardian/profile/%s' %userID, locals())
 
     return render(request, 'guardian/tables-exams-guard.html')
@@ -187,12 +190,16 @@ def upload_file(request, userID):
 @csrf_exempt
 def commit(request, userID):
     if request.method == "POST":
-        newGrade = request.POST.get("newGrade")
-        appID = request.POST.get("ansID")
-        aso = StuAnswerSheet.objects.get(ans_id=appID)
-        if newGrade:
-            aso.ans_score = newGrade
-        aso.save()
+        length = len(StuAnswerSheet.objects.all())
+        for i in range(length):
+            newGrade = request.POST.get("newGrade"+str(i))
+            appID = request.POST.get("ansID"+str(i))
+            if appID:
+                aso = StuAnswerSheet.objects.get(ans_id=appID)
+                if newGrade:
+                    aso.ans_score = newGrade
+                aso.save(update_fields=['ans_score'])
+        
         return redirect('/guardian/grades/%s' %userID, locals()) 
 
 def download(request):

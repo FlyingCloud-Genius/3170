@@ -174,6 +174,9 @@ def exams(request, userID):
     if request.method == "POST":
         appliedExamID = request.POST.get("appliedExamID")
         AppliedExam.objects.create(stu_id=userID, exam_id=appliedExamID)
+        examObject = StuExam.objects.get(exam_id=appliedExamID)
+        examObject.availability = 0
+        examObject.save(update_fields=['availability'])
         return redirect('/stu/profile/%s' %userID, locals())
     
     return render(request, 'stu/tables-exams.html')
