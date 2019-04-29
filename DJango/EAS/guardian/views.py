@@ -1,5 +1,5 @@
 from django.shortcuts import render, render_to_response, redirect
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, FileResponse
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
 
@@ -137,23 +137,23 @@ def upload_file(request, userID):
                 if item.que_id == newID:
                     item.que_type = newType
                     if newContent:
-                        content_name = "/root/upload/exercises/" + newID + "content.pdf"
+                        content_name = "/root/upload/exercise/" + newID + "content.pdf"
                         destination = open(content_name,'wb+')
-                        for chunk in resume.chunks():       
+                        for chunk in newContent.chunks():       
                             destination.write(chunk) 
                         destination.close()
                         item.que_content=content_name
                     if newAnswer:
-                        answer_name = "/root/upload/exercises/" + newID + "answer.pdf"
+                        answer_name = "/root/upload/exercise/" + newID + "answer.pdf"
                         destination = open(answer_name,'wb+')
-                        for chunk in resume.chunks():       
+                        for chunk in newAnswer.chunks():       
                             destination.write(chunk) 
                         destination.close()
                         item.answer=answer_name
                     if newAnalysis:
-                        analysis_name = "/root/upload/exercises/" + newID + "analysis.pdf"
+                        analysis_name = "/root/upload/exercise/" + newID + "analysis.pdf"
                         destination = open(analysis_name,'wb+')
-                        for chunk in resume.chunks():       
+                        for chunk in newAnalysis.chunks():       
                             destination.write(chunk) 
                         destination.close()
                         item.que_analysis=analysis_name
@@ -161,21 +161,21 @@ def upload_file(request, userID):
                     return redirect('/guardian/exercises/%s' %userID, locals())
 
             if newContent:
-                content_name = "/root/upload/exercises/" + newID + "content.pdf"
+                content_name = "/root/upload/exercise/" + newID + "content.pdf"
                 destination = open(content_name,'wb+')
-                for chunk in resume.chunks():       
+                for chunk in newContent.chunks():       
                     destination.write(chunk) 
                 destination.close()
             if newAnswer:
-                answer_name = "/root/upload/exercises/" + newID + "answer.pdf"
+                answer_name = "/root/upload/exercise/" + newID + "answer.pdf"
                 destination = open(answer_name,'wb+')
-                for chunk in resume.chunks():       
+                for chunk in newAnswer.chunks():       
                     destination.write(chunk) 
                 destination.close()
             if newAnalysis:
-                analysis_name = "/root/upload/exercises/" + newID + "analysis.pdf"
+                analysis_name = "/root/upload/exercise/" + newID + "analysis.pdf"
                 destination = open(analysis_name,'wb+')
-                for chunk in resume.chunks():       
+                for chunk in newAnalysis.chunks():       
                     destination.write(chunk) 
                 destination.close()
             

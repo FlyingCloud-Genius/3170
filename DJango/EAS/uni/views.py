@@ -1,5 +1,5 @@
 from django.shortcuts import render, render_to_response, redirect
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, FileResponse
 from reg.models import RegInfo
 from django.views.decorators.csrf import csrf_exempt
 from .models import University, UniOpenMajor

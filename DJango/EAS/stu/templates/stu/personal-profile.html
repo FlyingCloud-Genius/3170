@@ -173,9 +173,9 @@
                                             {% for item in appliedAppRes %}
                                             <tr>
                                                 <th>{{item.stu_app_id}}</th>
-                                                <th><a href="download/?name={{item.stu_resume}}">resume</a></th>
-                                                <th><a href="download/?name={{item.transcript}}">transcript</a></th>
-                                                <th><a href="download/?name={{item.recommendation}}">recommendation</a></th>
+                                                <th><a href="download/?name={{item.stu_resume}}" download="resume.pdf">resume</a></th>
+                                                <th><a href="download/?name={{item.transcript}}" download="transcript.pdf">transcript</a></th>
+                                                <th><a href="download/?name={{item.recommendation}}" download="recommendation.pdf">recommendation</a></th>
                                                 <th>{{item.uniName}}</th>
                                                 <th>{{item.status}}</th>
                                             </tr>
