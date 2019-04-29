@@ -83,6 +83,16 @@ class StuExercise(models.Model):
     class Meta:
         managed = False
         db_table = 'question_base'
+
+    def as_dict(self):
+        return {
+            "ID":self.que_id,
+            "analysis":self.que_analysis,
+            "difficulty":self.difficulty_level,
+            "content":self.que_content,
+            "answer":self.answer,
+            "type":self.que_type
+        }
     
 
 class AppliedExam(models.Model):
@@ -102,3 +112,14 @@ class StuAnswerSheet(models.Model):
     class Meta:
         managed = False
         db_table = "answer_sheet"
+    
+    def as_dict(self):
+        flag = False
+        if self.ans_score: flag = True
+        return {
+            "AnswerSheetID":self.ans_id,
+            "Solution":self.student_solution,
+            "checked":flag,
+            "Score": self.ans_score,
+            "examinee": self.examinee
+        }

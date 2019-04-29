@@ -79,40 +79,41 @@
                                         <thead>
                                             <tr>                                            
                                                 <th>Application ID</th>                                            
-                                                <th>Applicant Name</th>
-                                                <th>Applicant Highest Grades</th>
+                                                <th>Applicant ID</th>
                                                 <th>Applicant Resume</th>
+                                                <th>Applicant Transcript</th>
+                                                <th>Applicant Recommendation</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
-                                        <tbody id="applicants">
-                                            <script>
-                                                var applicants = new Array();
-                                                applicants[0] = {ID:"00001", Name:"hahaha", highestGrades:"A", resume:"resume00001"};
-                                                applicants[1] = {ID:"00002", Name:"lalala", highestGrades:"A-", resume:"resume00002"};
-                                                applicants[2] = {ID:"00003", Name:"hehehe", highestGrades:"A", resume:"resume00003"};
-                                    
-                                                for (i in applicants){
-                                                    document.write("<tr class='align-items-center'>" +
-                                                                        "<th>" + applicants[i].ID + "</th>" +
-                                                                        "<th scope='row'>" + applicants[i].Name + "</th>" +
-                                                                        "<th align='center'>" + applicants[i].highestGrades + "</th>" +
-                                                                        "<th>" + "<a href='' target='_blank'>" + applicants[i].resume + "</a>" + "</th>" +
-                                                                        "<th>" +
-                                                                            "<div id='Location' class='select ml-2 d-flex align-items-center justify-content-center'>" + 
-                                                                                "<select id='selectCity' name='account' class='form-control' style='width:100px'>" +
-                                                                                    "<option>Choose</option>" +
-                                                                                    "<option>Pass</option>" +
-                                                                                    "<option>Reject</option>" +
-                                                                                    "<option>TBD</option>" +
-                                                                                "</select>" +
-                                                                                '<button type="submit" class="btn btn-primary" onclick="" style="margin-left: 20px">Agree</button>' +
-                                                                            "</div>" +
-                                                                        "</th>" +
-                                                                   "</tr>");
-                                                }  
-                                            </script>
-                                        </tbody>
+                                        <form action="{{agreeURL}}" method="POST">
+                                            <tbody id="applicants">
+                                                <script>
+                                                    var applicants = {{appJson | safe}};
+                                                    for (i in applicants){
+                                                        document.write("<tr>" +
+                                                                            "<th>" + applicants[i].stu_app_id + "</th>" +
+                                                                            "<th>" + applicants[i].stu_id + "</th>" +
+                                                                            "<th>" + "<a href='download/?name="+ applicants[i].stu_resume +"' download='resume.pdf'>resume</a>" + "</th>" +
+                                                                            "<th>" + "<a href='download/?name="+ applicants[i].transcript +"' download='transcript.pdf'>transcript</a>" + "</th>" +
+                                                                            "<th>" + "<a href='download/?name="+ applicants[i].recommendation +"' download='recommendation.pdf'>recommendation</a>" + "</th>" +
+                                                                            "<th>" +
+                                                                                "<div id='Location' class='select ml-2 d-flex align-items-center justify-content-center'>" + 
+                                                                                    "<select id='selectCity' name='account' class='form-control' style='width:100px'>" +
+                                                                                        "<option>Choose</option>" +
+                                                                                        "<option>Pass</option>" +
+                                                                                        "<option>Reject</option>" +
+                                                                                        "<option>TBD</option>" +
+                                                                                    "</select>" +
+                                                                                    '<button type="submit" class="btn btn-primary" style="margin-left: 20px">Agree</button>' +
+                                                                                    '<input type="hidden" name="appliedID" value='+applicants[i].stu_app_id+'>' +
+                                                                                "</div>" +
+                                                                            "</th>" +
+                                                                    "</tr>");
+                                                    }  
+                                                </script>
+                                            </tbody>
+                                        </form>
                                     </table>
                                 </div>
                             </div>
@@ -125,7 +126,6 @@
                         <div class="col-lg-12 mb-5">
                             <div class="profile-main">
                                 <div class="profile-pic">
-                                    <img src="{% static 'images/jpg/ucla.jpg'%}" alt="">
                                     <h3>{{name}}</h3>
                                     <div class="">     
                                         <ul class="profile-address">
@@ -134,7 +134,7 @@
                                             </br>
                                             <li><b>Contact Email : </b><span class="w3">{{email}}</span></li>
                                             </br>
-                                            <li><b>Official Website : </b><span class="w3"><a href="http://www.ucla.com/">{{web}}</a></span></li>
+                                            <li><b>Official Website : </b><span class="w3"><a href="http://{{web}}">{{web}}</a></span></li>
                                             </br>
                                         </ul>
                                     </div>

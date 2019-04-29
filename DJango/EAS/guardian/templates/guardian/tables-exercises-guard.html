@@ -40,7 +40,7 @@
         <div class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="../home" style="font-size: 50px">EA<span>S</span></a>
+                    <a class="navbar-brand" href="../../home" style="font-size: 50px">EA<span>S</span></a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -65,12 +65,12 @@
                                     <li><a href="application#others">Others</a></li>
                                 </ul>
                         </li> -->
-                        <li><a href="../support-us">Support Us</a></li>
+                        <li><a href="../../support-us">Support Us</a></li>
                         <li class="inactive"><a></a></li>
                         <li class="myprofile">
-                            <a href={{ProfileLink}}><img src="{% static 'images/jpg/logo2.jpg'%}" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
+                            <a href="{{ProfileLink}}"><h7 style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"><strong>{{name}}</strong></h7></a>
                         </li>
-                        <li class="mylogin"><a href="../home">Log Out</a></li>
+                        <li class="mylogin"><a href="../../home">Log Out</a></li>
                     </ul>
                 </div>
             </div>
@@ -84,12 +84,12 @@
             <!-- main container of the tables-->
             <div class="container-fluid px-xl-5">
                 <section class="py-5">
-                    <h4 class="text-uppercase mb-5 text-center">Edit Or Add Exercises</h4>
+                    <h2 class="text-uppercase mb-5 text-center">Edit Or Add Exercises</h2>
                     <ul class="d-flex border border-primary shadow pl-0">
                         <li class="d-flex align-items-center my-4 col-lg-3">
-                            <label for="Location" class="mt-1">Type: </label>
-                            <div id="Location" class="select ml-2">
-                                <select id="selectCity" name="account" class="form-control" style="width:250px">
+                            <label for="Location" class="mt-1">Question Type: </label>
+                            <div id="Location" class="select ml-2 mt-2" style="width:300px">
+                                <select id="selectType" name="account" class="form-control" style="width:250px">
                                     <option>Verbal Reasoning</option>
                                     <option>Quantitative Reasoning</option>
                                     <option>Analytical Writing</option>
@@ -114,16 +114,16 @@
                     <div class="row">
                         <div class="col-lg-12 mb-4">
                             <div class="card">
-                                <div class="card-header">                                   
-                                </div>
                                 <div class="card-body">
-                                    <table class="table card-text">
+                                    <table class="table card-text mytr">
                                         <thead>
                                         <tr>
-                                            <th>Exercises ID</th>
-                                            <th>Exercises Type</th>
-                                            <th>Exercises Content</th>
-                                            <th>Exercises Analysis</th>
+                                            <th>ID</th>
+                                            <th>Difficulty Level</th>
+                                            <th>Content</th>
+                                            <th>Answer</th>
+                                            <th>Analysis</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody id = "searchResult">
@@ -134,6 +134,41 @@
                         </div>
                     </div>
                 </section>
+
+                <form enctype="multipart/form-data" action={{uploadURL}} method="POST"> 
+                {% csrf_token %}
+                <section class="pb-5 border border-primary">
+                    <div class="ml-3 mt-4">
+                        <h7 class="text-uppercase" style="font-weight:bold; margin-right: 23px">ID</h7>
+                        <input id="questionID" type="text" name="newID" placeholder="" style="width:175px">
+                    </div>
+                    <div class="ml-3 mt-4">
+                        <h7 class="text-uppercase" style="font-weight:bold; margin-right: 23px">Difficulty Level</h7>
+                        <input id="questionDifficulty" type="text" name="newLevel" placeholder="" style="width:175px">
+                    </div>
+                    <div class="ml-3 mt-4 d-flex">
+                        <h7 class="text-uppercase" style="font-weight:bold">Type</h7>
+                        <select id="questionType" name="newType" class="form-control" style="width:250px; margin-left: 23px">
+                            <option>Verbal Reasoning</option>
+                            <option>Quantitative Reasoning</option>
+                            <option>Analytical Writing</option>
+                        </select>
+                    </div>                 
+                    <div class="ml-3 mt-5 d-flex">
+                        <h7 class="text-uppercase" style="font-weight:bold">question content</h7>
+                        <input type="file" name="newContent" style="margin-left: 10px">
+                    </div>
+                    <div class="ml-3 mt-5 d-flex">
+                        <h7 class="text-uppercase" style="font-weight:bold">question answer</h7>
+                        <input type="file" name="newAnswer" style="margin-left: 19px">
+                    </div>
+                    <div class="ml-3 mt-5 d-flex">
+                        <h7 class="text-uppercase" style="font-weight:bold">question analysis</h7>
+                        <input type="file" name="newAnalysis" style="margin-left: 7px">
+                    </div>
+                    <button class="pull-right mr-4" style="font-weight:bold"../>Submit</button>
+                </section>
+                </form>
             </div>
         </div>
     </div>
@@ -167,7 +202,7 @@
                         <li><a href="https://user.qzone.qq.com/133228573/"><img src="{% static 'images/icon/Tencent.ico'%}" height="30" width="30"></a></li>
                         <li><a href="http://tieba.baidu.com/f?kw=%CF%E3%B8%DB%D6%D0%CE%C4%B4%F3%D1%A7%C9%EE%DB%DA"><img src="{% static 'images/icon/TieBa.ico'%}" height="30" width="30"></a></li>
                         <li><a href="https://www.facebook.com/Welcome-2267653903313743/"><i class="fab fa-facebook-square" style="font-size:30px"></i></a></li>
-                        <li><a href="../support-us"><i class="fab fa-weixin" style="font-size:30px"></i></a></li>
+                        <li><a href="../../support-us"><i class="fab fa-weixin" style="font-size:30px"></i></a></li>
                         <li><a href="http://www.cuhk.edu.cn/academics/caiwei/"><img src="{% static 'images/icon/WeiBo.ico'%}" height="30" width="30"></a></li>
                     </ul>
                 </div>
@@ -231,43 +266,40 @@
     </script>
 
     <script>
+        var questions = {{exerciseJson | safe}};
+        
         function onClickSearch() {
-            var exams = new Array();
-            exams[0] = {City:"Beijing", ExamID:"1", ExamTime:"2011-11-04", ExamLocation:"Tian'an Gate", Availability:"Yes"};
-            exams[1] = {City:"Beijing", ExamID:"2", ExamTime:"2011-12-04", ExamLocation:"Huang Fu Jing", Availability:"No"};
-            exams[2] = {City:"Beijing", ExamID:"3", ExamTime:"2011-10-04", ExamLocation:"Zhong Nan Hai", Availability:"No"};
-            exams[3] = {City:"Shanghai", ExamID:"4", ExamTime:"2011-01-04", ExamLocation:"Wai Tan", Availability:"Yes"};
-            exams[4] = {City:"Shanghai", ExamID:"5", ExamTime:"2011-06-04", ExamLocation:"Dong Fang Ming Zhu", Availability:"Yes"};
-            exams[5] = {City:"Shanghai", ExamID:"6", ExamTime:"2011--04-04", ExamLocation:"Pu Dong Xing Cheng", Availability:"No"};
-            exams[6] = {City:"Guangzhou", ExamID:"7", ExamTime:"2011-02-04", ExamLocation:"Bai Yun Park", Availability:"Yes"};
-            
-            var selectCity = document.getElementById("selectCity");
-            var cityIndex = selectCity.selectedIndex;
-            var city = selectCity.options[cityIndex].value;
+            var selectCity = document.getElementById("selectType");
+            var typeIndex = selectCity.selectedIndex;
+            var type = selectCity.options[typeIndex].value;
             var tbody = ""
 
-            for (i in exams){
-                console.log(exams[i]);
-                if (exams[i].City == city){
+            for (i in questions){
+                if (questions[i].type == type){
                     tbody += "<tr class='align-items-center'>" +
+                                "<th>" + questions[i].ID + "</th>" +
+                                "<th>" + questions[i].difficulty + "</th>" +
+                                "<th>" + "<a href='download/?name="+questions[i].content+"' download='content.pdf'>content</a></th>" +
+                                "<th>" + "<a href='download/?name="+questions[i].answer+"' download='answer.pdf'>answer</a></th>" +
+                                "<th>" + "<a href='download/?name="+questions[i].analysis+"' download='analysis.pdf'>analysis</a></th>" +
                                 "<th>" +
-                                    "<div class='custom-control custom-checkbox align-items-center '>" +
-                                        "<input id='customCheck1.1' type='checkbox' class='custom-control-input' />" +
-                                        "<label for='customCheck1.1' class='custom-control-label'>|</label>" +
-                                    "</div>" +
+                                    "<button type='button' onclick='onClickEdit("+String(i)+")'>Edit</button>" +
                                 "</th>" +
-                                "<th>" + exams[i].City + "</th>" +
-                                "<th scope='row'>" + exams[i].ExamID + "</th>" +
-                                "<td>" + exams[i].ExamTime + "</td>" +
-                                "<td>" + exams[i].ExamLocation + "</td>" +
-                                "<td>" + exams[i].Availability+ "</td>" +
                             "</tr>";
                 }
             }
-
             document.getElementById("searchResult").innerHTML = tbody;
         }
-    </script>
 
+        function onClickEdit(i){
+            var questionID = document.getElementById("questionID");
+            var questionType = document.getElementById("questionType");
+            var questionDifficulty = document.getElementById("questionDifficulty");
+            questionID.value = questions[i].ID;
+            questionType.value = questions[i].type;
+            questionDifficulty.value = questions[i].difficulty;
+        }
+    </script>
+	
   </body>
 </html>

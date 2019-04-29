@@ -168,17 +168,13 @@ def exams(request, userID):
         exeVerLink = "../exercise/" + userID + "#verbal"
         exeQuaLink = "../exercise/" + userID + "#quantitative"
         exeWriLink = "../exercise/" + userID + "#writing"
-        appLink = "../application/" + userID
-        appUSALink = "../application/" + userID + "#usa"
-        appEURLink = "../application/" + userID + "#europe"
-        appASILink = "../application/" + userID + "#asia"
-        appOthLink = "../application/" + userID + "#others"       
+        appLink = "../application/" + userID      
         return render_to_response('stu/tables-exams.html', locals())
 
     if request.method == "POST":
         appliedExamID = request.POST.get("appliedExamID")
         AppliedExam.objects.create(stu_id=userID, exam_id=appliedExamID)
-        return render(request, 'stu/tables-exams.html', {"message": "success"})
+        return redirect('/stu/profile/%s' %userID, locals())
     
     return render(request, 'stu/tables-exams.html')
 
@@ -196,25 +192,28 @@ def upload_file(request, userID):
         resume = request.FILES.get("resume", None)
         transcript = request.FILES.get("transcript", None)
         recommendation = request.FILES.get("recommendation", None)
+        stu_resume_name = ""
+        transcript_name = ""
+        recommendation_name = ""
 
         stu_app_id = "X" + time.strftime("%Y%m%d%H%M%S", time.localtime()) 
-        stu_resume_name = "/root/upload/resume/resume/" + stu_app_id + "resume.pdf"
-        transcript_name = "/root/upload/resume/transcript/" + stu_app_id + "transcript.pdf"
-        recommendation_name = "/root/upload/resume/recommendation/" + stu_app_id + "recommendation.pdf"
         status = "pending"
 
         if resume:
-            destination = open(os.path.join("/root/upload/resume/resume",stu_resume_name),'wb+')
+            stu_resume_name = "/root/upload/resume/resume/" + stu_app_id + "resume.pdf"
+            destination = open(stu_resume_name,'wb+')
             for chunk in resume.chunks():       
                 destination.write(chunk) 
             destination.close()
         if transcript:
-            destination = open(os.path.join("/root/upload/resume/transcript",transcript_name),'wb+')
+            transcript_name = "/root/upload/resume/transcript/" + stu_app_id + "transcript.pdf"
+            destination = open(transcript_name,'wb+')
             for chunk in transcript.chunks():       
                 destination.write(chunk) 
             destination.close()
         if recommendation:
-            destination = open(os.path.join("/root/upload/resume/recommendation",recommendation_name),'wb+')
+            recommendation_name = "/root/upload/resume/recommendation/" + stu_app_id + "recommendation.pdf"
+            destination = open(recommendation_name,'wb+')
             for chunk in recommendation.chunks():       
                 destination.write(chunk) 
             destination.close()

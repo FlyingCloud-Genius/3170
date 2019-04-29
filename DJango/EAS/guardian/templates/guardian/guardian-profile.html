@@ -39,7 +39,7 @@
             <div class="navbar navbar-default navbar-static-top">
                 <div class="container">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="../home" style="font-size: 50px">EA<span>S</span></a>
+                        <a class="navbar-brand" href="../../home" style="font-size: 50px">EA<span>S</span></a>
                     </div>
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
@@ -64,12 +64,12 @@
                                         <li><a href="application#others">Others</a></li>
                                     </ul>
                             </li> -->
-                            <li><a href="../support-us">Support Us</a></li>
+                            <li><a href="../../support-us">Support Us</a></li>
                             <li class="inactive"><a></a></li>
                             <li class="myprofile">
-                                <a href={{ProfileLink}}><img src="{% static 'images/jpg/logo2.jpg'%}" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
+                                <a href="{{ProfileLink}}"><h7 style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"><strong>{{name}}</strong></h7></a>
                             </li>
-                            <li class="mylogin"><a href="../home">Log Out</a></li>
+                            <li class="mylogin"><a href="../../home">Log Out</a></li>
                         </ul>
                     </div>
                 </div>
@@ -83,7 +83,7 @@
                     <li class="sidebar-list-item"><a href="#nextexam" class="sidebar-link text-muted"><i class="o-clock-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 2px">Next Exam</span></a></li>
                     <!-- <li class="sidebar-list-item"><a href="#checkgrades" class="sidebar-link text-muted"><i class="o-paper-stack-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 2px">Score Needed Re-Check</span></a></li> -->
 					<li class="sidebar-list-item"><a href="#information" class="sidebar-link text-muted"><i class="o-home-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 2px">Guardian Information</span></a></li>
-                    <li class="sidebar-list-item"><a href="../home" class="sidebar-link text-muted"><i class="o-exit-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 4px">Log Out</span></a></li>
+                    <li class="sidebar-list-item"><a href="../../home" class="sidebar-link text-muted"><i class="o-exit-1 mr-3 text-gray" style="font-size:25px"></i><span style="margin-left: 4px">Log Out</span></a></li>
             </div> 
             <!-- main page-->
             <div class="container-fluid px-xl-5">
@@ -105,73 +105,26 @@
                                             <th>City</th>
                                         </tr>
                                         </thead>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="row" -->
-                        <!-- Score needed re-check -->
-                        <!-- <a name="checkgrades"></a>
-                        <div class="col-lg-9 mb-5">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h3 class="h6 text-uppercase mb-0 text-center" style="font-size:20px">Score Needed Re-Check</h3>
-                                </div>
-                                <div class="card-body">
-                                    <table class="table card-text mytr">
-                                        <thead>
-                                            <tr>                                            
-                                                <th>Answer Sheet ID</th>
-                                                <th>Applicant Name</th>
-                                                <th>Student Solution</th>
-                                                <th>Applicant Score</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
                                         <tbody>
-                                            <script>
-                                                var applicants = new Array();
-                                                applicants[0] = {AnswerID:"00001", Name:"hahaha", Solution:"solution00001", score:"326"};
-                                                applicants[1] = {AnswerID:"00002", Name:"wawawa", Solution:"solution00002", score:"317"};
-                                                applicants[2] = {AnswerID:"00003", Name:"hehehe", Solution:"solution00003", score:"330"};
-                                                applicants[3] = {AnswerID:"00004", Name:"kikiki", Solution:"solution00004", score:"324"};
-                                                applicants[4] = {AnswerID:"00005", Name:"brabrabra", Solution:"solution00005", score:"318"};
-                                                applicants[5] = {AnswerID:"00006", Name:"wuwuwu", Solution:"solution00006", score:"320"};
-                                    
-                                                for (i in applicants){
-                                                    document.write("<tr class='align-items-center'>" +
-                                                                        "<th>" + applicants[i].AnswerID + "</th>" +
-                                                                        "<th scope='row'>" + applicants[i].Name + "</th>" +
-                                                                        "<th>" + "<a href='' target='_blank'>" + applicants[i].Solution + "</a>" + "</th>" +
-                                                                        "<th align='center'>" + applicants[i].score + "</th>" +
-                                                                        "<th>" +
-                                                                            "<div class='select ml-2 d-flex align-items-center justify-content-center'>" + 
-                                                                                "<select class='form-control' style='width:100px'>" +
-                                                                                    "<option>Choose</option>" +
-                                                                                    "<option>Pass</option>" +
-                                                                                    "<option>Reject</option>" +
-                                                                                    "<option>TBD</option>" +
-                                                                                "</select>" +
-                                                                                '<button type="submit" class="btn btn-primary" onclick="" style="margin-left: 20px">Submit</button>' +
-                                                                            "</div>" +
-                                                                        "</th>" +
-                                                                   "</tr>");
-                                                }  
-                                            </script>
+                                            {% for item in examitems %}
+                                            <tr>
+                                                <th>{{item.examid}}</th>
+                                                <th>{{item.examtime}}</th>
+                                                <th>{{item.examcity}}</th>
+                                            </tr>
+                                            {% endfor %}
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                     <div class="row">
                         <!-- Your Information -->
                         <a name="information"></a>
                         <div class="col-lg-9 mb-5">
                             <div class="profile-main">
                                 <div class="profile-pic">
-                                    <img src="./images/jpg/logo2.jpg" alt="">
                                     <h3>{{name}}</h3>
                                     <div class="">     
                                         <ul class="profile-address">
@@ -227,7 +180,7 @@
                             <li><a href="https://user.qzone.qq.com/133228573/"><img src="{% static 'images/icon/Tencent.ico'%}" height="30" width="30"></a></li>
                             <li><a href="http://tieba.baidu.com/f?kw=%CF%E3%B8%DB%D6%D0%CE%C4%B4%F3%D1%A7%C9%EE%DB%DA"><img src="{% static 'images/icon/TieBa.ico'%}" height="30" width="30"></a></li>
                             <li><a href="https://www.facebook.com/Welcome-2267653903313743/"><i class="fab fa-facebook-square" style="font-size:30px"></i></a></li>
-                            <li><a href="../support-us"><i class="fab fa-weixin" style="font-size:30px"></i></a></li>
+                            <li><a href="../../support-us"><i class="fab fa-weixin" style="font-size:30px"></i></a></li>
                             <li><a href="http://www.cuhk.edu.cn/academics/caiwei/"><img src="{% static 'images/icon/WeiBo.ico'%}" height="30" width="30"></a></li>
                         </ul>
                     </div>

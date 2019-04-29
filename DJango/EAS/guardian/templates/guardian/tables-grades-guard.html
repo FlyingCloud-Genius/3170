@@ -43,7 +43,7 @@
         <div class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="../home" style="font-size: 50px">EA<span>S</span></a>
+                    <a class="navbar-brand" href="../../home" style="font-size: 50px">EA<span>S</span></a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
@@ -68,12 +68,12 @@
                                     <li><a href="application#others">Others</a></li>
                                 </ul>
                         </li> -->
-                        <li><a href="../support-us">Support Us</a></li>
+                        <li><a href="../../support-us">Support Us</a></li>
                         <li class="inactive"><a></a></li>
                         <li class="myprofile">
-                            <a href={{ProfileLink}}><img src="{% static 'images/jpg/logo2.jpg'%}" style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"></a>
+                            <a href="{{ProfileLink}}"><h7 style="max-width: 2.5rem;" class="img-fluid rounded-circle shadow"><strong>{{name}}</strong></h7></a>
                         </li>
-                        <li class="mylogin"><a href="../home">Log Out</a></li>
+                        <li class="mylogin"><a href="../../home">Log Out</a></li>
                     </ul>
                 </div>
             </div>
@@ -87,20 +87,9 @@
             <!-- main container of the tables-->
             <div class="container-fluid px-xl-5">
                 <section class="py-5">
-                    <h4 class="text-uppercase mb-5 text-center">Check and Give Grades</h4>
+                    <h2 class="text-uppercase mb-5 text-center">Check and Give Grades</h2>
                     <ul class="d-flex border border-primary shadow pl-0">
                         <li class="d-flex align-items-center my-4 col-lg-3">
-                            <label for="Location" class="mt-1">Cities: </label>
-                            <div id="Location" class="select ml-2">
-                                <select id="selectCity" name="account" class="form-control" style="width:200px">
-                                    <option>Beijing</option>
-                                    <option>Shanghai</option>
-                                    <option>Guangzhou</option>
-                                    <option>Shenzhen</option>
-                                    <option>Hong Kong</option>
-                                    <option>Changsha</option>
-                                </select>
-                            </div>
                         </li>
 
                         <li class="d-flex align-items-center justify-content-center my-4 col-lg-4">
@@ -108,8 +97,8 @@
 
                         <li class="d-flex align-items-center my-4 col-lg-3">
                             <div class="custom-control custom-checkbox  my-4 ">
-                                <input id="availablity" type="checkbox" class="custom-control-input" />
-                                <label for="availablity" class="custom-control-label">Only consider unchecked paper sheet</label>
+                                <input id="availability" type="checkbox" class="custom-control-input" />
+                                <label for="availability" class="custom-control-label">Only consider unchecked paper sheet</label>
                             </div>
                         </li>
 
@@ -120,23 +109,21 @@
 
                 </section>
                 <!-- a small sapce that between upper header and footer-->
+                <form action={{commitURL}} method="POST">
                 <section class="pb-5">
                     <!--another samll space inside the section space-->
                     <div class="row">
                         <!-- the first table col-lg-6 means that can should 2 tables on one row in large screen-->
                         <div class="col-lg-12 mb-4">
                             <div class="card">
-                                <div class="card-header">                                   
-                                    <h6 class="text-uppercase mb-0 ">Exams</h6>
-                                </div>
                                 <div class="card-body">
-                                    <table class="table card-text">
+                                    <table class="table card-text mytr">
                                         <thead>
                                         <tr>
-                                            <th>Exam ID</th>
-                                            <th>Paper sheet ID</th>
                                             <th>Answer sheet ID</th>
+                                            <th>Student Solution</th>
                                             <th>Grade</th>
+                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody id = "searchResult">
@@ -147,6 +134,7 @@
                         </div>
                     </div>
                 </section>
+                </form>
             </div>
         </div>
     </div>
@@ -180,7 +168,7 @@
                         <li><a href="https://user.qzone.qq.com/133228573/"><img src="{% static 'images/icon/Tencent.ico'%}" height="30" width="30"></a></li>
                         <li><a href="http://tieba.baidu.com/f?kw=%CF%E3%B8%DB%D6%D0%CE%C4%B4%F3%D1%A7%C9%EE%DB%DA"><img src="{% static 'images/icon/TieBa.ico'%}" height="30" width="30"></a></li>
                         <li><a href="https://www.facebook.com/Welcome-2267653903313743/"><i class="fab fa-facebook-square" style="font-size:30px"></i></a></li>
-                        <li><a href="../support-us"><i class="fab fa-weixin" style="font-size:30px"></i></a></li>
+                        <li><a href="../../support-us"><i class="fab fa-weixin" style="font-size:30px"></i></a></li>
                         <li><a href="http://www.cuhk.edu.cn/academics/caiwei/"><img src="{% static 'images/icon/WeiBo.ico'%}" height="30" width="30"></a></li>
                     </ul>
                 </div>
@@ -245,40 +233,64 @@
 
     <script>
         function onClickSearch() {
-            var exams = new Array();
-            exams[0] = {City:"Beijing", ExamID:"1", ExamTime:"2011-11-04", ExamLocation:"Tian'an Gate", Availability:"Yes"};
-            exams[1] = {City:"Beijing", ExamID:"2", ExamTime:"2011-12-04", ExamLocation:"Huang Fu Jing", Availability:"No"};
-            exams[2] = {City:"Beijing", ExamID:"3", ExamTime:"2011-10-04", ExamLocation:"Zhong Nan Hai", Availability:"No"};
-            exams[3] = {City:"Shanghai", ExamID:"4", ExamTime:"2011-01-04", ExamLocation:"Wai Tan", Availability:"Yes"};
-            exams[4] = {City:"Shanghai", ExamID:"5", ExamTime:"2011-06-04", ExamLocation:"Dong Fang Ming Zhu", Availability:"Yes"};
-            exams[5] = {City:"Shanghai", ExamID:"6", ExamTime:"2011--04-04", ExamLocation:"Pu Dong Xing Cheng", Availability:"No"};
-            exams[6] = {City:"Guangzhou", ExamID:"7", ExamTime:"2011-02-04", ExamLocation:"Bai Yun Park", Availability:"Yes"};
+            var answers = {{ansSheetJson | safe}};
             
-            var selectCity = document.getElementById("selectCity");
-            var cityIndex = selectCity.selectedIndex;
-            var city = selectCity.options[cityIndex].value;
             var tbody = ""
 
-            for (i in exams){
-                console.log(exams[i]);
-                if (exams[i].City == city){
-                    tbody += "<tr class='align-items-center'>" +
-                                "<th>" +
-                                    "<div class='custom-control custom-checkbox align-items-center '>" +
-                                        "<input id='customCheck1.1' type='checkbox' class='custom-control-input' />" +
-                                        "<label for='customCheck1.1' class='custom-control-label'>|</label>" +
-                                    "</div>" +
-                                "</th>" +
-                                "<th>" + exams[i].City + "</th>" +
-                                "<th scope='row'>" + exams[i].ExamID + "</th>" +
-                                "<td>" + exams[i].ExamTime + "</td>" +
-                                "<td>{" + exams[i].ExamLocation + "</td>" +
-                                "<td>" + exams[i].Availability+ "</td>" +
-                            "</tr>";
+            if (document.getElementById("availability").checked == true){
+                for (i in answers){
+                    if (answers[i].checked == false){
+                        tbody += "<tr class='align-items-center'>" +
+                                    "<th scope='row'>" + answers[i].AnswerSheetID + "</th>" +
+                                    "<th>" + "<a href='download/?name="+answers[i].Solution+"' download='Solution.pdf'>Solution</a></th>" +
+                                    "<th>" + 
+                                        "<input type='text' name='newGrade'>" +
+                                    "</th>" +
+                                    "<th>" +
+                                        "<button type='submit'>Commit</button>" +
+                                    "</th>" +
+                                    '<input type="hidden" name="ansID" value='+answers[i].AnswerSheetID+'>' +
+                                "</tr>";
+                    }
                 }
             }
-
+            else
+            {
+                for (i in answers){
+                    if (answers[i].checked == false){
+                        tbody += "<tr class='align-items-center'>" +
+                                    "<th scope='row'>" + answers[i].AnswerSheetID + "</th>" +
+                                    "<th>" + "<a href='download/?name="+answers[i].Solution+"' download='Solution.pdf'>Solution</a></th>" +
+                                    "<th>" + 
+                                        "<input type='text' name='newGrade'>" +
+                                    "</th>" +
+                                    "<th>" +
+                                        "<button type='submit'>Commit</button>" +
+                                    "</th>" +
+                                    '<input type="hidden" name="ansID" value='+answers[i].AnswerSheetID+'>' +
+                                "</tr>";
+                    }
+                    else {
+                        tbody += "<tr class='align-items-center'>" +
+                                    "<th scope='row'>" + answers[i].AnswerSheetID + "</th>" +
+                                    "<th>" + "<a href='download/?name="+answers[i].Solution+"' download='Solution.pdf'>Solution</a></th>" +
+                                    "<th>" + answers[i].Score + "</th>" +
+                                    "<th>" +
+                                        "<button type='submit'>Commit</button>" +
+                                    "</th>" +
+                                    '<input type="hidden" name="ansID" value='+answers[i].AnswerSheetID+'>' +
+                                "</tr>";
+                    }
+                }
+            }
             document.getElementById("searchResult").innerHTML = tbody;
+        }
+    </script>
+
+    <script>
+        function onClickCommit(i, answerID){
+            grade = document.getElementById("grade"+String(i)).value;
+            console.log("answerID: " + answerID + "  Grade: " + grade);
         }
     </script>
 

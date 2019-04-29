@@ -139,7 +139,7 @@
                                             {% for item in ansRes %}
                                             <tr>
                                                 <th>{{item.ans_id}}</th>
-                                                <th><a href="download/?name={{item.student_solution}}">Solution</a></th>
+                                                <th><a href="download/?name={{item.student_solution}}" download="Student_Solution.pdf">Solution</a></th>
                                                 <th>{{item.ans_score}}</th>
                                             </tr>
                                             {% endfor %}
@@ -244,10 +244,7 @@
                                             <th>Resume</th>
                                             <th>
                                                 <div class="select d-flex align-items-center justify-content-center">
-                                                    <!-- <input type="file" name="resume"> -->
-                                                    <input style="width:0px" type=file id=resumefile name='resume' style="visibility:hidden" onchange=resumefilepath.value=this.value>
-                                                    <input type=textfield id=resumefilepath>
-                                                    <input type=button id=resumefilebutton value=browser onclick=resumefile.click()>
+                                                    <input type="file" name="resume">
                                                 </div>
                                             </th>
                                         </tbody>
@@ -255,10 +252,7 @@
                                             <th>Transcript</th>
                                             <th>
                                                 <div class="select d-flex align-items-center justify-content-center">
-                                                    <!-- <input type="file" name="transcript"> -->
-                                                    <input style="width:0px" type=file id=transcriptfile name='transcript' style="visibility:hidden" onchange=transcriptfilepath.value=this.value>
-                                                    <input type=textfield id=transcriptfilepath>
-                                                    <input type=button id=transcriptfilebutton value=browser onclick=transcriptfile.click()>
+                                                    <input type="file" name="transcript">
                                                 </div>
                                             </th>
                                         </tbody>
@@ -266,10 +260,7 @@
                                             <th>Recommendation</th>
                                             <th>
                                                 <div class="select d-flex align-items-center justify-content-center">
-                                                    <!-- <input type="file" name="recommendation"> -->
-                                                    <input style="width:0px" type=file id=recommendationfile name='recommendation' style="visibility:hidden" onchange=recommendationfilepath.value=this.value>
-                                                    <input type=textfield id=recommendationfilepath>
-                                                    <input type=button id=recommendationfilebutton value=browser onclick=recommendationfile.click()>
+                                                    <input type="file" name="recommendation">
                                                 </div>
                                             </th>
                                         </tbody>
