@@ -129,11 +129,11 @@ def exercise(request, userID):
         quantitativeExercise = []
         writingExercise = []
         for obj in allExercise:
-            if obj.que_type == "verbal":
+            if obj.que_type == "Verbal Reasoning":
                 verbalExercise.append(obj)
-            if obj.que_type == "quantitative":
+            if obj.que_type == "Quantitative Reasoning":
                 quantitativeExercise.append(obj)
-            if obj.que_type == "writing":
+            if obj.que_type == "Analytical Writing":
                 writingExercise.append(obj)
 
         stu = Student.objects.get(stu_id=userID)
